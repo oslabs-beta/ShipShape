@@ -19,6 +19,9 @@ app.use(express.urlencoded({extended: true}));
 //   res.sendFile(path.join(__dirname, '../client/index.html'));
 // });
 
+app.get('/dashboard', (req, res) => {
+     res.sendFile(path.join(__dirname, '../client/index.html'));
+});
 
 //** 404 error **//
 app.use('*', (req, res) => res.status(404).send('Wrong'));
