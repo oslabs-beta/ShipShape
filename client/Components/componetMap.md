@@ -9,9 +9,22 @@
                 |log in button
                 |sign in button
 
-    |Main Page
-        |
-        |
+    |Main Page  / Home
+        | Header
+            |Logo
+            |Import button +
+            |Need help ?
+            |Profile/ maybe our github?
+        | Nav bar
+            |Cluster
+            |Namespace
+            |Nodes
+            |Pods
+        | Dashboard
+            |Graphs
+            |Graphs
+            |Graphs
+            |Table
 
 
     |Website landing Page
