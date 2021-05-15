@@ -79,15 +79,19 @@ body {
   background: inherit;
 }
 
-#getStartedButton {
-  height: 30px;
-  width: 100px;
+.getStartedButton {
+  height: 40px;
+  width: 150px;
+  font-size: 0.6em;
   border-radius: 5px;
   box-shadow: 1px 1px 1px black;
+  margin: 10px;
+  margin-bottom: 30px;
 }
-#getStartedButton:hover {
+.getStartedButton:hover {
   background-color: $secondTextColor;
   cursor: pointer;
+  color: $mainTextColor;
   border: 1px solid black;
   box-shadow: 3px 3px 3px black;
 }
@@ -162,6 +166,10 @@ button {
   padding: 1rem;
   font-size: 1.5rem;
   box-shadow: 3px 3px 3px rgb(0, 0, 0);
+}
+
+.aboutUsCards:hover {
+  transform: translateX(-2%);
 }
 
 .aboutUsCards > h4 {
@@ -293,16 +301,17 @@ a {
 
 .moreInfo > p,
 h3 {
-  padding: 10px;
+  padding: 15px;
 }
 
 .moreInfo > h3 {
-  font-size: 2.5rem;
+  font-size: 2.75rem;
 }
 
 .moreInfo > p {
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
+  line-height: 1.5em;
 }
 
 //------------------------------------------------------------------------------------//
@@ -344,9 +353,9 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   flex-direction: column;
   align-items: center;
   padding-bottom: 50px;
-  border-top: 2px solid rgba(0, 0, 0, 0.418);
+  border-top: 3px solid rgba(0, 0, 0, 0.518);
   background: #41414226;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 4px 4px 4px 4px black;
 }
 
 .bubble {
@@ -604,4 +613,32 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.getStartedBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 3em;
+  }
+
+  #infoBox {
+    height: 70vh;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.699);
+    border: 1px solid rgb(38,0,80);
+    border-radius: 10px;
+    font-size: 1.5em;
+    line-height: 2rem;
+    text-align: center;
+    padding: 5px;
+    overflow-y: scroll;
+    box-shadow: 2px 2px 2px black;
+  }
+  #infobox::-webkit-scrollbar {
+    display: none;
+  }
 }

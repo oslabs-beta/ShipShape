@@ -1,5 +1,5 @@
 import React from 'react';
-// import whit  from '../../assets/whit.png'
+import { Link } from "react-router-dom";
 
 
 export default function Body () {
@@ -8,7 +8,13 @@ export default function Body () {
         <div id="intro" background="transparent">
           <h1>Welcome to ShipShape!</h1>
           <h2>A better way to monitor your Kubernetes Cluster</h2>
-          <button id="getStartedButton">Get Started</button>
+          <div id="buttonContainer">
+            <Link to='/getStarted'><button className="getStartedButton">Get Started</button></Link>
+            <Link to="/LogIn">
+          <button className="getStartedButton">Log In</button>
+        </Link>
+            <Link to='/dashboard'><button className="getStartedButton">My Dashboard</button></Link>
+          </div>
           <div className='imageContainer'>
               <img src="https://ikarus.sg/content/images/2020/08/dashboard-wide-cropped.png" alt="Kubernetes Dashboard" />
           </div>
@@ -42,7 +48,10 @@ export default function Body () {
         </div>
         <div className='moreInfo'>
             <h3>More Information</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus rerum assumenda, odit est deserunt sed voluptatibus ad commodi! Non similique neque illo tenetur sed dolor consectetur reprehenderit. Rem, dolorum eius? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus rerum assumenda, odit est deserunt sed voluptatibus ad commodi! Non similique neque illo tenetur sed dolor consectetur reprehenderit. Rem, dolorum eius?</p>
+            <p>ShipShape is a Kubernetes monitoring tool designed to help you visualize the most important metrics of your Cluster at various levels of granularity. ShipSahpe can also track long-term performance, help debug errors, and offere potential configuration optimization suggestions. <br/>
+            ShipShape will connect to and monitor the real time metrics of a Kubernetes Cluster using a variety of graphs and the clusters components to assess over all and pod-specific health. We do this by connecting to the Metrics Server of a Kubernetes cluster and continuously send and store the data related to CPU, Disk, and Memory usage to get a look at the metrics over time. We then present these metrics in an easy to understand, actionable graphic display on your personal ShipShape dashboard.  
+            <br/>
+            </p>
         </div>
       <div className="bubbles">
         <div className='teamContainer'>
