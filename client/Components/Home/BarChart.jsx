@@ -12,7 +12,8 @@ const BarChart = () => {
                     label: 'Pods Data',
                     data: [23, 2, 24, 12, 54],
                     backgroundColor: [
-                        'rgb(144, 112, 140)'
+                        // 'rgb(144, 112, 140)'
+                        'rgb(38,84,121)'
                     ],
                     borderWidth: 5
                 }

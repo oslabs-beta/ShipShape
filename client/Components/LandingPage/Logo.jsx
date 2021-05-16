@@ -5,8 +5,8 @@ export default function Logo() {
     <div className="logo">
       <img
         src="./../assets/ShipShapeWhiteLogo.png"
-        height="50px"
-        width="55px"
+        height="130px"
+        width="135px"
       />
     </div>
   );
