@@ -1,14 +1,21 @@
-$mainTextColor: white;
-$secondTextColor: rgb(34, 196, 69);
-$cardBackground: black;
+$mainTextColor: rgb(244, 246, 247);
+$darkGray: rgb(185, 194, 193);
+$lightBlue: rgb(160, 192, 206);
+$darkBlue: rgb(38, 84, 121);
+// $secondTextColor: rgb(34, 196, 69);
+$secondTextColor: rgb(38, 84, 121);
+// $cardBackground: black;
 
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Comfortaa", cursive;
+  // font-family: "Comfortaa", cursive;
+  font-family: Montserrat;
+  color: $mainTextColor;
 }
 
 body {
@@ -19,20 +26,21 @@ body {
   //   rgba(110, 183, 255, 1) 50%,
   //   rgba(216, 236, 255, 1) 100%
   // );
-  background: rgb(0, 0, 0);
-  background: linear-gradient(
-    32deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(32, 0, 65, 1) 14%,
-    rgba(48, 0, 110, 1) 25%,
-    rgba(69, 0, 168, 1) 34%,
-    rgba(26, 150, 146, 1) 49%,
-    rgba(2, 227, 107, 1) 54%,
-    rgba(0, 194, 55, 1) 58%,
-    rgba(0, 92, 26, 1) 72%,
-    rgba(0, 52, 15, 1) 81%,
-    rgba(0, 0, 0, 1) 91%
-  );
+  // background: rgb(0, 0, 0);
+  // background: linear-gradient(
+  //   32deg,
+  //   rgba(0, 0, 0, 1) 0%,
+  //   rgba(32, 0, 65, 1) 14%,
+  //   rgba(48, 0, 110, 1) 25%,
+  //   rgba(69, 0, 168, 1) 34%,
+  //   rgba(26, 150, 146, 1) 49%,
+  //   rgba(2, 227, 107, 1) 54%,
+  //   rgba(0, 194, 55, 1) 58%,
+  //   rgba(0, 92, 26, 1) 72%,
+  //   rgba(0, 52, 15, 1) 81%,
+  //   rgba(0, 0, 0, 1) 91%
+  // );
+  background-color: rgb(160, 192, 206);
   color: $mainTextColor;
 }
 
@@ -64,6 +72,10 @@ body {
   color: $mainTextColor;
 }
 
+.logo {
+  margin-left: 43%;
+}
+
 .footerDiv {
   height: 5rem;
   width: 100%;
@@ -75,25 +87,33 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 1px 1px 1px black;
+  // box-shadow: 1px 1px 1px black;
   background: inherit;
 }
 
 .getStartedButton {
   height: 40px;
   width: 150px;
-  font-size: 0.6em;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px black;
+  font-size: 0.75em;
+  // border-radius: 5px;
+  // box-shadow: 1px 1px 1px black;
   margin: 10px;
   margin-bottom: 30px;
+  background: inherit;
+  text-decoration: underline;
+  padding-bottom: 15px;
+  border-bottom-width: 15px;
+  border-bottom-style: solid;
+  border: none;
+  text-underline-offset: inherit;
 }
 .getStartedButton:hover {
-  background-color: $secondTextColor;
+  color: $secondTextColor;
   cursor: pointer;
-  color: $mainTextColor;
-  border: 1px solid black;
-  box-shadow: 3px 3px 3px black;
+  // background-color: $secondTextColor;
+  // color: $mainTextColor;
+  // border: 1px solid black;
+  // box-shadow: 3px 3px 3px black;
 }
 
 #intro {
@@ -161,22 +181,25 @@ button {
   flex-wrap: wrap;
   width: 30%;
   color: $mainTextColor;
-  background-color: $cardBackground;
+  background-color: rgba(125, 162, 179, 0.137);
+  // border: 1px solid rgb(197, 197, 197);
+  border: 1px solid $darkBlue;
   border-radius: 10px;
   padding: 1rem;
   font-size: 1.5rem;
-  box-shadow: 3px 3px 3px rgb(0, 0, 0);
 }
 
 .aboutUsCards:hover {
-  transform: translateX(-2%);
+  transform: translateX(-1%);
+  background-color: rgba(125, 162, 179, 0.6);
+  cursor: default;
 }
 
 .aboutUsCards > h4 {
   margin-bottom: 1rem;
   font-size: 1.55em;
   text-align: center;
-  color: $secondTextColor;
+  color: inherit;
 }
 
 .aboutUsCards > p {
@@ -277,6 +300,10 @@ footer {
   object-fit: cover;
 }
 
+.teamPicture > img:hover {
+  background: rgba(255, 255, 255, 0.363);
+}
+
 .teamCards > p,
 a {
   padding: 5px;
@@ -353,9 +380,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   flex-direction: column;
   align-items: center;
   padding-bottom: 50px;
-  border-top: 3px solid rgba(0, 0, 0, 0.518);
-  background: #41414226;
-  box-shadow: 4px 4px 4px 4px black;
+  border-top: 1px solid $mainTextColor;
 }
 
 .bubble {
@@ -508,7 +533,8 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .dashboardHeader {
   grid-column: 3 / 15;
   grid-row: 1 / 2;
-  background-color: #5b4880;
+  // background-color: #5b4880;
+  background-color: $lightBlue;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -522,8 +548,9 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .dashboardHeader > #help {
   text-decoration: none;
   color: inherit;
-  background-color: white;
-  color: #635380;
+  // background-color: white;
+  // color: #635380;
+  color: $darkBlue;
   padding: 0.6rem 1.5rem;
   margin-right: 7px;
   border-radius: 5px;
@@ -532,17 +559,19 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 #import {
-  color: #635380;
-  background-color: white;
-  padding: 0.6rem;
+  // color: #635380;
+  color: $darkBlue;
+  // background-color: $mainTextColor;
+  padding: 0.3rem;
   border-radius: 5px;
 }
 
-#import:hover {
+#import:hover,
+#help:hover {
   cursor: pointer;
   color: $mainTextColor;
-  background: #7d6b9e;
-  box-shadow: 2px 2px 2px black;
+  // background: #7d6b9e;
+  // box-shadow: 2px 2px 2px black;
 }
 
 // sidebar starts ------------------//
@@ -550,10 +579,13 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .navbarContainer {
   grid-column: 1/3;
   grid-row: 1/13;
-  background-color: #5b4880;
+  background-color: $lightBlue;
+  // background-color: #5b4880;
   // border-top-right-radius: 3rem;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid $darkBlue;
+  // box-shadow: 2px 2px 2px black;
 }
 
 #dashboardLogo {
@@ -566,6 +598,11 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 5rem;
+}
+
+.shipshape {
+  font-size: 1.5em;
+  font-weight: 500;
 }
 
 .subjectContainer {
@@ -581,7 +618,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .mainDashboard {
   grid-column: 3 / 15;
   grid-row: 2 / 13;
-  background-color: white;
+  background-color: $mainTextColor;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
@@ -593,28 +630,35 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .lineChart {
   grid-column: 1 / 7;
   grid-row: 1 / 5;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.518);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 .barChart {
   grid-column: 7 / 13;
   grid-row: 1 / 5;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.518);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 .heatMap {
   grid-column: 1 / 13;
   grid-row: 5 / 8;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.518);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 .podsTable {
   grid-column: 1 / 13;
   grid-row: 8 / 13;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.518);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
   color: black;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .getStartedBody {
   display: flex;
@@ -622,14 +666,15 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   align-items: center;
 
   h1 {
-    font-size: 3em;
+    font-size: 2em;
+    padding-top: 10px;
   }
 
   #infoBox {
     height: 70vh;
     width: 80%;
-    background-color: rgba(0, 0, 0, 0.699);
-    border: 1px solid rgb(38,0,80);
+    background-color: rgba(0, 0, 0, 0.103);
+    border: 1px solid rgb(38, 0, 80);
     border-radius: 10px;
     font-size: 1.5em;
     line-height: 2rem;
@@ -637,8 +682,19 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
     padding: 5px;
     overflow-y: scroll;
     box-shadow: 2px 2px 2px black;
+    margin-top: 70px;
   }
   #infobox::-webkit-scrollbar {
     display: none;
   }
+}
+
+#LogInContainer {
+  // background-color: rgba(255, 255, 255, 0.418);
+  // background-color: $lightBlue;
+  // border: 1px solid rgb(38, 0, 80);
+  // border-radius: 10px;
+  // margin-left: 20%;
+  // margin-right: 20%;
+  // margin-top: 5%;
 }

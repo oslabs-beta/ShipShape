@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 export default function GetStartedBody() {
   return (
     <div className="GetStartedBody">
-      <h1>Getting Started with ShipShape</h1>
       <div id="infoBox">
-        <h2>
-          Monitoring your Kubernetes cluster is easy with ShipShape! Here's how
-          to get started:{" "}
-        </h2>
+        <h1>Getting Started with ShipShape</h1>
         <br />
         If you're new here, go ahead and sign up! Then we can begin the process
         of getting your cluster set up for monitoring. Been here before? If
