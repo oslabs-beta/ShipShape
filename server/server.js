@@ -2,6 +2,9 @@ const express = require("express");
 const path = require("path");
 const app = express();
 
+//routers for various function
+const k8sApiRouter = require('./router/k8sApiRouter')
+
 // const bodyParser = require('body-parser');
 
 const PORT = 3000;
@@ -14,10 +17,7 @@ app.use("/build", express.static(path.join(__dirname, "../build")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/index.html'));
-// });
+app.use('/api', k8sApiRouter);
 
 app.get("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/index.html"));
@@ -30,6 +30,8 @@ app.get("/getStarted", (req, res) => {
 app.get("/LogIn", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/index.html"));
 });
+
+
 
 //** 404 error **//
 app.use("*", (req, res) => res.status(404).send("Wrong"));
