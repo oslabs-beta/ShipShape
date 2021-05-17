@@ -13,13 +13,6 @@ nodeController.getNodesRaw = async function(req, res, next){
 
 //for production, return a nice neat array of node objects
 nodeController.getNodes = async function(req, res, next){
-<<<<<<< HEAD
-  
-  const data = await k8sApi.listNode('default');
-    console.log(data);
-    res.locals.nodes = data;
-    return next();
-=======
   res.locals.nodes = []; 
   for(let i = 0; i < res.locals.namespaces.length; i += 1){
     const rawNodes = (await k8sApi.listNode(res.locals.namespaces[i])).response.body.items;
@@ -29,7 +22,6 @@ nodeController.getNodes = async function(req, res, next){
     }
   }
   return next();
->>>>>>> bbd6cec7b0dcf0d9829fd87249f188510c313217
 }
 
 module.exports = nodeController;
