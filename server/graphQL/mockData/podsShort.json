@@ -1,0 +1,689 @@
+[
+  {
+      "metadata": {
+          "name": "hello-app-6578f44df4-8s98l",
+          "generateName": "hello-app-6578f44df4-",
+          "namespace": "default",
+          "selfLink": "/api/v1/namespaces/default/pods/hello-app-6578f44df4-8s98l",
+          "uid": "448863d9-b378-4b87-9615-cf727862caa4",
+          "resourceVersion": "1968",
+          "creationTimestamp": "2021-05-16T17:57:39Z",
+          "labels": {
+              "app": "hello-app",
+              "pod-template-hash": "6578f44df4"
+          },
+          "ownerReferences": [
+              {
+                  "apiVersion": "apps/v1",
+                  "kind": "ReplicaSet",
+                  "name": "hello-app-6578f44df4",
+                  "uid": "fc3a8d3c-d428-4af9-9d38-1ba21bd26198",
+                  "controller": true,
+                  "blockOwnerDeletion": true
+              }
+          ],
+          "managedFields": [
+              {
+                  "manager": "kube-controller-manager",
+                  "operation": "Update",
+                  "apiVersion": "v1",
+                  "time": "2021-05-16T17:57:39Z",
+                  "fieldsType": "FieldsV1",
+                  "fieldsV1": {
+                      "f:metadata": {
+                          "f:generateName": {},
+                          "f:labels": {
+                              ".": {},
+                              "f:app": {},
+                              "f:pod-template-hash": {}
+                          },
+                          "f:ownerReferences": {
+                              ".": {},
+                              "k:{\"uid\":\"fc3a8d3c-d428-4af9-9d38-1ba21bd26198\"}": {
+                                  ".": {},
+                                  "f:apiVersion": {},
+                                  "f:blockOwnerDeletion": {},
+                                  "f:controller": {},
+                                  "f:kind": {},
+                                  "f:name": {},
+                                  "f:uid": {}
+                              }
+                          }
+                      },
+                      "f:spec": {
+                          "f:containers": {
+                              "k:{\"name\":\"hello-app\"}": {
+                                  ".": {},
+                                  "f:image": {},
+                                  "f:imagePullPolicy": {},
+                                  "f:name": {},
+                                  "f:resources": {},
+                                  "f:terminationMessagePath": {},
+                                  "f:terminationMessagePolicy": {}
+                              }
+                          },
+                          "f:dnsPolicy": {},
+                          "f:enableServiceLinks": {},
+                          "f:restartPolicy": {},
+                          "f:schedulerName": {},
+                          "f:securityContext": {},
+                          "f:terminationGracePeriodSeconds": {}
+                      }
+                  }
+              },
+              {
+                  "manager": "kubelet",
+                  "operation": "Update",
+                  "apiVersion": "v1",
+                  "time": "2021-05-16T17:57:42Z",
+                  "fieldsType": "FieldsV1",
+                  "fieldsV1": {
+                      "f:status": {
+                          "f:conditions": {
+                              "k:{\"type\":\"ContainersReady\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              },
+                              "k:{\"type\":\"Initialized\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              },
+                              "k:{\"type\":\"Ready\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              }
+                          },
+                          "f:containerStatuses": {},
+                          "f:hostIP": {},
+                          "f:phase": {},
+                          "f:podIP": {},
+                          "f:podIPs": {
+                              ".": {},
+                              "k:{\"ip\":\"10.0.0.5\"}": {
+                                  ".": {},
+                                  "f:ip": {}
+                              }
+                          },
+                          "f:startTime": {}
+                      }
+                  }
+              }
+          ]
+      },
+      "spec": {
+          "volumes": [
+              {
+                  "name": "default-token-sm9s5",
+                  "secret": {
+                      "secretName": "default-token-sm9s5",
+                      "defaultMode": 420
+                  }
+              }
+          ],
+          "containers": [
+              {
+                  "name": "hello-app",
+                  "image": "gcr.io/ss-sample-001/hello-app:v1",
+                  "resources": {},
+                  "volumeMounts": [
+                      {
+                          "name": "default-token-sm9s5",
+                          "readOnly": true,
+                          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                      }
+                  ],
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "imagePullPolicy": "IfNotPresent"
+              }
+          ],
+          "restartPolicy": "Always",
+          "terminationGracePeriodSeconds": 30,
+          "dnsPolicy": "ClusterFirst",
+          "serviceAccountName": "default",
+          "serviceAccount": "default",
+          "nodeName": "gke-hello-cluster-default-pool-8bf37f5d-s83r",
+          "securityContext": {},
+          "schedulerName": "default-scheduler",
+          "tolerations": [
+              {
+                  "key": "node.kubernetes.io/not-ready",
+                  "operator": "Exists",
+                  "effect": "NoExecute",
+                  "tolerationSeconds": 300
+              },
+              {
+                  "key": "node.kubernetes.io/unreachable",
+                  "operator": "Exists",
+                  "effect": "NoExecute",
+                  "tolerationSeconds": 300
+              }
+          ],
+          "priority": 0,
+          "enableServiceLinks": true,
+          "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+          "phase": "Running",
+          "conditions": [
+              {
+                  "type": "Initialized",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:39Z"
+              },
+              {
+                  "type": "Ready",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:42Z"
+              },
+              {
+                  "type": "ContainersReady",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:42Z"
+              },
+              {
+                  "type": "PodScheduled",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:39Z"
+              }
+          ],
+          "hostIP": "10.142.0.17",
+          "podIP": "10.0.0.5",
+          "podIPs": [
+              {
+                  "ip": "10.0.0.5"
+              }
+          ],
+          "startTime": "2021-05-16T17:57:39Z",
+          "containerStatuses": [
+              {
+                  "name": "hello-app",
+                  "state": {
+                      "running": {
+                          "startedAt": "2021-05-16T17:57:41Z"
+                      }
+                  },
+                  "lastState": {},
+                  "ready": true,
+                  "restartCount": 0,
+                  "image": "gcr.io/ss-sample-001/hello-app:v1",
+                  "imageID": "gcr.io/ss-sample-001/hello-app@sha256:a001f3280ed1a10918372a54a0dcb68af008d1a442b860ba1f2b332d2f20ab4f",
+                  "containerID": "containerd://758d439e6a2b804175097d1d8836399224df8d21e5aefbce05b36fd846589cde",
+                  "started": true
+              }
+          ],
+          "qosClass": "BestEffort"
+      }
+  },
+  {
+      "metadata": {
+          "name": "hello-app-6578f44df4-fl6xh",
+          "generateName": "hello-app-6578f44df4-",
+          "namespace": "default",
+          "selfLink": "/api/v1/namespaces/default/pods/hello-app-6578f44df4-fl6xh",
+          "uid": "2c1248cd-e8d8-47b8-9d04-469d4c3412c2",
+          "resourceVersion": "1758",
+          "creationTimestamp": "2021-05-16T17:57:15Z",
+          "labels": {
+              "app": "hello-app",
+              "pod-template-hash": "6578f44df4"
+          },
+          "ownerReferences": [
+              {
+                  "apiVersion": "apps/v1",
+                  "kind": "ReplicaSet",
+                  "name": "hello-app-6578f44df4",
+                  "uid": "fc3a8d3c-d428-4af9-9d38-1ba21bd26198",
+                  "controller": true,
+                  "blockOwnerDeletion": true
+              }
+          ],
+          "managedFields": [
+              {
+                  "manager": "kube-controller-manager",
+                  "operation": "Update",
+                  "apiVersion": "v1",
+                  "time": "2021-05-16T17:57:15Z",
+                  "fieldsType": "FieldsV1",
+                  "fieldsV1": {
+                      "f:metadata": {
+                          "f:generateName": {},
+                          "f:labels": {
+                              ".": {},
+                              "f:app": {},
+                              "f:pod-template-hash": {}
+                          },
+                          "f:ownerReferences": {
+                              ".": {},
+                              "k:{\"uid\":\"fc3a8d3c-d428-4af9-9d38-1ba21bd26198\"}": {
+                                  ".": {},
+                                  "f:apiVersion": {},
+                                  "f:blockOwnerDeletion": {},
+                                  "f:controller": {},
+                                  "f:kind": {},
+                                  "f:name": {},
+                                  "f:uid": {}
+                              }
+                          }
+                      },
+                      "f:spec": {
+                          "f:containers": {
+                              "k:{\"name\":\"hello-app\"}": {
+                                  ".": {},
+                                  "f:image": {},
+                                  "f:imagePullPolicy": {},
+                                  "f:name": {},
+                                  "f:resources": {},
+                                  "f:terminationMessagePath": {},
+                                  "f:terminationMessagePolicy": {}
+                              }
+                          },
+                          "f:dnsPolicy": {},
+                          "f:enableServiceLinks": {},
+                          "f:restartPolicy": {},
+                          "f:schedulerName": {},
+                          "f:securityContext": {},
+                          "f:terminationGracePeriodSeconds": {}
+                      }
+                  }
+              },
+              {
+                  "manager": "kubelet",
+                  "operation": "Update",
+                  "apiVersion": "v1",
+                  "time": "2021-05-16T17:57:18Z",
+                  "fieldsType": "FieldsV1",
+                  "fieldsV1": {
+                      "f:status": {
+                          "f:conditions": {
+                              "k:{\"type\":\"ContainersReady\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              },
+                              "k:{\"type\":\"Initialized\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              },
+                              "k:{\"type\":\"Ready\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              }
+                          },
+                          "f:containerStatuses": {},
+                          "f:hostIP": {},
+                          "f:phase": {},
+                          "f:podIP": {},
+                          "f:podIPs": {
+                              ".": {},
+                              "k:{\"ip\":\"10.0.2.7\"}": {
+                                  ".": {},
+                                  "f:ip": {}
+                              }
+                          },
+                          "f:startTime": {}
+                      }
+                  }
+              }
+          ]
+      },
+      "spec": {
+          "volumes": [
+              {
+                  "name": "default-token-sm9s5",
+                  "secret": {
+                      "secretName": "default-token-sm9s5",
+                      "defaultMode": 420
+                  }
+              }
+          ],
+          "containers": [
+              {
+                  "name": "hello-app",
+                  "image": "gcr.io/ss-sample-001/hello-app:v1",
+                  "resources": {},
+                  "volumeMounts": [
+                      {
+                          "name": "default-token-sm9s5",
+                          "readOnly": true,
+                          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                      }
+                  ],
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "imagePullPolicy": "IfNotPresent"
+              }
+          ],
+          "restartPolicy": "Always",
+          "terminationGracePeriodSeconds": 30,
+          "dnsPolicy": "ClusterFirst",
+          "serviceAccountName": "default",
+          "serviceAccount": "default",
+          "nodeName": "gke-hello-cluster-default-pool-8bf37f5d-8hs0",
+          "securityContext": {},
+          "schedulerName": "default-scheduler",
+          "tolerations": [
+              {
+                  "key": "node.kubernetes.io/not-ready",
+                  "operator": "Exists",
+                  "effect": "NoExecute",
+                  "tolerationSeconds": 300
+              },
+              {
+                  "key": "node.kubernetes.io/unreachable",
+                  "operator": "Exists",
+                  "effect": "NoExecute",
+                  "tolerationSeconds": 300
+              }
+          ],
+          "priority": 0,
+          "enableServiceLinks": true,
+          "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+          "phase": "Running",
+          "conditions": [
+              {
+                  "type": "Initialized",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:15Z"
+              },
+              {
+                  "type": "Ready",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:18Z"
+              },
+              {
+                  "type": "ContainersReady",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:18Z"
+              },
+              {
+                  "type": "PodScheduled",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:15Z"
+              }
+          ],
+          "hostIP": "10.142.0.18",
+          "podIP": "10.0.2.7",
+          "podIPs": [
+              {
+                  "ip": "10.0.2.7"
+              }
+          ],
+          "startTime": "2021-05-16T17:57:15Z",
+          "containerStatuses": [
+              {
+                  "name": "hello-app",
+                  "state": {
+                      "running": {
+                          "startedAt": "2021-05-16T17:57:17Z"
+                      }
+                  },
+                  "lastState": {},
+                  "ready": true,
+                  "restartCount": 0,
+                  "image": "gcr.io/ss-sample-001/hello-app:v1",
+                  "imageID": "gcr.io/ss-sample-001/hello-app@sha256:a001f3280ed1a10918372a54a0dcb68af008d1a442b860ba1f2b332d2f20ab4f",
+                  "containerID": "containerd://83d2027bed57f40e503037af2c43368d227b881ed42934d0d109e2b303844297",
+                  "started": true
+              }
+          ],
+          "qosClass": "BestEffort"
+      }
+  },
+  {
+      "metadata": {
+          "name": "hello-app-6578f44df4-kfnfd",
+          "generateName": "hello-app-6578f44df4-",
+          "namespace": "default",
+          "selfLink": "/api/v1/namespaces/default/pods/hello-app-6578f44df4-kfnfd",
+          "uid": "a8c6b786-9c01-4fe8-88a7-82b375b1fa95",
+          "resourceVersion": "1960",
+          "creationTimestamp": "2021-05-16T17:57:39Z",
+          "labels": {
+              "app": "hello-app",
+              "pod-template-hash": "6578f44df4"
+          },
+          "ownerReferences": [
+              {
+                  "apiVersion": "apps/v1",
+                  "kind": "ReplicaSet",
+                  "name": "hello-app-6578f44df4",
+                  "uid": "fc3a8d3c-d428-4af9-9d38-1ba21bd26198",
+                  "controller": true,
+                  "blockOwnerDeletion": true
+              }
+          ],
+          "managedFields": [
+              {
+                  "manager": "kube-controller-manager",
+                  "operation": "Update",
+                  "apiVersion": "v1",
+                  "time": "2021-05-16T17:57:39Z",
+                  "fieldsType": "FieldsV1",
+                  "fieldsV1": {
+                      "f:metadata": {
+                          "f:generateName": {},
+                          "f:labels": {
+                              ".": {},
+                              "f:app": {},
+                              "f:pod-template-hash": {}
+                          },
+                          "f:ownerReferences": {
+                              ".": {},
+                              "k:{\"uid\":\"fc3a8d3c-d428-4af9-9d38-1ba21bd26198\"}": {
+                                  ".": {},
+                                  "f:apiVersion": {},
+                                  "f:blockOwnerDeletion": {},
+                                  "f:controller": {},
+                                  "f:kind": {},
+                                  "f:name": {},
+                                  "f:uid": {}
+                              }
+                          }
+                      },
+                      "f:spec": {
+                          "f:containers": {
+                              "k:{\"name\":\"hello-app\"}": {
+                                  ".": {},
+                                  "f:image": {},
+                                  "f:imagePullPolicy": {},
+                                  "f:name": {},
+                                  "f:resources": {},
+                                  "f:terminationMessagePath": {},
+                                  "f:terminationMessagePolicy": {}
+                              }
+                          },
+                          "f:dnsPolicy": {},
+                          "f:enableServiceLinks": {},
+                          "f:restartPolicy": {},
+                          "f:schedulerName": {},
+                          "f:securityContext": {},
+                          "f:terminationGracePeriodSeconds": {}
+                      }
+                  }
+              },
+              {
+                  "manager": "kubelet",
+                  "operation": "Update",
+                  "apiVersion": "v1",
+                  "time": "2021-05-16T17:57:41Z",
+                  "fieldsType": "FieldsV1",
+                  "fieldsV1": {
+                      "f:status": {
+                          "f:conditions": {
+                              "k:{\"type\":\"ContainersReady\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              },
+                              "k:{\"type\":\"Initialized\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              },
+                              "k:{\"type\":\"Ready\"}": {
+                                  ".": {},
+                                  "f:lastProbeTime": {},
+                                  "f:lastTransitionTime": {},
+                                  "f:status": {},
+                                  "f:type": {}
+                              }
+                          },
+                          "f:containerStatuses": {},
+                          "f:hostIP": {},
+                          "f:phase": {},
+                          "f:podIP": {},
+                          "f:podIPs": {
+                              ".": {},
+                              "k:{\"ip\":\"10.0.1.3\"}": {
+                                  ".": {},
+                                  "f:ip": {}
+                              }
+                          },
+                          "f:startTime": {}
+                      }
+                  }
+              }
+          ]
+      },
+      "spec": {
+          "volumes": [
+              {
+                  "name": "default-token-sm9s5",
+                  "secret": {
+                      "secretName": "default-token-sm9s5",
+                      "defaultMode": 420
+                  }
+              }
+          ],
+          "containers": [
+              {
+                  "name": "hello-app",
+                  "image": "gcr.io/ss-sample-001/hello-app:v1",
+                  "resources": {},
+                  "volumeMounts": [
+                      {
+                          "name": "default-token-sm9s5",
+                          "readOnly": true,
+                          "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                      }
+                  ],
+                  "terminationMessagePath": "/dev/termination-log",
+                  "terminationMessagePolicy": "File",
+                  "imagePullPolicy": "IfNotPresent"
+              }
+          ],
+          "restartPolicy": "Always",
+          "terminationGracePeriodSeconds": 30,
+          "dnsPolicy": "ClusterFirst",
+          "serviceAccountName": "default",
+          "serviceAccount": "default",
+          "nodeName": "gke-hello-cluster-default-pool-8bf37f5d-zj5c",
+          "securityContext": {},
+          "schedulerName": "default-scheduler",
+          "tolerations": [
+              {
+                  "key": "node.kubernetes.io/not-ready",
+                  "operator": "Exists",
+                  "effect": "NoExecute",
+                  "tolerationSeconds": 300
+              },
+              {
+                  "key": "node.kubernetes.io/unreachable",
+                  "operator": "Exists",
+                  "effect": "NoExecute",
+                  "tolerationSeconds": 300
+              }
+          ],
+          "priority": 0,
+          "enableServiceLinks": true,
+          "preemptionPolicy": "PreemptLowerPriority"
+      },
+      "status": {
+          "phase": "Running",
+          "conditions": [
+              {
+                  "type": "Initialized",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:39Z"
+              },
+              {
+                  "type": "Ready",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:41Z"
+              },
+              {
+                  "type": "ContainersReady",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:41Z"
+              },
+              {
+                  "type": "PodScheduled",
+                  "status": "True",
+                  "lastProbeTime": null,
+                  "lastTransitionTime": "2021-05-16T17:57:39Z"
+              }
+          ],
+          "hostIP": "10.142.0.19",
+          "podIP": "10.0.1.3",
+          "podIPs": [
+              {
+                  "ip": "10.0.1.3"
+              }
+          ],
+          "startTime": "2021-05-16T17:57:39Z",
+          "containerStatuses": [
+              {
+                  "name": "hello-app",
+                  "state": {
+                      "running": {
+                          "startedAt": "2021-05-16T17:57:41Z"
+                      }
+                  },
+                  "lastState": {},
+                  "ready": true,
+                  "restartCount": 0,
+                  "image": "gcr.io/ss-sample-001/hello-app:v1",
+                  "imageID": "gcr.io/ss-sample-001/hello-app@sha256:a001f3280ed1a10918372a54a0dcb68af008d1a442b860ba1f2b332d2f20ab4f",
+                  "containerID": "containerd://56157a2ca3494c1d7ae5d246f934eab6b012742ae06967ed407c78536bd49131",
+                  "started": true
+              }
+          ],
+          "qosClass": "BestEffort"
+      }
+  }
+]
