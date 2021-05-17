@@ -15,7 +15,7 @@ import Container from "@material-ui/core/Container";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textPrimary" align="center">
+    <Typography className='loginCont' variant="body2" color="textPrimary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://github.com/oslabs-beta/ShipShape">
         ShipShape

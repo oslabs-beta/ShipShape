@@ -1,5 +1,8 @@
 import React from 'react';
-
+import Cluster from './Cluster.jsx';
+import Namespaces from './Namespaces.jsx';
+import Pods from './Pods.jsx';
+import Settings from './Settings.jsx';
 
 function Navbar() {
     return(
@@ -9,10 +12,10 @@ function Navbar() {
                 <p className='shipShape'>ShipShape</p>
             </div>
             <div className='subjectContainer'>
-                <div className='subjects'>Cluster</div>
-                <div className='subjects'>Namespaces</div>
-                <div className='subjects'>Pods</div>
-                <div className='subjects'>Settings</div>
+                <Cluster />
+                <Namespaces />
+                <Pods />
+                <Settings />
             </div>
         </div>
     )
