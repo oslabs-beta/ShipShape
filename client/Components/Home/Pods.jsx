@@ -3,7 +3,8 @@ import { FaAngleDown } from 'react-icons/fa'
 
 
 
-const Pods = () => {
+const Pods = ({ data1 }) => {
+
  
   return (
     <div  >

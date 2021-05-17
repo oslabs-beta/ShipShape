@@ -29,19 +29,28 @@ const columns = [
   { field: 'Memory', headerName: 'Memory(Bytes)', width: 180,  headerAlign: 'center', align: 'center' }
 ];
 
+
+
+
 const rows = [
-  { id: 1, Status: 'Running', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 35, CPU:120, Memory: 235 },
-  { id: 2, Status: 'Failed', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 42, CPU:120, Memory: 235 },
-  { id: 3, Status: 'Running', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 45, CPU:132, Memory: 235 },
-  { id: 4, Status: 'Pending', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 16, CPU:230, Memory: 235 },
-  { id: 5, Status: 'Running', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 21, CPU:120, Memory: 235 },
-  { id: 6, Status: 'Pending', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 15, CPU: 958, Memory: 21 },
-  { id: 7, Status: 'Running', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 44, CPU: 972, Memory: 82 },
-  { id: 8, Status: 'Running', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 36, CPU: 972, Memory: 82 },
-  { id: 9, Status: 'Running', Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 65, CPU: 972, Memory: 82 },
+  // { id: 1, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 35, CPU:120, Memory: 235 },
+  // { id: 2, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 42, CPU:120, Memory: 235 },
+  // { id: 3, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 45, CPU:132, Memory: 235 },
+  // { id: 4, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 16, CPU:230, Memory: 235 },
+  // { id: 5, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 21, CPU:120, Memory: 235 },
+  // { id: 6, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 15, CPU: 958, Memory: 21 },
+  // { id: 7, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 44, CPU: 972, Memory: 82 },
+  // { id: 8, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 36, CPU: 972, Memory: 82 },
+  // { id: 9, Status: , Name: 'Kubernetes-Dashboard-1294912x', Restarts: 123, Age: 65, CPU: 972, Memory: 82 },
 ];
 
-export default function PodsTable() {
+export default function PodsTable({ data }) {
+
+  for(let i=0; i < data.length; i++){
+    const pod = { id: i, Status: data[i].status.phase, Name: data[i].metadata.name, Restarts: 123, Age: 35, CPU:120, Memory: 235 }
+    rows.push(pod)
+  }
+
   return (
     <div className='podsTable' >
       <DataGrid className='pods' rows={rows} columns={columns} pageSize={10}/>
