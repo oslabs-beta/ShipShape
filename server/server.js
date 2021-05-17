@@ -1,12 +1,17 @@
 const express = require("express");
 const path = require("path");
+const k8sApi = require("./k8sApi");
 const app = express();
+const { graphqlHTTP } = require('express-graphql');
+
+//import GraphQL Schema
+const GQLSchema = require('./graphQL/schema.js')
 
 //routers for various function
 const k8sApiRouter = require('./router/k8sApiRouter')
+const k8sRawRouter = require('./router/k8sRawRouter')
 
 // const bodyParser = require('body-parser');
-
 const PORT = 3000;
 
 //** Serve all compiled files when running the production build **/
@@ -18,6 +23,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', k8sApiRouter);
+app.use('/raw', k8sRawRouter);
+
+app.use('/graphql', graphqlHTTP({
+  schema: GQLSchema,
+  graphiql: true,
+}))
 
 app.get("/dashboard", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/index.html"));
@@ -49,7 +60,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}.`);
+  console.log(`Chillin' on port ${PORT} 😎`);
 });
 
 //if testing using supertest
