@@ -97,6 +97,7 @@ body {
   font-size: 0.75em;
   // border-radius: 5px;
   // box-shadow: 1px 1px 1px black;
+  color: $mainTextColor;
   margin: 10px;
   margin-bottom: 30px;
   background: inherit;
@@ -105,7 +106,6 @@ body {
   border-bottom-width: 15px;
   border-bottom-style: solid;
   border: none;
-  text-underline-offset: inherit;
 }
 .getStartedButton:hover {
   color: $secondTextColor;
@@ -539,6 +539,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   justify-content: flex-end;
   align-items: center;
   padding-right: 1rem;
+  border-bottom: 1px solid $darkBlue;
 }
 
 .dashboardHeader > p {
@@ -658,11 +659,17 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
   color: rgb(0, 0, 0) !important;
   font-weight: bold !important;
+  overflow: scroll;
 
   // display: flex;
   // justify-content: center;
   // align-items: center;
 }
+
+.podsTable::-webkit-scrollbar {
+  display: none;
+}
+
 .pods {
   color: black !important;
   font-weight: bold !important;
@@ -679,7 +686,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   }
 
   #infoBox {
-    height: 70vh;
+    height: 65vh;
     width: 80%;
     background-color: rgba(0, 0, 0, 0.103);
     border: 1px solid rgb(38, 0, 80);
