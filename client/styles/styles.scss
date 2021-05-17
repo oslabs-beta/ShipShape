@@ -298,6 +298,7 @@ footer {
   border: 1px solid black;
   background-size: cover;
   object-fit: cover;
+  box-shadow: 2px 2px 2px #23232394;
 }
 
 .teamPicture > img:hover {
@@ -312,10 +313,14 @@ a {
 }
 .teamCards > p {
   color: $mainTextColor;
+  font-weight: 800;
 }
 .teamCards > a {
   color: $secondTextColor;
   // text-decoration: underline;
+}
+a:hover {
+  color: $mainTextColor;
 }
 
 .moreInfo {
