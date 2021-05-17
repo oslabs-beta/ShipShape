@@ -10,6 +10,7 @@ const GQLSchema = require('./graphQL/schema.js')
 //routers for various function
 const k8sApiRouter = require('./router/k8sApiRouter')
 const k8sRawRouter = require('./router/k8sRawRouter')
+const metricsServerRouter = require('./router/metricsServerRouter.js')
 
 // const bodyParser = require('body-parser');
 const PORT = 3000;
@@ -22,6 +23,7 @@ app.use("/build", express.static(path.join(__dirname, "../build")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/metrics', metricsServerRouter);
 app.use('/api', k8sApiRouter);
 app.use('/raw', k8sRawRouter);
 

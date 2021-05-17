@@ -1,4 +1,5 @@
 const k8sApi = require('./../k8sApi');
+const cmd = require('node-cmd');
 const Node = require('./../constructors/nodeConstructor');
 
 const nodeController = {};
@@ -21,6 +22,13 @@ nodeController.getNodes = async function(req, res, next){
       res.locals.nodes.push(node);
     }
   }
+  return next();
+}
+
+nodeController.getNodeMetrics = async function(req, res, next){
+  const rawMetrics = cmd.runSync(`kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes/`);
+  console.log(rawMetrics);
+  res.locals.nodes.metrics = rawMetrics;
   return next();
 }
 

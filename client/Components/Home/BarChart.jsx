@@ -6,7 +6,7 @@ const BarChart = () => {
 
     function chart(){
         setChartData({
-            labels: ['pod1', 'pod2', 'pod3', 'pod4', 'pod5'],
+            labels: ['pod 1', 'pod 2', 'pod 3', 'pod 4', 'pod 5'],
             datasets: [
                 {
                     label: 'Pods Data',
