@@ -10,7 +10,6 @@ to see what fields might be added for pending and failed pods.
 
 module.exports = `
 
-
 type Running { 
   startedAt: String 
 }
@@ -19,7 +18,7 @@ type State {
   running: Running 
 }
 
-#missing lastState
+# Status of a specific container
 type ContainerStatuses { 
   name: String
   ready: Boolean
@@ -35,12 +34,16 @@ type PodIPs {
   ip: String 
 }
 
+# Condition of the Pod, includes reason & message if not "Running"
 type Conditions { 
   type: String
+  # current status of the pod
   status: String
   lastProbeTime: String
   lastTransitionTime: String 
+  # reason the pod is not running
   reason: String
+  # message about why the pod is not running
   message: String
 }
 
@@ -86,6 +89,7 @@ type Volumes {
   name: String secret: Secret 
 }
 
+# Technical specifications about a pod
 type Spec { 
   restartPolicy: String
   terminationGracePeriodSeconds: Int
@@ -119,11 +123,14 @@ type OwnerReferences {
   blockOwnerDeletion: Boolean 
 }
 
+# Labels applied to the pods
 type Labels { 
+  # the application the pod is a part of 
   app: String 
   podtemplatehash: String 
 }
 
+# descriptive information about the pod
 type Metadata { 
   name: String
   generateName: String
@@ -137,17 +144,18 @@ type Metadata {
   labels: Labels 
 }
 
+# an individual pod object with all nested data objects
 type Pod { 
   metadata: Metadata 
   spec: Spec 
-  status: Status 
+  status: Status
 }
 
-# the schema allows the following query:
+# the schema allows the following query
 type Query {
   # query will return an array of all pods
   pods: [Pod]
-  
+
   # query will return an array of all pods not running
   podsNotRunning: [Pod]
   
@@ -158,5 +166,3 @@ type Query {
   podsByNamespace(namespace: String!): [Pod]
 }
 `
-
-// { typeDefs };
