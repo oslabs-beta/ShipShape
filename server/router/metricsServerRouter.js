@@ -13,6 +13,8 @@ metricsServerRouter.get('/pods', podController.getPodMetrics, (req, res) =>{
   res.status(200).json(res.locals.podMetrics);
 })
 
-
+metricsServerRouter.get('/nodesPercent', nodeController.getNodePercents, (req, res) =>{
+  res.status(200).json(res.locals.nodePercents)
+})
 
 module.exports = metricsServerRouter;
