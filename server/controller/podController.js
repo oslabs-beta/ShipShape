@@ -1,4 +1,5 @@
 const k8sApi = require('./../k8sApi');
+const cmd = require('node-cmd');
 const Pod = require('./../constructors/podConstructor');
 
 
@@ -28,7 +29,14 @@ podController.getPods = async function(req, res, next){
       res.locals.pods.push(pod);
     }
   }
+  return next();
+}
 
+podController.getPodMetrics = async function(req, res, next){
+  const rawMetrics = cmd.runSync(`kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods/`);
+  let regex = '///';
+  const metrics = rawMetrics.data.replace(regex, '');
+  res.locals.podMetrics = JSON.parse(metrics);
   return next();
 }
 
