@@ -18,6 +18,7 @@
   "author": "Brian Barr, Ozi Ozturk, Rebecca Schell, Whit Rooke",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-env": "^7.14.2",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@kubernetes/client-node": "^0.14.3",
     "@material-ui/core": "^4.11.4",
@@ -25,7 +26,6 @@
     "@material-ui/icons": "^4.11.2",
     "@mui-treasury/styles": "^1.13.1",
     "axios": "^0.21.1",
-    "@babel/preset-env": "^7.14.2",
     "body-parser": "^1.19.0",
     "chart.js": "^3.2.1",
     "dotenv": "^9.0.2",

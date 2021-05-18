@@ -27,8 +27,9 @@ nodeController.getNodes = async function(req, res, next){
 
 nodeController.getNodeMetrics = async function(req, res, next){
   const rawMetrics = cmd.runSync(`kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes/`);
-  console.log(rawMetrics);
-  res.locals.nodes.metrics = rawMetrics;
+  let regex = '///';
+  const metrics = rawMetrics.data.replace(regex, '');
+  res.locals.nodeMetrics = JSON.parse(metrics);
   return next();
 }
 
