@@ -77,7 +77,14 @@ type Containers {
   terminationMessagePath: String
   terminationMessagePolicy: String
   imagePullPolicy: String
-  volumeMounts: [VolumeMounts ] 
+  volumeMounts: [VolumeMounts ]
+  usage: Usage 
+}
+
+# tells you how much cpu and memory a container is using
+type Usage{
+  cpu: String
+  memory: String
 }
 
 type Secret { 
