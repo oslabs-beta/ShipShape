@@ -36,6 +36,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^5.12.8",
     "node-cmd": "^4.0.0",
+    "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.3",

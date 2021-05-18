@@ -71,18 +71,18 @@ type VolumeMounts {
   mountPath: String 
 }
 
-type Containers { 
+type Container { 
   name: String
   image: String
   terminationMessagePath: String
   terminationMessagePolicy: String
   imagePullPolicy: String
   volumeMounts: [VolumeMounts ]
-  usage: Usage 
+  usage: ContainerUsage 
 }
 
 # tells you how much cpu and memory a container is using
-type Usage{
+type ContainerUsage{
   cpu: String
   memory: String
 }
@@ -109,7 +109,7 @@ type Spec {
   enableServiceLinks: Boolean
   preemptionPolicy: String
   tolerations: [Tolerations ]
-  containers: [Containers ]
+  containers: [Container]
   volumes: [Volumes ] 
 }
 

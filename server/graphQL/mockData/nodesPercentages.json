@@ -1,0 +1,70 @@
+[
+  {
+    "NAME": [
+      "ip-192-168-18-26.us-east-2.compute.internal"
+    ],
+    "CPU(cores)": [
+      "42m"
+    ],
+    "CPU%": [
+      "4%"
+    ],
+    "MEMORY(bytes)": [
+      "432Mi"
+    ],
+    "MEMORY%": [
+      "74%"
+    ]
+  },
+  {
+    "NAME": [
+      "ip-192-168-33-158.us-east-2.compute.internal"
+    ],
+    "CPU(cores)": [
+      "51m"
+    ],
+    "CPU%": [
+      "5%"
+    ],
+    "MEMORY(bytes)": [
+      "430Mi"
+    ],
+    "MEMORY%": [
+      "74%"
+    ]
+  },
+  {
+    "NAME": [
+      "ip-192-168-66-93.us-east-2.compute.internal"
+    ],
+    "CPU(cores)": [
+      "51m"
+    ],
+    "CPU%": [
+      "5%"
+    ],
+    "MEMORY(bytes)": [
+      "550Mi"
+    ],
+    "MEMORY%": [
+      "95%"
+    ]
+  },
+  {
+    "NAME": [
+      "ip-192-168-80-170.us-east-2.compute.internal"
+    ],
+    "CPU(cores)": [
+      "44m"
+    ],
+    "CPU%": [
+      "4%"
+    ],
+    "MEMORY(bytes)": [
+      "403Mi"
+    ],
+    "MEMORY%": [
+      "69%"
+    ]
+  }
+]
