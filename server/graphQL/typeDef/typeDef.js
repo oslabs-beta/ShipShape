@@ -73,6 +73,7 @@ type VolumeMounts {
 
 type Container { 
   name: String
+  podName: String
   image: String
   terminationMessagePath: String
   terminationMessagePolicy: String
