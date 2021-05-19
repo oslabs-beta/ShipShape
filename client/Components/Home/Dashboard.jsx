@@ -7,7 +7,7 @@ import DoughnutChart from "./Doughnut.jsx";
 import NodeDashboard from "./NodeDashboard.jsx";
 import PodDashboard from "./PodDashboard.jsx";
 
-function Dashboard() {
+function Dashboard({ x }) {
   // const [data, setData] = useState([]);
 
   // async function fetchData() {
@@ -55,11 +55,7 @@ function Dashboard() {
 
   return (
     <div className="mainDashboard">
-      {/* {if view === 'podview'{
-      <PodDashboard />
-    }} */}
-      <PodDashboard />
-      {/* <NodeDashboard />  */}
+      {x === "pod" ? <PodDashboard /> : <NodeDashboard />}
     </div>
   );
 }

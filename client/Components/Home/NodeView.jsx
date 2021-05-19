@@ -11,10 +11,7 @@ const NodeView = ({ handler }) => {
 
   return (
     <div>
-      <button
-        className="btnDashboard"
-        onClick={() => handler('node')}
-      >
+      <button className="btnDashboard" onClick={() => handler("node")}>
         Node View
         <FaAngleDown />
       </button>
