@@ -10,6 +10,94 @@ to see what fields might be added for pending and failed pods.
 
 module.exports = `
 
+type NodeInfo { 
+  machineID: String
+  systemUUID: String
+  bootID: String
+  kernelVersion: String
+  osImage: String
+  containerRuntimeVersion: String
+  kubeletVersion: String
+  kubeProxyVersion: String
+  operatingSystem: String
+  architecture: String 
+}
+
+type Image { sizeBytes: Int names: [String ] }
+
+type KubeletEndpoint { Port: Int }
+
+type DaemonEndpoints { kubeletEndpoint: KubeletEndpoint }
+
+type Addresses { type: String address: String }
+
+
+type Allocatable { 
+  attachablevolumesgcepd: String
+  cpu: String
+  ephemeralstorage: String
+  hugepages2Mi: String
+  memory: String
+  pods: String 
+}
+
+type Capacity { 
+  attachablevolumesgcepd: String
+  cpu: String
+  ephemeralstorage: String
+  hugepages2Mi: String
+  memory: String
+  pods: String 
+}
+
+type NodeStatus { 
+  images: [Image]
+  nodeInfo: NodeInfo
+  daemonEndpoints: DaemonEndpoints
+  addresses: [Addresses ]
+  conditions: [ Conditions ]
+  allocatable: Allocatable
+  capacity: Capacity 
+}
+
+type NodeSpec { 
+  podCIDR: String
+  providerID: String
+  podCIDRs: [String ] }
+
+type Annotations { 
+  containergoogleapiscominstance_id: String
+  csivolumekubernetesionodeid: String
+  nodealphakubernetesiottl: String
+  nodegkeiolastappliednodelabels: String
+  volumeskubernetesiocontrollermanagedattachdetach: String 
+}
+
+type NodeMetadata {
+  name: String
+  selfLink: String
+  uid: String
+  resourceVersion: String
+  creationTimestamp: String
+  managedFields: [ManagedFields ]
+  annotations: Annotations 
+}
+
+type Node { 
+  metadata: NodeMetadata 
+  status: NodeStatus 
+  spec: NodeSpec 
+}
+
+
+type ManagedFields { 
+  manager: String
+  operation: String 
+  apiVersion: String
+  time: String
+  fieldsType: String 
+}
+
 type Running { 
   startedAt: String 
 }
@@ -19,7 +107,7 @@ type State {
 }
 
 # Status of a specific container
-type ContainerStatuses { 
+type ContainerStatus { 
   name: String
   ready: Boolean
   restartCount: Int
@@ -41,20 +129,21 @@ type Conditions {
   status: String
   lastProbeTime: String
   lastTransitionTime: String 
+  lastHeartbeatTime: String
   # reason the pod is not running
   reason: String
   # message about why the pod is not running
   message: String
 }
 
-type Status { 
+type PodStatus { 
   phase: String
   conditions: [Conditions ] 
   hostIP: String
   podIP: String
   podIPs: [PodIPs ]
   startTime: String
-  containerStatuses: [ContainerStatuses ]
+  containerStatuses: [ContainerStatus ]
   qosClass: String
 }
 
@@ -71,13 +160,22 @@ type VolumeMounts {
   mountPath: String 
 }
 
-type Containers { 
+type Container { 
   name: String
+  podName: String
+  namespace: String
   image: String
   terminationMessagePath: String
   terminationMessagePolicy: String
   imagePullPolicy: String
-  volumeMounts: [VolumeMounts ] 
+  volumeMounts: [VolumeMounts ]
+  usage: ContainerUsage 
+}
+
+# tells you how much cpu and memory a container is using
+type ContainerUsage{
+  cpu: String
+  memory: String
 }
 
 type Secret { 
@@ -90,7 +188,7 @@ type Volumes {
 }
 
 # Technical specifications about a pod
-type Spec { 
+type PodSpec { 
   restartPolicy: String
   terminationGracePeriodSeconds: Int
   dnsPolicy: String
@@ -102,16 +200,9 @@ type Spec {
   enableServiceLinks: Boolean
   preemptionPolicy: String
   tolerations: [Tolerations ]
-  containers: [Containers ]
+  containers: [Container]
   volumes: [Volumes ] 
-}
-
-type ManagedFields { 
-  manager: String
-  operation: String
-  apiVersion: String
-  time: String
-  fieldsType: String 
+  
 }
 
 type OwnerReferences { 
@@ -131,7 +222,7 @@ type Labels {
 }
 
 # descriptive information about the pod
-type Metadata { 
+type PodMetadata { 
   name: String
   generateName: String
   namespace: String
@@ -146,15 +237,16 @@ type Metadata {
 
 # an individual pod object with all nested data objects
 type Pod { 
-  metadata: Metadata 
-  spec: Spec 
-  status: Status
+  metadata: PodMetadata 
+  status: PodStatus
+  spec: PodSpec 
 }
+
 
 # the schema allows the following query
 type Query {
   # query will return an array of all pods
-  pods: [Pod]
+  getPods: [Pod]
 
   # query will return an array of all pods not running
   podsNotRunning: [Pod]
@@ -164,5 +256,8 @@ type Query {
 
   # query will return an array of all pods of a given namespace
   podsByNamespace(namespace: String!): [Pod]
+
+  # query will return an array of all nodes
+  getNodes: [Node]
 }
 `
