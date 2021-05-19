@@ -1,11 +1,11 @@
-function Node(data) {
-  this.name = data.metadata.name;
-  this.cpuCapacity = data.status.capacity.cpu;
-  this.storageCapacity = data.status.capacity['ephemeral-storage'];
-  this.memoryCapacity = data.status.capacity.memory;
-  this.cpuAllocatable = data.status.allocatable.cpu;
-  this.storageAllocatable = data.status.allocatable['ephemeral-storage'];
-  this.memoryAllocatable = data.status.allocatable.memory;
+const cmd = require('node-cmd');
+
+const Node = {};
+
+Node.getPercentages = async function(node = ''){
+  const percents = await cmd.runSync(`kubectl top node ${node}`);
+  let percentObj = Parser.parse(percents.data);
+  return await JSON.stringify(percentObj);
 }
 
 module.exports = Node
