@@ -10,7 +10,7 @@ const nodeController = {};
 //for development purposes, ability to view raw data of all nodes 
 nodeController.getNodesRaw = async function(req, res, next){
   const data = await k8sApi.listNode('default');
-  console.log(data);
+  // console.log(data);
   res.locals.nodes = data;
   return next();
 }
@@ -29,7 +29,7 @@ nodeController.getNodesRaw = async function(req, res, next){
 // }
 
 nodeController.getNodeMetrics = async function(req, res, next){
-  const rawMetrics = cmd.runSync(`kubectl  --raw /apis/metrics.k8s.io/v1beta1/nodes/`);
+  const rawMetrics = cmd.runSync(`kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes/`);
   let regex = '///';
   const metrics = rawMetrics.data.replace(regex, '');
   res.locals.nodeMetrics = JSON.parse(metrics);

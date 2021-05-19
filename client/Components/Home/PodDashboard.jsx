@@ -5,16 +5,14 @@ import BarChart from "./BarChart.jsx";
 import PodsTable from "./PodsTable.jsx";
 import DoughnutChart from "./Doughnut.jsx";
 
-
-
-
-
 function PodDashboard() {
-
-const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   async function fetchData() {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
     const result = await fetch("/graphql", {
+      signal: signal,
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -52,12 +50,17 @@ const [data, setData] = useState([]);
         setData(res.data.pods);
       })
       .catch((err) => console.log(err));
+
+    return function cleanup() {
+      AbortController.abort();
+    };
   }
 
-  useEffect(() => fetchData(), []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-
-return (
+  return (
     <div className="podDashboard">
       <DoughnutChart />
       {/* <LineChart data={data} /> */}
