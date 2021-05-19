@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
-const Cluster = () => {
-  const [clicked, setClicked] = useState(false);
+const PodView = ( {handler} ) => {
+  // const [clicked, setClicked] = useState(false);
 
   return (
     <div>
-      <button className="btnDashboard ah" onClick={() => setClicked(!clicked)}>
+      <button className="btnDashboard ah" onClick={() => handler('pod')}>
         Pod's View
         <FaAngleDown />
       </button>
-      {clicked ? (
+      {/* {clicked ? (
         <div className="dropDown">
           <ul>
             <li>Hello World</li>
@@ -19,9 +19,9 @@ const Cluster = () => {
             <li>Hello World</li>
           </ul>
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };
 
-export default Cluster;
+export default PodView;

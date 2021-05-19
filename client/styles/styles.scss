@@ -636,31 +636,55 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   position: relative;
 }
 
-.lineChart {
-  grid-column: 1 / 7;
-  grid-row: 1 / 5;
-  border: 1px solid rgba(0, 0, 0, 0.518);
-  border-radius: 5px;
-  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+.podDashboard, .nodeDashboard {
+  grid-column: 1 / 15;
+  grid-row: 1 / 13;
+  background-color: $mainTextColor;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  padding: 1rem;
+  gap: 1rem;
+  position: relative;
 }
+
+// .lineChart {
+//   grid-column: 1 / 7;
+//   grid-row: 1 / 7;
+//   border: 1px solid rgba(0, 0, 0, 0.3);
+//   border-radius: 5px;
+//   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+// }
+
 .barChart {
   grid-column: 7 / 13;
-  grid-row: 1 / 5;
-  border: 1px solid rgba(0, 0, 0, 0.518);
+  grid-row: 1 / 7;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
-.heatMap {
-  grid-column: 1 / 13;
-  grid-row: 5 / 8;
-  border: 1px solid rgba(0, 0, 0, 0.518);
+
+.doughnutContainer,
+canvas {
+  grid-column: 1 / 7;
+  grid-row: 1 / 7;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
+
+// .heatMap {
+//   grid-column: 1 / 13;
+//   grid-row: 5 / 8;
+//   border: 1px solid rgba(0, 0, 0, 0.3);
+//   border-radius: 5px;
+//   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+// }
+
 .podsTable {
   grid-column: 1 / 13;
-  grid-row: 8 / 13;
-  border: 1px solid rgba(0, 0, 0, 0.518);
+  grid-row: 7 / 13;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
   color: rgb(0, 0, 0) !important;
@@ -731,7 +755,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  color: $lightBlue;
+  color: #6a8693;
   font-weight: bold;
   padding: 1rem 1rem;
   width: 100%;
@@ -758,3 +782,5 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .dropDown > ul {
   list-style-type: none;
 }
+
+

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dashboard from './Dashboard.jsx'
 import DashboardHeader from './DashboardHeader.jsx'
 import Navbar from './Navbar.jsx';
@@ -7,10 +7,20 @@ import Navbar from './Navbar.jsx';
 
 
 function Home() {
+
+    const [dashboardView, setdashboardView] = useState('pod');
+
+    function changeView(string){
+      console.log(`state is starting at ${dashboardView}`);
+      console.log(`fired setView with ${string}`);
+      setdashboardView(string);
+      console.log(`state is now ${dashboardView}`);
+    }
+
     return(
         <div className='homeContainer'>
           <DashboardHeader />
-          <Navbar />
+          <Navbar handler={changeView}/>
           <Dashboard />
         </div>
     )
