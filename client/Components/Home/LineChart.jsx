@@ -9,12 +9,12 @@ const LineChart = () => {
       labels: ["x", "y", "z", "t", "h"],
       datasets: [
         {
-          label: "Namespaces",
+          label: "Memory Usage by Container",
           data: [12, 35, 23, 27, 7, 45],
           backgroundColor: [
-            // 'rgb(172, 228, 170)'
+            // 'rgb(172, 228, 170)' 
             // "rgb(160,192,206)",
-            'rgb(38,84,121)'
+            "rgb(38,84,121)",
           ],
           borderWidth: 5,
         },
