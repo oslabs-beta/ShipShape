@@ -47,7 +47,7 @@ app.get("/LogIn", (req, res) => {
 
 
 //** 404 error **//
-app.use("*", (req, res) => res.status(404).send("Wrong"));
+app.use("*", (req, res) => res.status(404).send("Wrong Address"));
 
 //** Global Error **//
 app.use((err, req, res, next) => {
