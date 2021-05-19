@@ -7,7 +7,7 @@ const nodePercentages = require('./nodesPercentages.json')
 module.export = {
   pods,
   podMetrics,
-  // nodes,
+  nodes,
   nodeMetrics,
   nodePercentages,
 }

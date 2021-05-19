@@ -34,7 +34,6 @@ module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
       const pods = mockMode ? mockPods : (await k8sApi.listNamespacedPod('default')).response.body.items;
-
       //this is an ugly hack to pass the name and namespace context down to containers.
       //a better system would be able to access this grandparent data directly
       //a seconary strategy will be to add a conditional that only runs this loop when container data will later be queried
