@@ -20,7 +20,7 @@ function PodDashboard() {
       body: JSON.stringify({
         query: `
                     {
-                        pods{
+                        getPods{
                           metadata{
                             name
                             namespace
@@ -47,7 +47,8 @@ function PodDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setData(res.data.pods);
+        console.log(res.data)
+        setData(res.data.getPods);
       })
       .catch((err) => console.log(err));
 
