@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
-import PodView from "./PodView.jsx";
-import NodeView from "./NodeView.jsx";
-import Settings from "./Settings.jsx";
+import React, { useEffect, useState } from "react";
+// import LineChart from './LineChart.jsx';
+import BarChart from "./BarChart.jsx";
+// import HeatMap from './HeatMap.jsx';
 import PodsTable from "./PodsTable.jsx";
+import DoughnutChart from "./Doughnut.jsx";
 
-function Navbar( {handler} ) {
-  const [dashboardLoaded, setdashboardLoaded] = useState("podsView");
-  const [podsData, setpodsData] = useState([]);
-  const [nodesData, setnodesData] = useState([]);
+function NodeDashboard() {
+  const [data, setData] = useState([]);
 
   async function fetchData() {
     const result = await fetch("/graphql", {
@@ -45,7 +44,7 @@ function Navbar( {handler} ) {
     })
       .then((res) => res.json())
       .then((res) => {
-        setpodsData(res.data.pods);
+        setData(res.data.pods);
       })
       .catch((err) => console.log(err));
   }
@@ -53,26 +52,14 @@ function Navbar( {handler} ) {
   useEffect(() => fetchData(), []);
 
   return (
-    <div className="navbarContainer">
-      <div className="logoHeader">
-        <img
-          id="dashboardLogo"
-          src="./../assets/ShipShapeWhiteLogo.png"
-          height="60px"
-          width="60px"
-        />
-        <p className="shipShape">ShipShape</p>
-      </div>
-      <div className="subjectContainer">
-        {/* {dashboardLoaded === "podsView" && <PodView data={podsData} />}
-
-        {dashboardLoaded === "nodeView" && <PodsTable data={nodesData} />} */}
-        <PodView handler={handler}/>
-        <NodeView handler={handler}/>
-        <Settings />
-      </div>
+    <div className="nodeDashboard">
+      {/* <DoughnutChart /> */}
+      {/* <LineChart data={data} /> */}
+      {/* <BarChart data={data} /> */}
+      {/* <HeatMap data={data} /> */}
+      <PodsTable data={data} />
     </div>
   );
 }
 
-export default Navbar;
+export default NodeDashboard;
