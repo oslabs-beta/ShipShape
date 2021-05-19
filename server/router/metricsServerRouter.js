@@ -14,7 +14,8 @@ metricsServerRouter.get('/pods', podController.getPodMetrics, (req, res) =>{
 })
 
 metricsServerRouter.get('/nodesPercent', nodeController.getNodePercents, (req, res) =>{
-  res.status(200).json(res.locals.nodePercents)
+  // using .send instead of .json because we are already stringifying the response inside the constructor function inside the controller.
+  res.status(200).send(res.locals.nodePercents)
 })
 
 module.exports = metricsServerRouter;

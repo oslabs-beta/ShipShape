@@ -28,6 +28,7 @@ nodeController.getNodesRaw = async function(req, res, next){
 //   return next();
 // }
 
+//this should eventually be abstracted to use the constructor function like NodePercents
 nodeController.getNodeMetrics = async function(req, res, next){
   const rawMetrics = cmd.runSync(`kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes/`);
   let regex = '///';
@@ -37,7 +38,8 @@ nodeController.getNodeMetrics = async function(req, res, next){
 }
 
 nodeController.getNodePercents = async function(req, res, next){
-  res.locals.nodePercents = Node.getPercentages();
+  res.locals.nodePercents = await Node.getPercentages();
+  console.log(res.locals.nodePercents);
 
   return next();
 }
