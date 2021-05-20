@@ -40,7 +40,7 @@ export default function NodesTable({ data }) {
 
   return (
     <div className='NodesTable' >
-      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10}/>
+      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10} onRowClick={({ row }) => changePod(row.Name)}/>
     </div>
   );
 }
