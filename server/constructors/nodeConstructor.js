@@ -5,9 +5,14 @@ const Node = {};
 Node.getPercentages = async function(node = ''){
   const percents = cmd.runSync(`kubectl top node ${node}`);
   let percentObj = Parser.parse(percents.data);
-  console.log(percentObj);
-  percentObj = await JSON.stringify(percentObj);
   return percentObj;
-};
+}
+
+Node.getNodeMetrics = async function(node = ''){
+  const rawMetrics = cmd.runSync(`kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes/${node}`);
+  let regex = '///';
+  const metrics = rawMetrics.data.replace(regex, '');
+  return await JSON.parse(metrics);
+}
 
 module.exports = Node;
