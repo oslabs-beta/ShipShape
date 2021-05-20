@@ -16,24 +16,22 @@ const appUrl = 'http://localhost:3000'
 
 //helper function that acts as Object.assign but deeply
 const mergeDeep = (target, source) => {
-
-  for (const key in source){
-    if (_.isObject(source[key])){
-      if(!target[key]) Object.assign(target, { [key]: {} });
+  for (const key in source) {
+    if (_.isObject(source[key])) {
+      if (!target[key]) Object.assign(target, { [key]: {} });
       mergeDeep(target[key], source[key]);
-    } else{
+    } else {
       Object.assign(target, { [key]: source[key] });
     }
   }
   return target;
-}
+};
 
 /**
  * Useful Docs:
-    * On accessing grandparents in resolvers https://github.com/graphql/graphql-js/issues/1098
-    * 
+ * On accessing grandparents in resolvers https://github.com/graphql/graphql-js/issues/1098
+ *
  */
-
 
 module.exports = {
   Query: {
@@ -82,13 +80,15 @@ module.exports = {
     usage: async (parent, args, context, info) => {
       // console.log(parent);
       const { name, podName, namespace } = parent;
-      const podMetrics = mockMode ? mockPodMetrics : await podData.getMetrics(namespace, podName);
+      const podMetrics = mockMode
+        ? mockPodMetrics
+        : await podData.getMetrics(namespace, podName);
       // const podMetrics = metricsResp.items;
-    
+
       // console.log(podMetrics.container);
-      const { usage } = _.find(podMetrics.containers, { name })
+      const { usage } = _.find(podMetrics.containers, { name });
       console.log(usage);
       return usage;
-    }
-  }
-}
+    },
+  },
+};
