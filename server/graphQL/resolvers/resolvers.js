@@ -11,7 +11,7 @@ const nodeData = require('../../constructors/nodeConstructor.js');
 const { mockServer } = require('@graphql-tools/mock');
 
 //set to true to use mockData instead of pulling real k8s cluster data 
-const mockMode = false;
+const mockMode = true;
 const appUrl = 'http://localhost:3000'
 
 //helper function that acts as Object.assign but deeply
