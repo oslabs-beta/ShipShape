@@ -54,14 +54,14 @@ function PodDashboard() {
             }
           }
         }
-                    `,
+        `,
       }),
     })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
         const pods = res.data.getPods;
-        const firstPodName = pods[0].metadata.name
+        const firstPodName = pods[0].metadata.name;
         const podData = filter(pods, { metadata: { name: firstPodName } })[0]
         setSelectedPodData(podData);
         // setpodSelected(firstPodName);

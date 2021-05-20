@@ -30,7 +30,8 @@ const BarChart = ( { selectedPodData } ) => {
               // 'rgb(144, 112, 140)'
               "rgb(38,84,121)",
             ],
-            borderWidth: 5,
+            borderWidth: 2,
+            maxBarThickness: 5,
           },
         ],
       });

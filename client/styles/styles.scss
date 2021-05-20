@@ -15,6 +15,7 @@ $secondTextColor: rgb(38, 84, 121);
   box-sizing: border-box;
   // font-family: "Comfortaa", cursive;
   font-family: Montserrat;
+  font-weight: 800;
   // color: $mainTextColor;
 }
 
@@ -93,27 +94,28 @@ body {
 
 .getStartedButton {
   height: 40px;
-  width: 150px;
+  width: 170px;
   font-size: 0.75em;
-  // border-radius: 5px;
-  // box-shadow: 1px 1px 1px black;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px black;
   color: $mainTextColor;
   margin: 10px;
   margin-bottom: 30px;
-  background: inherit;
-  text-decoration: underline;
+  background: rgba(38, 84, 121, 0.3);
+  // text-decoration: underline;
   padding-bottom: 15px;
+  padding-top: 5px;
   border-bottom-width: 15px;
   border-bottom-style: solid;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.514);
 }
 .getStartedButton:hover {
-  color: $secondTextColor;
+  color: $lightBlue;
   cursor: pointer;
-  // background-color: $secondTextColor;
+  background-color: rgba(38, 84, 121, 0.6);
   // color: $mainTextColor;
-  // border: 1px solid black;
-  // box-shadow: 3px 3px 3px black;
+  border: 1px solid rgba(0, 0, 0, 0.322);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.308);
 }
 
 #intro {
@@ -134,17 +136,18 @@ button {
 }
 
 .imageContainer {
-  border: 2px solid black;
+  border: 2px solid rgba(0, 0, 0, 0.466);
   max-width: 65%;
   max-height: 700px;
   border-radius: 10px;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.438);
 }
 
 .imageContainer > img {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  border-radius: 10px;
 }
 
 .bodyDiv {
@@ -224,7 +227,7 @@ footer {
   width: 600px;
   margin: 2rem;
   border-radius: 10px;
-  box-shadow: 3px 3px 3px black;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .featureText {
