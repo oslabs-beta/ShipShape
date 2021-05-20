@@ -29,18 +29,18 @@ const columns = [
   { field: 'Memory', headerName: 'Memory(Bytes)', width: 180,  headerAlign: 'center', align: 'center' }
 ];
 
-export default function PodsTable({ data, setpodSelected }) {
+export default function NodesTable({ data }) {
   
   const rows = [];
-  // console.log('here11',data);
+  console.log('here11',data);
   if(data)for(let i=0; i < data.length; i++){
     const pod = { id: i, Status: data[i].status.phase, Name: data[i].metadata.name, Restarts: 123, Age: 35, CPU:120, Memory: 235 }
     rows.push(pod)
   }
 
   return (
-    <div className='podsTable' >
-      <DataGrid className='pods' rows={rows} columns={columns} onRowClick={ ({ row })=> setpodSelected(row.Name) } pageSize={10}/>
+    <div className='NodesTable' >
+      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10}/>
     </div>
   );
 }

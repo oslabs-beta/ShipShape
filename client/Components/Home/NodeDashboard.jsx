@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 // import LineChart from './LineChart.jsx';
 import BarChart from "./BarChart.jsx";
 // import HeatMap from './HeatMap.jsx';
-import PodsTable from "./PodsTable.jsx";
+import NodesTable from "./NodesTable.jsx";
 import DoughnutChart from "./Doughnut.jsx";
+import Speedometer from "./Speedometer.jsx";
+import DiskSpace from "./DiskSpace.jsx";
+import CPUusage from "./CPUusage.jsx";
 
 function NodeDashboard() {
   const [data, setData] = useState([]);
@@ -17,7 +20,7 @@ function NodeDashboard() {
       body: JSON.stringify({
         query: `
                     {
-                        pods{
+                        getPods{
                           metadata{
                             name
                             namespace
@@ -53,11 +56,13 @@ function NodeDashboard() {
 
   return (
     <div className="nodeDashboard">
-      {/* <DoughnutChart /> */}
+      <CPUusage />
+      <Speedometer />
+      <DiskSpace />
       {/* <LineChart data={data} /> */}
       {/* <BarChart data={data} /> */}
       {/* <HeatMap data={data} /> */}
-      <PodsTable data={data} />
+      <NodesTable data={data} />
     </div>
   );
 }

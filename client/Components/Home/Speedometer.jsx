@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-
-
-const DoughnutChart = () => {
+const Speedometer = () => {
   const [chartData, setChartData] = useState({});
 
   function chart() {
     setChartData({
-      labels: ["Available Space", "Memory Used"],
+      labels: ["Allocatable Space", "Memory Used", "X"],
       datasets: [
         {
           label: "My First Dataset",
-          data: [300, 100],
+          data: [300, 100, 50],
           backgroundColor: [
             "rgb(38,84,121)",
             "rgb(160,192,206)",
@@ -29,11 +27,13 @@ const DoughnutChart = () => {
   }, []);
 
   return (
-    <div className="doughnutContainer">
+    <div className="speedometerContainer">
       <Doughnut
-        className="doughnutContainer"
+        className="speedometerContainer"
         data={chartData}
         options={{
+          rotation: 200 * Math.PI,
+          circumference: 58 * Math.PI,
           maintainAspectRatio: false,
           responsive: true,
           plugins: {
@@ -51,4 +51,4 @@ const DoughnutChart = () => {
   );
 };
 
-export default DoughnutChart;
+export default Speedometer;
