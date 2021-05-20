@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../sandbox"
+		}
+	],
+  "settings": {
+    "workbench.colorTheme": "Atlantic Night"
+  }
+}

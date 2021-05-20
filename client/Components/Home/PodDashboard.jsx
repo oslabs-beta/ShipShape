@@ -30,35 +30,38 @@ function PodDashboard() {
       },
       body: JSON.stringify({
         query: `
-                    {
-                        getPods{
-                          metadata{
-                            name
-                            namespace
-                            labels{
-                              app
-                            }
-                          }
-                          status{
-                            phase
-                            conditions{
-                              reason
-                              message
-                            }
-                            podIP
-                            startTime
-                          }
-                          spec{
-                            nodeName
-                          }
-                        }
-                      }
+        {
+          getPods{
+            metadata{
+              name
+              namespace
+              labels{
+                app
+              }
+            }
+            status{
+              phase
+              podIP
+              startTime
+            }
+            spec{
+              nodeName
+              containers{
+                name
+                usage {
+                  cpu
+                  memory
+                }
+              }
+            }
+          }
+        }
                     `,
       }),
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res.data)
+        console.log(res)
         setData(res.data.getPods);
         setpodSelected(res.data.getPods[0].metadata.name);
       })
