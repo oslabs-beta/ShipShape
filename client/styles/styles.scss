@@ -636,7 +636,8 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   position: relative;
 }
 
-.podDashboard, .nodeDashboard {
+.podDashboard,
+.nodeDashboard {
   grid-column: 1 / 15;
   grid-row: 1 / 13;
   background-color: $mainTextColor;
@@ -681,7 +682,7 @@ canvas {
 //   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 // }
 
-.podsTable {
+.podsTable, .nodesTable {
   grid-column: 1 / 13;
   grid-row: 7 / 13;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -783,4 +784,50 @@ canvas {
   list-style-type: none;
 }
 
+.speedometerContainer {
+  grid-column: 5 / 9;
+  grid-row: 1 / 7;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+}
 
+.diskSpaceContainer {
+  color: $lightBlue;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  grid-column: 1 / 5;
+  grid-row: 1 / 7;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+   
+  h2 {
+    font-size: 2em;
+    font-weight: 800;
+   }
+   h1 {
+    font-size: 3em;
+   }
+}
+
+.cpuUSageContainer {
+  color: $lightBlue;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  grid-column: 9 / 13;
+  grid-row: 1 / 7;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+   
+  h2 {
+    font-size: 2em;
+    font-weight: 800;
+   }
+   h1 {
+    font-size: 3em;
+   }
+}

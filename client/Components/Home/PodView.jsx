@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
-const PodView = ( {handler} ) => {
+const PodView = ({ handler }) => {
   // const [clicked, setClicked] = useState(false);
 
   return (
     <div>
-      <button className="btnDashboard ah" onClick={() => handler('pod')}>
-        Pod's View
+      <button className="btnDashboard ah" onClick={() => handler("pod")}>
+        Pod View
         <FaAngleDown />
       </button>
       {/* {clicked ? (
