@@ -82,7 +82,7 @@ module.exports = {
     usage: async (parent, args, context, info) => {
       // console.log(parent);
       const { name, podName, namespace } = parent;
-      if(!podName) return null;
+      if(!podName) return {cpu: null, memory: null};
       const podMetrics = mockMode
         ? mockPodMetrics
         : await podData.getMetrics(namespace, podName);

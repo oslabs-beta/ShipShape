@@ -10,6 +10,8 @@ import CPUusage from "./CPUusage.jsx";
 
 function NodeDashboard() {
   const [data, setData] = useState([]);
+  // const [nodeSelected, setNodeSelected] = useState();
+  const [selectedNodeData, setSelectedNodeData] = useState({});
 
   async function fetchData() {
     const result = await fetch("/graphql", {
@@ -19,46 +21,50 @@ function NodeDashboard() {
       },
       body: JSON.stringify({
         query: `
-                    {
-                        getPods{
-                          metadata{
-                            name
-                            namespace
-                            labels{
-                              app
-                            }
-                          }
-                          status{
-                            phase
-                            conditions{
-                              reason
-                              message
-                            }
-                            podIP
-                            startTime
-                          }
-                          spec{
-                            nodeName
-                          }
-                        }
-                      }
+              {
+                nodes{
+                  metadata{
+                    name
+                    creationTimestamp
+                    }
+                  status{
+                    allocatable{
+                      cpu
+                      memory
+                    }
+                    usage{
+                      cpu
+                      memory
+                    }
+                    usagePercent{
+                      cpu
+                      cpuCores
+                      memory
+                      memoryBytes
+                    }
+                  }
+                }
+              }
                     `,
       }),
     })
       .then((res) => res.json())
       .then((res) => {
-        setData(res.data.pods);
+        const { nodes } = res.data;
+        const firstNodeName = nodes[0].metadata.name;
+        const nodeData = filter(pods, { metadata: { name: firstPodName } })[0];
+        setSelectedNodeData(nodeData);
+        setData(res.data.nodes);
       })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => fetchData(), []);
-
   return (
     <div className="nodeDashboard">
-      <CPUusage />
-      <Speedometer />
-      <DiskSpace />
+      <CPUusage selectedNodeData={selectedNodeData} />
+      <Speedometer selectedNodeData={selectedNodeData} />
+      <DiskSpace selectedNodeData={selectedNodeData} />
       {/* <LineChart data={data} /> */}
       {/* <BarChart data={data} /> */}
       {/* <HeatMap data={data} /> */}
