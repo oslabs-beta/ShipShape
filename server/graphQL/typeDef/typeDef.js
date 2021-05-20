@@ -29,7 +29,10 @@ type KubeletEndpoint { Port: Int }
 
 type DaemonEndpoints { kubeletEndpoint: KubeletEndpoint }
 
-type Addresses { type: String address: String }
+type Addresses { 
+  type: String 
+  address: String 
+}
 
 
 type Allocatable { 
@@ -52,18 +55,34 @@ type Capacity {
 
 type NodeStatus { 
   images: [Image]
+  nodeName: String
   nodeInfo: NodeInfo
   daemonEndpoints: DaemonEndpoints
   addresses: [Addresses ]
   conditions: [ Conditions ]
   allocatable: Allocatable
-  capacity: Capacity 
+  capacity: Capacity
+  usage: NodeUsage
+  usagePercent: NodeUsagePercent 
+}
+
+type NodeUsage {
+  cpu: String
+  memory: String
+}
+
+type NodeUsagePercent {
+  cpu: String
+  cpuCores: String
+  memory: String
+  memoryBytes:String
 }
 
 type NodeSpec { 
   podCIDR: String
   providerID: String
-  podCIDRs: [String ] }
+  podCIDRs: [String ] 
+}
 
 type Annotations { 
   containergoogleapiscominstance_id: String
@@ -138,12 +157,12 @@ type Conditions {
 
 type PodStatus { 
   phase: String
-  conditions: [Conditions ] 
+  conditions: [Conditions] 
   hostIP: String
   podIP: String
   podIPs: [PodIPs ]
   startTime: String
-  containerStatuses: [ContainerStatus ]
+  containerStatuses: [ContainerStatus]
   qosClass: String
 }
 
@@ -258,6 +277,6 @@ type Query {
   podsByNamespace(namespace: String!): [Pod]
 
   # query will return an array of all nodes
-  getNodes: [Node]
+  nodes: [Node]
 }
 `
