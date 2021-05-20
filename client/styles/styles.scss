@@ -682,7 +682,8 @@ canvas {
 //   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 // }
 
-.podsTable, .nodesTable {
+.podsTable,
+.nodesTable {
   grid-column: 1 / 13;
   grid-row: 7 / 13;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -763,6 +764,11 @@ canvas {
   font-size: 1.2rem;
   margin-bottom: 0;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.342);
+  transition: 0.3s;
+  &:hover {
+    background-color: rgb(203, 231, 231);
+    color: rgb(59, 57, 57);
+  }
 }
 
 .settings {
@@ -802,14 +808,14 @@ canvas {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
-   
+
   h2 {
     font-size: 2em;
     font-weight: 800;
-   }
-   h1 {
+  }
+  h1 {
     font-size: 3em;
-   }
+  }
 }
 
 .cpuUSageContainer {
@@ -822,12 +828,12 @@ canvas {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
-   
+
   h2 {
     font-size: 2em;
     font-weight: 800;
-   }
-   h1 {
+  }
+  h1 {
     font-size: 3em;
-   }
+  }
 }
