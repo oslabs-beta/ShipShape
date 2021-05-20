@@ -18,7 +18,7 @@ function Navbar( {handler} ) {
       body: JSON.stringify({
         query: `
                     {
-                        pods{
+                        getPods{
                           metadata{
                             name
                             namespace
