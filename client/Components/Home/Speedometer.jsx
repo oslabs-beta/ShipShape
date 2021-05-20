@@ -32,8 +32,8 @@ const Speedometer = () => {
         className="speedometerContainer"
         data={chartData}
         options={{
-          rotation: 200 * Math.PI,
-          circumference: 58 * Math.PI,
+          rotation: 200.5 * Math.PI,
+          circumference: 57.5 * Math.PI,
           maintainAspectRatio: false,
           responsive: true,
           plugins: {
