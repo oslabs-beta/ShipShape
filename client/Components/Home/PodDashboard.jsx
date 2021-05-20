@@ -4,18 +4,20 @@ import BarChart from "./BarChart.jsx";
 // import HeatMap from './HeatMap.jsx';
 import PodsTable from "./PodsTable.jsx";
 import DoughnutChart from "./Doughnut.jsx";
-import { filter } from 'lodash';
+import { filter } from "lodash";
 
 function PodDashboard() {
   const [data, setData] = useState([]);
-  const [podSelected, setpodSelected] = useState()
+  const [podSelected, setpodSelected] = useState();
   const [selectedPodData, setSelectedPodData] = useState({});
 
-  function changePod(podName){
-    setpodSelected(podName)
-    const selectPod = filter(data, {metadata : {name : podName}});
-    setSelectedPodData(selectPod)
-  }  
+  function changePod(podName) {
+    console.log("changefired");
+    setpodSelected(podName);
+    const selectPod = filter(data, { metadata: { name: podName } })[0];
+    console.log(`seleted pod is`, selectPod);
+    setSelectedPodData(selectPod);
+  }
 
   async function fetchData() {
     const abortController = new AbortController();
@@ -58,7 +60,7 @@ function PodDashboard() {
       .then((res) => {
         // console.log(res.data)
         setData(res.data.getPods);
-        setpodSelected(res.data.getPods[0].metadata.name)
+        setpodSelected(res.data.getPods[0].metadata.name);
       })
       .catch((err) => console.log(err));
 
@@ -73,11 +75,15 @@ function PodDashboard() {
 
   return (
     <div className="podDashboard">
-      <DoughnutChart />
+      <DoughnutChart selectedPodData={selectedPodData} />
       {/* <LineChart data={data} /> */}
-      <BarChart data={data} />
+      <BarChart selectedPodData={selectedPodData} />
       {/* <HeatMap data={data} /> */}
-      <PodsTable data={data} eventHandler={changePod} setpodSelected={setpodSelected}/>
+      <PodsTable
+        data={data}
+        changePod={changePod}
+        setpodSelected={setpodSelected}
+      />
     </div>
   );
 }

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-
-
-const DoughnutChart = () => {
+const DoughnutChart = ({ selectedPodData }) => {
   const [chartData, setChartData] = useState({});
 
   function chart() {
