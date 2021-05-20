@@ -1,20 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
-const Speedometer = () => {
+const Speedometer = ({ selectedNodeData }) => {
   const [chartData, setChartData] = useState({});
 
-  function chart() {
+  if(selectedNodeData.status){
+    
+    const allLetters = /[a-z|%]*/gi
+    const memory = selectedNodeData.status.usagePercent.memory.replace(allLetters,'');
+
     setChartData({
-      labels: ["Allocatable Space", "Memory Used", "X"],
+      labels: ["Memory Used", "Remaining"],
       datasets: [
         {
-          label: "My First Dataset",
-          data: [300, 100, 50],
+          label: `${memory}% Memory in Use`,
+          data: [memory,100-memory],
           backgroundColor: [
             "rgb(38,84,121)",
             "rgb(160,192,206)",
-            "rgb(225, 205, 181)",
+          ],
+          hoverOffset: 4,
+        },
+      ],
+    });
+  }
+  
+  
+
+  function chart() {
+    setChartData({
+      labels: ["Memory Used", "Remaining"],
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [75,25],
+          backgroundColor: [
+            "rgb(38,84,121)",
+            "rgb(160,192,206)",
           ],
           hoverOffset: 4,
         },
@@ -32,8 +54,8 @@ const Speedometer = () => {
         className="speedometerContainer"
         data={chartData}
         options={{
-          rotation: 200 * Math.PI,
-          circumference: 58 * Math.PI,
+          rotation: 200.5 * Math.PI,
+          circumference: 57.5 * Math.PI,
           maintainAspectRatio: false,
           responsive: true,
           plugins: {

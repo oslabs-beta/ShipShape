@@ -30,21 +30,23 @@ const mergeDeep = (target, source) => {
 /**
  * Useful Docs:
  * On accessing grandparents in resolvers https://github.com/graphql/graphql-js/issues/1098
- *
+ * a
  */
 
 module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
-      console.log(parent);
       const pods = mockMode ? mockPods : (await k8sApi.listNamespacedPod('default')).response.body.items;
       //this is an ugly hack to pass the name and namespace context down to containers.
       //a better system would be able to access this grandparent data directly
       //a seconary strategy will be to add a conditional that only runs this loop when container data will later be queried
-      pods.forEach(pod => pod.spec.containers.forEach(container => {
-        container.podName = pod.metadata.name;
-        container.namespace = pod.metadata.namespace;
-      }))
+      pods.forEach(pod => { 
+        if(pod.status.phase !== 'Running') return;
+        pod.spec.containers.forEach(container => {
+          container.podName = pod.metadata.name;
+          container.namespace = pod.metadata.namespace;
+      })
+    })
       return pods
     },
     nodes: async (parent, args, context, info) => {
@@ -80,6 +82,7 @@ module.exports = {
     usage: async (parent, args, context, info) => {
       // console.log(parent);
       const { name, podName, namespace } = parent;
+      if(!podName) return {cpu: null, memory: null};
       const podMetrics = mockMode
         ? mockPodMetrics
         : await podData.getMetrics(namespace, podName);
@@ -87,7 +90,7 @@ module.exports = {
 
       // console.log(podMetrics.container);
       const { usage } = _.find(podMetrics.containers, { name });
-      console.log(usage);
+      // console.log(usage);
       return usage;
     },
   },

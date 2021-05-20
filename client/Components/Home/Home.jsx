@@ -14,9 +14,6 @@ function Home() {
 
   }
 
-  // useEffect(() => {
-  //   changeView();
-  // }, []);
 
   return (
     <div className="homeContainer">

@@ -4,7 +4,7 @@ import BarChart from "./BarChart.jsx";
 // import HeatMap from './HeatMap.jsx';
 import PodsTable from "./PodsTable.jsx";
 import DoughnutChart from "./Doughnut.jsx";
-import { filter } from "lodash";
+import { filter, find } from "lodash";
 
 function PodDashboard() {
   const [data, setData] = useState([]);
@@ -12,10 +12,8 @@ function PodDashboard() {
   const [selectedPodData, setSelectedPodData] = useState({});
 
   function changePod(podName) {
-    console.log("changefired");
     setpodSelected(podName);
     const selectPod = filter(data, { metadata: { name: podName } })[0];
-    console.log(`seleted pod is`, selectPod);
     setSelectedPodData(selectPod);
   }
 
@@ -30,43 +28,44 @@ function PodDashboard() {
       },
       body: JSON.stringify({
         query: `
-                getPods{
-                  metadata{
-                    name
-                    namespace
-                    labels{
-                      app
-                    }
-                  }
-                  status{
-                    phase
-                    conditions{
-                      reason
-                      message
-                    }
-                    podIP
-                    startTime
-                  }
-                  spec{
-                    nodeName
-                    containers{
-                      podName
-                      usage{
-                        cpu
-                        memory
-                      }
-                    }
-                  }
+        {
+          getPods{
+            metadata{
+              name
+              namespace
+              labels{
+                app
+              }
+            }
+            status{
+              phase
+              podIP
+              startTime
+            }
+            spec{
+              nodeName
+              containers{
+                name
+                usage {
+                  cpu
+                  memory
                 }
               }
-                    `,
+            }
+          }
+        }
+        `,
       }),
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res.data)
-        setData(res.data.getPods);
-        setpodSelected(res.data.getPods[0].metadata.name);
+        console.log(res);
+        const pods = res.data.getPods;
+        const firstPodName = pods[0].metadata.name;
+        const podData = filter(pods, { metadata: { name: firstPodName } })[0]
+        setSelectedPodData(podData);
+        // setpodSelected(firstPodName);
+        setData(pods);
       })
       .catch((err) => console.log(err));
 

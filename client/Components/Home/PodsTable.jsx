@@ -1,6 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 
+
+
 const columns = [
   {
     field: "id",
@@ -24,12 +26,13 @@ const columns = [
     align: "center",
   },
   {
-    field: "Restarts",
-    headerName: "Restarts",
+    field: "containerCount",
+    headerName: "Container Count",
     type: "number",
-    width: 130,
+    width: 180,
     headerAlign: "center",
-    align: "center",
+    align: "center", 
+    hide: false,
   },
   {
     field: "Age",
@@ -43,34 +46,55 @@ const columns = [
     // `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
   },
   {
-    field: "CPU",
-    headerName: "CPU(Corses)",
-    width: 180,
+    field: "nodeName",
+    headerName: "Node Name",
+    width: 300,
     headerAlign: "center",
     align: "center",
   },
   {
-    field: "Memory",
-    headerName: "Memory(Bytes)",
+    field: "podIp",
+    headerName: "Pod Ip",
     width: 180,
     headerAlign: "center",
     align: "center",
+    hide: true,
   },
 ];
 
 export default function PodsTable({ data, setpodSelected, changePod }) {
   const rows = [];
   // console.log('here11',data);
+
+  
+
   if (data)
     for (let i = 0; i < data.length; i++) {
+
+      let getTimeFromStart = (time) => {
+        let ms = new Date() - new Date(time)
+        const daysFactor = 86400000, hoursFactor = 3600000, minutesFactor = 60000, secondsFactor = 1000;
+
+        const days = Math.floor(ms / daysFactor);
+        ms = ms % daysFactor;
+        const hours = Math.floor(ms / hoursFactor);
+        ms = ms % hoursFactor;
+        const minutes = Math.floor(ms / minutesFactor);
+        ms = ms % minutesFactor;
+        const seconds = Math.floor(ms / secondsFactor);
+
+        return `${days ? (days + 'D') : ''} ${hours}:${minutes}`
+      }
+
+
       const pod = {
         id: i,
         Status: data[i].status.phase,
         Name: data[i].metadata.name,
-        Restarts: 123,
-        Age: 35,
-        CPU: 120,
-        Memory: 235,
+        Age: data[i].status.startTime ? getTimeFromStart(data[i].status.startTime) : 'undeployed',
+        containerCount: data[i].spec.containers.length,
+        podIp: data[i].status.podIP,
+        nodeName: data[i].spec.nodeName,
       };
       rows.push(pod);
     }

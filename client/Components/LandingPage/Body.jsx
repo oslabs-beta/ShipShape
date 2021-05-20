@@ -16,7 +16,7 @@ export default function Body () {
             <Link to='/dashboard'><button className="getStartedButton">My Dashboard</button></Link>
           </div>
           <div className='imageContainer'>
-              <img src="https://ikarus.sg/content/images/2020/08/dashboard-wide-cropped.png" alt="Kubernetes Dashboard" />
+              <img id="dashImage" src="../../assets/dashboards.png" alt="Kubernetes Dashboard" />
           </div>
         </div>
         <div id="aboutUs">
@@ -39,10 +39,10 @@ export default function Body () {
         <div className='features'>
             <div className='featureText'  id="topText">Track What Matters Most</div>
             <div className='featurePicture'>
-              <img src="https://virtualthoughts.blob.core.windows.net/uploads/2019/05/261.png"/>
+              <img src="../../assets/barss.png"/>
             </div>
             <div className='featurePicture'>
-            <img src="https://docs.portworx.com/img/grafanaClusterStatus.png"/>
+            <img src="../../assets/spdss.png"/>
             </div>
             <div className='featureText' id="bottomText">To Catch Problems Before They Happen</div>
         </div>
