@@ -30,29 +30,35 @@ function PodDashboard() {
       },
       body: JSON.stringify({
         query: `
-                    {
-                        getPods{
-                          metadata{
-                            name
-                            namespace
-                            labels{
-                              app
-                            }
-                          }
-                          status{
-                            phase
-                            conditions{
-                              reason
-                              message
-                            }
-                            podIP
-                            startTime
-                          }
-                          spec{
-                            nodeName
-                          }
-                        }
+                getPods{
+                  metadata{
+                    name
+                    namespace
+                    labels{
+                      app
+                    }
+                  }
+                  status{
+                    phase
+                    conditions{
+                      reason
+                      message
+                    }
+                    podIP
+                    startTime
+                  }
+                  spec{
+                    nodeName
+                    containers{
+                      podName
+                      usage{
+                        cpu
+                        memory
                       }
+                    }
+                  }
+                }
+              }
                     `,
       }),
     })
