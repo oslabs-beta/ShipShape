@@ -2,33 +2,36 @@ import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
 const Speedometer = ({ selectedNodeData }) => {
+  
   const [chartData, setChartData] = useState({});
 
   if(selectedNodeData.status){
-    
-    const allLetters = /[a-z|%]*/gi
-    const memory = selectedNodeData.status.usagePercent.memory.replace(allLetters,'');
-
-    setChartData({
-      labels: ["Memory Used", "Remaining"],
-      datasets: [
-        {
-          label: `${memory}% Memory in Use`,
-          data: [memory,100-memory],
-          backgroundColor: [
-            "rgb(38,84,121)",
-            "rgb(160,192,206)",
-          ],
-          hoverOffset: 4,
-        },
-      ],
-    });
+    if(selectedNodeData.metadata.name !== chartData.nodeName){
+      const allLetters = /[a-z|%]*/gi
+      const memory = selectedNodeData.status.usagePercent.memory.replace(allLetters,'');
+      
+      setChartData({
+        labels: ["Memory Used", "Remaining"],
+        datasets: [
+          {
+            label: `${memory}% Memory in Use`,
+            data: [memory,100-memory],
+            backgroundColor: [
+              "rgb(38,84,121)",
+              "rgb(160,192,206)",
+            ],
+            hoverOffset: 4,
+          },
+        ],
+        nodeName: selectedNodeData.metadata.name
+      });
+    } 
   }
-  
-  
-
+    
+    
+    
   function chart() {
-    setChartData({
+      setChartData({
       labels: ["Memory Used", "Remaining"],
       datasets: [
         {
