@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { filter, find } from "lodash";
 // import LineChart from './LineChart.jsx';
 import BarChart from "./BarChart.jsx";
 // import HeatMap from './HeatMap.jsx';
@@ -7,6 +8,7 @@ import DoughnutChart from "./Doughnut.jsx";
 import Speedometer from "./Speedometer.jsx";
 import DiskSpace from "./DiskSpace.jsx";
 import CPUusage from "./CPUusage.jsx";
+
 
 function NodeDashboard() {
   const [data, setData] = useState([]);
@@ -31,6 +33,7 @@ function NodeDashboard() {
                     allocatable{
                       cpu
                       memory
+                      ephemeralStorage
                     }
                     usage{
                       cpu
@@ -50,13 +53,18 @@ function NodeDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         const { nodes } = res.data;
         const firstNodeName = nodes[0].metadata.name;
-        const nodeData = filter(pods, { metadata: { name: firstPodName } })[0];
+        const nodeData = filter(nodes, { metadata: { name: firstNodeName } })[0];
         setSelectedNodeData(nodeData);
         setData(res.data.nodes);
       })
       .catch((err) => console.log(err));
+
+      return function cleanup() {
+        AbortController.abort();
+      };
   }
 
   useEffect(() => fetchData(), []);

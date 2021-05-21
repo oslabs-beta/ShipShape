@@ -66,22 +66,22 @@ export default function NodesTable({ data }) {
   // console.log('here11',data);
   if(data)for(let i=0; i < data.length; i++){
     
-    const { status } = data[i].status
+    const { status } = data[i]
     
     const node = { 
       id: i, 
       Name: data[i].metadata.name, 
       Age: data[i].metadata.creationTimestamp ? getTimeFromStart(data[i].metadata.creationTimestamp) : 'undeployed', 
       CPU: `${status.usage.cpu} / ${status.allocatable.cpu}`, 
-      Memory: `${status.usage.memory} / ${status.allocatable.cpu}`,
-      DiskCapacity: `${status.allocatable.ephemeralstorage}`, 
+      Memory: `${status.usage.memory} / ${status.allocatable.memory}`,
+      DiskCapacity: `${status.allocatable.ephemeralStorage}`, 
     }
-    rows.push(pod)
+    rows.push(node)
   }
 
   return (
     <div className='NodesTable' >
-      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10} onRowClick={({ row }) => changePod(row.Name)}/>
+      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10} onRowClick={({ row }) => console.log(row.Name)}/>
     </div>
   );
 }
