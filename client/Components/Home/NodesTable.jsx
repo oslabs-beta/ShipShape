@@ -74,7 +74,7 @@ export default function NodesTable({ data }) {
       Age: data[i].metadata.creationTimestamp ? getTimeFromStart(data[i].metadata.creationTimestamp) : 'undeployed', 
       CPU: `${status.usage.cpu} / ${status.allocatable.cpu}`, 
       Memory: `${status.usage.memory} / ${status.allocatable.memory}`,
-      DiskCapacity: `${status.allocatable.ephemeralstorage}`, 
+      DiskCapacity: `${status.allocatable.ephemeralStorage}`, 
     }
     rows.push(node)
   }
