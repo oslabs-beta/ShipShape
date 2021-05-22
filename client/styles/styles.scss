@@ -775,8 +775,9 @@ canvas {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.342);
   transition: 0.3s;
   &:hover {
-    background-color: rgba(187, 187, 187, 0.493);
-    color: rgb(59, 57, 57);
+    background-color: rgba(38, 84, 121, 0.527);
+    color: $mainTextColor;
+    border: 1px solid rgba(0, 0, 0, 0.466);
   }
 }
 
@@ -821,9 +822,16 @@ canvas {
   h2 {
     font-size: 2em;
     font-weight: 800;
+    color: $darkBlue;
   }
   h1 {
     font-size: 3em;
+  }
+
+  span {
+    font-size: 3em;
+    border-bottom: 1px solid $lightBlue;
+    box-shadow: 0 4px 2px -2px rgba(160, 192, 206, 0.4);
   }
 }
 
@@ -841,8 +849,16 @@ canvas {
   h2 {
     font-size: 2em;
     font-weight: 800;
+    color: $darkBlue;
   }
   h1 {
     font-size: 3em;
+  }
+
+  span {
+    font-size: 3em;
+    border-bottom: 1px solid $lightBlue;
+    // box-shadow: inset 0 0 10px 0 #5f5e5e41;
+    box-shadow: 0 4px 2px -2px rgba(160, 192, 206, 0.4);
   }
 }

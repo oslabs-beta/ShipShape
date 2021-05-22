@@ -1,58 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import AnimatedNumber from "animated-number-react";
+
 
 function CPUusage() {
 
-//   const [diskSpace, setdiskSpace] = useState(0);
+  const [state, setState] = useState(0);
 
-  // async function fetchData() {
-  //     const result = await fetch("/graphql", {
-  //       method: "post",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         query: `
-  //                     {
-  //                         getPods{
-  //                           metadata{
-  //                             name
-  //                             namespace
-  //                             labels{
-  //                               app
-  //                             }
-  //                           }
-  //                           status{
-  //                             phase
-  //                             conditions{
-  //                               reason
-  //                               message
-  //                             }
-  //                             podIP
-  //                             startTime
-  //                           }
-  //                           spec{
-  //                             nodeName
-  //                           }
-  //                         }
-  //                       }
-  //                     `,
-  //       }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((res) => {
-  //         setData(res.data.pods);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
+  useEffect(() => {
+    setState(400)
+  })
 
-  //   useEffect(() => fetchData(), []);
-
-  return (
-    <div className="cpuUSageContainer">
+    return (
+      <div className="cpuUSageContainer">
       <h2>CPU Usage</h2>
-      <h1>24</h1>
-    </div>
-  );
+        <AnimatedNumber
+          value={state}
+          formatValue={v => v.toFixed(0)}
+          duration={1000}
+          frameStyle={perc => (
+            { opacity: perc / 100}
+          )}
+          style={
+            {
+              fontSize: 200
+              }
+          }
+        />
+      </div>
+    );
 }
 
 export default CPUusage;
