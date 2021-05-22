@@ -5,7 +5,7 @@ const Speedometer = ({ selectedNodeData }) => {
   const [chartData, setChartData] = useState({});
 
   if(selectedNodeData.status){
-    
+    if(seletedNodeData.metadata.name !== chartData.name){
     const allLetters = /[a-z|%]*/gi
     const memory = selectedNodeData.status.usagePercent.memory.replace(allLetters,'');
 
@@ -22,7 +22,9 @@ const Speedometer = ({ selectedNodeData }) => {
           hoverOffset: 4,
         },
       ],
+      nodeName: selectedNodeData.metadata.name
     });
+  }
   }
   
   

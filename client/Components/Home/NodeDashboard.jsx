@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { filter, find } from "lodash";
 // import LineChart from './LineChart.jsx';
 import BarChart from "./BarChart.jsx";
 // import HeatMap from './HeatMap.jsx';
@@ -52,7 +53,7 @@ function NodeDashboard() {
       .then((res) => {
         const { nodes } = res.data;
         const firstNodeName = nodes[0].metadata.name;
-        const nodeData = filter(pods, { metadata: { name: firstPodName } })[0];
+        const nodeData = filter(nodes, { metadata: { name: firstNodeName } })[0];
         setSelectedNodeData(nodeData);
         setData(res.data.nodes);
       })
