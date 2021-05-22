@@ -4,6 +4,8 @@ import { Doughnut } from "react-chartjs-2";
 const Speedometer = ({ selectedNodeData }) => {
   
   const [chartData, setChartData] = useState({});
+  const allLetters = /[a-z|%]*/gi
+  const memory = selectedNodeData.status ? selectedNodeData.status.usagePercent.memory.replace(allLetters,'') : undefined;
 
   if(selectedNodeData.status){
     if(selectedNodeData.metadata.name !== chartData.nodeName){
@@ -67,7 +69,7 @@ const Speedometer = ({ selectedNodeData }) => {
             },
             title: {
               display: true,
-              text: "Memory Usage by Container",
+              text: memory ? `${memory}% Memory in Use` : `...Loading`,
             },
           },
         }}

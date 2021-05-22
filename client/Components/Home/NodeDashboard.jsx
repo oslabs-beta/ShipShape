@@ -12,8 +12,14 @@ import CPUusage from "./CPUusage.jsx";
 
 function NodeDashboard() {
   const [data, setData] = useState([]);
-  // const [nodeSelected, setNodeSelected] = useState();
+  const [nodeSelected, setNodeSelected] = useState();
   const [selectedNodeData, setSelectedNodeData] = useState({});
+
+  function changeNode(nodeName) {
+    setNodeSelected(nodeName);
+    const selectedNode = filter(data, { metadata: { name: nodeName } })[0];
+    setSelectedNodeData(selectedNode);
+  }
 
   async function fetchData() {
     const result = await fetch("/graphql", {
@@ -76,7 +82,7 @@ function NodeDashboard() {
       {/* <LineChart data={data} /> */}
       {/* <BarChart data={data} /> */}
       {/* <HeatMap data={data} /> */}
-      <NodesTable data={data} />
+      <NodesTable data={data} changeNode={changeNode} />
     </div>
   );
 }
