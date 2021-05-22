@@ -9,6 +9,7 @@ import Speedometer from "./Speedometer.jsx";
 import DiskSpace from "./DiskSpace.jsx";
 import CPUusage from "./CPUusage.jsx";
 
+
 function NodeDashboard() {
   const [data, setData] = useState([]);
   // const [nodeSelected, setNodeSelected] = useState();
@@ -32,6 +33,7 @@ function NodeDashboard() {
                     allocatable{
                       cpu
                       memory
+                      ephemeralStorage
                     }
                     usage{
                       cpu
@@ -51,6 +53,7 @@ function NodeDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         const { nodes } = res.data;
         const firstNodeName = nodes[0].metadata.name;
         const nodeData = filter(nodes, { metadata: { name: firstNodeName } })[0];
@@ -58,6 +61,10 @@ function NodeDashboard() {
         setData(res.data.nodes);
       })
       .catch((err) => console.log(err));
+
+      return function cleanup() {
+        AbortController.abort();
+      };
   }
 
   useEffect(() => fetchData(), []);

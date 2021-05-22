@@ -9,48 +9,48 @@ function Navbar( {handler} ) {
   const [podsData, setpodsData] = useState([]);
   const [nodesData, setnodesData] = useState([]);
 
-  async function fetchData() {
-    const result = await fetch("/graphql", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
-                    {
-                        getPods{
-                          metadata{
-                            name
-                            namespace
-                            labels{
-                              app
-                            }
-                          }
-                          status{
-                            phase
-                            conditions{
-                              reason
-                              message
-                            }
-                            podIP
-                            startTime
-                          }
-                          spec{
-                            nodeName
-                          }
-                        }
-                      }
-                    `,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setpodsData(res.data.pods);
-      })
-      .catch((err) => console.log(err));
-  }
+  // async function fetchData() {
+  //   const result = await fetch("/graphql", {
+  //     method: "post",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       query: `
+  //                   {
+  //                       getPods{
+  //                         metadata{
+  //                           name
+  //                           namespace
+  //                           labels{
+  //                             app
+  //                           }
+  //                         }
+  //                         status{
+  //                           phase
+  //                           conditions{
+  //                             reason
+  //                             message
+  //                           }
+  //                           podIP
+  //                           startTime
+  //                         }
+  //                         spec{
+  //                           nodeName
+  //                         }
+  //                       }
+  //                     }
+  //                   `,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setpodsData(res.data.pods);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
-  useEffect(() => fetchData(), []);
+  // useEffect(() => fetchData(), []);
 
   return (
     <div className="navbarContainer">
