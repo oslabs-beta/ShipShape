@@ -24,15 +24,15 @@ export default function Body () {
           <div className='cardContainer'>
               <div className='aboutUsCards'>
                   <h4>Real Time Monitoring</h4>
-                  <p>Real Time monitoring the metrics that matter the most in your Kubernetes Cluster the metrics that matter the most in the metrics that matter the most in  the metrics that matter the most in </p>
+                  <p>Real Time monitoring  the metrics that matter the most in your Kubernetes Cluster </p>
               </div>
               <div className='aboutUsCards'>
                   <h4>Send and Store</h4>
-                  <p>Continuously send and store the data related to CPU, Disk, and Memory usage the metrics that matter the most in the metrics that matter the most in  the metrics that matter the most in </p>
+                  <p>Continuously send and store the data related to CPU, Disk, and Memory usage</p>
               </div>
               <div className='aboutUsCards'>
                   <h4>Easy Visualization</h4>
-                  <p>View your cluster like never before with our clear and concise dashborad the metrics that matter the most in the metrics that matter the most in  the metrics that matter the most in </p>
+                  <p>View your cluster like never before with our clear and concise dashborad</p>
               </div>
           </div>
         </div>

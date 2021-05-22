@@ -11,16 +11,21 @@ const Speedometer = ({ selectedNodeData }) => {
     if(selectedNodeData.metadata.name !== chartData.nodeName){
       const allLetters = /[a-z|%]*/gi
       const memory = selectedNodeData.status.usagePercent.memory.replace(allLetters,'');
-      
+      let backgroundColor = 'rgb(160,192,206)';
+      let memoryLabel = 'Remaining';
+      if (memory > 100){
+        backgroundColor = "rgb(181,1,0)"
+        memoryLabel = 'Memory Exceeded'
+      }
       setChartData({
-        labels: ["Memory Used", "Remaining"],
+        labels: ["Memory Used", memoryLabel],
         datasets: [
           {
             label: `${memory}% Memory in Use`,
             data: [memory,100-memory],
             backgroundColor: [
               "rgb(38,84,121)",
-              "rgb(160,192,206)",
+              backgroundColor,
             ],
             hoverOffset: 4,
           },
