@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { filter, find } from "lodash";
 // import LineChart from './LineChart.jsx';
 import BarChart from "./BarChart.jsx";
 // import HeatMap from './HeatMap.jsx';
@@ -8,8 +9,17 @@ import Speedometer from "./Speedometer.jsx";
 import DiskSpace from "./DiskSpace.jsx";
 import CPUusage from "./CPUusage.jsx";
 
+
 function NodeDashboard() {
   const [data, setData] = useState([]);
+  const [nodeSelected, setNodeSelected] = useState();
+  const [selectedNodeData, setSelectedNodeData] = useState({});
+
+  function changeNode(nodeName) {
+    setNodeSelected(nodeName);
+    const selectedNode = filter(data, { metadata: { name: nodeName } })[0];
+    setSelectedNodeData(selectedNode);
+  }
 
   async function fetchData() {
     const result = await fetch("/graphql", {
@@ -19,50 +29,60 @@ function NodeDashboard() {
       },
       body: JSON.stringify({
         query: `
-                    {
-                        getPods{
-                          metadata{
-                            name
-                            namespace
-                            labels{
-                              app
-                            }
-                          }
-                          status{
-                            phase
-                            conditions{
-                              reason
-                              message
-                            }
-                            podIP
-                            startTime
-                          }
-                          spec{
-                            nodeName
-                          }
-                        }
-                      }
+              {
+                nodes{
+                  metadata{
+                    name
+                    creationTimestamp
+                    }
+                  status{
+                    allocatable{
+                      cpu
+                      memory
+                      ephemeralStorage
+                    }
+                    usage{
+                      cpu
+                      memory
+                    }
+                    usagePercent{
+                      cpu
+                      cpuCores
+                      memory
+                      memoryBytes
+                    }
+                  }
+                }
+              }
                     `,
       }),
     })
       .then((res) => res.json())
       .then((res) => {
-        setData(res.data.pods);
+        console.log(res);
+        const { nodes } = res.data;
+        const firstNodeName = nodes[0].metadata.name;
+        const nodeData = filter(nodes, { metadata: { name: firstNodeName } })[0];
+        setSelectedNodeData(nodeData);
+        setData(res.data.nodes);
       })
       .catch((err) => console.log(err));
+
+      return function cleanup() {
+        AbortController.abort();
+      };
   }
 
   useEffect(() => fetchData(), []);
-
   return (
     <div className="nodeDashboard">
-      <CPUusage />
-      <Speedometer />
-      <DiskSpace />
+      <CPUusage selectedNodeData={selectedNodeData} />
+      <Speedometer selectedNodeData={selectedNodeData} />
+      <DiskSpace selectedNodeData={selectedNodeData} />
       {/* <LineChart data={data} /> */}
       {/* <BarChart data={data} /> */}
       {/* <HeatMap data={data} /> */}
-      <NodesTable data={data} />
+      <NodesTable data={data} changeNode={changeNode} />
     </div>
   );
 }

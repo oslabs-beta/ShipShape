@@ -38,7 +38,7 @@ type Addresses {
 type Allocatable { 
   attachablevolumesgcepd: String
   cpu: String
-  ephemeralstorage: String
+  ephemeralStorage: String
   hugepages2Mi: String
   memory: String
   pods: String 
