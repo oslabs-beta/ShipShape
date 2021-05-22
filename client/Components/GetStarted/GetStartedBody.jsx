@@ -7,15 +7,22 @@ export default function GetStartedBody() {
       <div id="infoBox">
         <h1>Getting Started with ShipShape</h1>
         <br />
-        If you're new here, go ahead and sign up! Then we can begin the process
-        of getting your cluster set up for monitoring. Been here before? If
-        you've already logged in, you can go right to your dashboard by clicking
-        the button below. Once you are on your ShipSape dashboard, click the
-        settings button at the bottom of your nav bar to begin. We will provide
-        you with all the steps necessary to link up your AWS or Google
-        Kubernetes Cluster to ShipSape. Once we have collected some information
-        from you about your AWS/Google cluster credentials, your cluster should
-        get linked up and the monitoring can begin!
+        If you're new here, here's some quick instructions on how to get started!
+        Then we can begin the process of monitoring your cluster. Don't forget, for 
+        full functionality, make sure you have a metrics server deployed on your cluster.
+        (Help with that coming soon!)
+        If your kubeconfig is pointing propely to your cluster, allowing you to use 
+        your kubectl commands on your command line, then you're all set! Head on 
+        over to the Dashboard tab and you'll see your metrics. If not, make sure that 
+        your cluster administrator has allowed you a user account with access to cluster 
+        kubeclt commands. If you can access the cluster using kubectl commands you're 
+        good to go! This app automatically connects to your cluster using your kubeConfig
+        file, so there's no need to create an account, or worry about us storing your data,
+        this application only reads it! Once you are on your ShipSape dashboard, 
+        you'll start off looking at metrics for your pods,
+        just click any of them in the table at the bottom of the screen to see their 
+        individual metrics. If you want a more hardware focused look, check out the 
+        Node View by clicking its button on the Navigation Bar! 
         <br />
         <br />
         There are several different key metrics ShipShape will help you look out
