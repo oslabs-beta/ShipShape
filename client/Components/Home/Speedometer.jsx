@@ -6,7 +6,7 @@ const Speedometer = () => {
 
   function chart() {
     setChartData({
-      labels: ["Allocatable Space", "Memory Used", "X"],
+      labels: ["Node Memory Used", "Total Memory Used", "Allocatable Space"],
       datasets: [
         {
           label: "My First Dataset",
