@@ -59,7 +59,7 @@ export default function NodesTable({ data }) {
     ms = ms % minutesFactor;
     const seconds = Math.floor(ms / secondsFactor);
 
-    return `${days ? (days + 'D') : ''} ${hours}:${minutes}`
+    return `${days ? (days + 'D') : ''} ${hours}:${(minutes > 9) ? minutes : '0' + minutes}`
   }
   
   const rows = [];
@@ -67,6 +67,10 @@ export default function NodesTable({ data }) {
   if(data)for(let i=0; i < data.length; i++){
     
     const { status } = data[i]
+    console.log('inside table');
+    console.log(data[i])
+
+    console.log(status);
     
     const node = { 
       id: i, 

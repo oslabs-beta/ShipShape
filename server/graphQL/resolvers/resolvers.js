@@ -29,8 +29,7 @@ const mergeDeep = (target, source) => {
   return target;
 };
 
-/**
- * Useful Docs:
+/** Useful Docs:
  * On accessing grandparents in resolvers https://github.com/graphql/graphql-js/issues/1098
  * a
  */
@@ -39,42 +38,40 @@ module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
       /** ORIGINAL CODE
-      const pods = (await k8sApi.listNamespacedPod('default')).response.body.items;
-      //this is an ugly hack to pass the name and namespace context down to containers.
-      //a better system would be able to access this grandparent data directly
-      //a seconary strategy will be to add a conditional that only runs this loop when container data will later be queried
+        const pods = (await k8sApi.listNamespacedPod('default')).response.body.items;
+        //this is an ugly hack to pass the name and namespace context down to containers.
+        //a better system would be able to access this grandparent data directly
+        //a seconary strategy will be to add a conditional that only runs this loop when container data will later be queried
 
 
-      
-      pods.forEach(pod => { 
-        if(pod.status.phase !== 'Running') return;
-        pod.spec.containers.forEach(container => {
-          container.podName = pod.metadata.name;
-          container.namespace = pod.metadata.namespace;
-      })
-    })
-      return pods
-    */
+        
+        pods.forEach(pod => { 
+          if(pod.status.phase !== 'Running') return;
+          pod.spec.containers.forEach(container => {
+            container.podName = pod.metadata.name;
+            container.namespace = pod.metadata.namespace;
+        })
+        })
+          return pods
+      */
 
       /** NEW CODE  */
       const podsApi = (await k8sApi.listNamespacedPod('default')).response.body.items;
       const podsCmd = (await podData.getMetrics()).items
       // console.log(podsCmd);
       //Brute force approach to merging these two datasources by cycling through to match on pod name and  container name
-      //should be refactored using only forEach, or better yet a findOne style method would improve performance;
-      // I also feel like we should fold container status into this query as well
-      // question though - how closely do we want to match original data source? This could allow us to build a graphQL tool
-      // maybe use a lodash function https://lodash.com/docs/4.17.15; this will likely have a similar time complexity,
-      // but it will be more imperative and easy to read.
+        //should be refactored using only forEach, or better yet a findOne style method would improve performance;
+        // I also feel like we should fold container status into this query as well
+        // question though - how closely do we want to match original data source? This could allow us to build a graphQL tool
+        // maybe use a lodash function https://lodash.com/docs/4.17.15; this will likely have a similar time complexity,
+        // but it will be more imperative and easy to read.
       const podArray = []
       podsApi.forEach((pod) => {
         const mergedPod = podsCmd.reduce((original, metrics) => {
-          // console.log(original.metadata.name, metrics.metadata.name);
           if (original.metadata.name == metrics.metadata.name) {
             original.spec.containers.forEach(container => {
               metrics.containers.reduce((origCont, metricCont) => {
                 if(origCont.name == metricCont.name){
-                  // console.log('Im here')
                   return mergeDeep(origCont, metricCont);
                 } else {
                   return origCont;
@@ -91,35 +88,28 @@ module.exports = {
     },
     nodes: async (parent, args, context, info) => {
       const nodes = (await k8sApi.listNode('default')).response.body.items
+      const allNodePercentages = (await nodeData.getPercentages())
+      const allNodeMetrics = (await nodeData.getNodeMetrics()).items;
+      // console.log(nodeMetrics);
+      // console.log(nodeMetrics[0].metadata);
+      // console.log(nodeMetrics[0].usage);
       // console.log(mockNodes);
       nodes.forEach(node => {
+        const nodePercent = find(allNodePercentages, { NAME: [node.metadata.name]});
+        node.status.usagePercent = {
+          cpu: nodePercent['CPU%'][0],
+          memory: nodePercent['MEMORY%'][0],
+          cpuCores: nodePercent['CPU(cores)'][0],
+          memoryBytes: nodePercent['MEMORY(bytes)'][0]
+        }
+
+        const nodeMetrics = find(allNodeMetrics, { metadata: { name: node.metadata.name} })
+        node.status.usage = nodeMetrics.usage;
+        
+
         node.status.allocatable.ephemeralStorage = node.status.allocatable["ephemeral-storage"];
-        console.log(node.status.allocatable.ephemeralStorage );
-        node.status.nodeName = node.metadata.name
       });
       return nodes
-    }
-  },
-  // Pod: {
-
-  // },
-  NodeStatus: {
-    usage: async (parent, args, context, info) => {
-      const { nodeName } = parent;
-      const nodeMetrics = (await nodeData.getNodeMetrics(nodeName));
-      // console.log(nodeMetrics.usage);
-      return nodeMetrics.usage
-    },
-    usagePercent: async (parent, args, context, info) => {
-      const { nodeName } = parent;
-      const perTable = (await nodeData.getPercentages(nodeName))[0];
-      const nodePercent = {
-        cpu: perTable['CPU%'][0],
-        memory: perTable['MEMORY%'][0],
-        cpuCores: perTable['CPU(cores)'][0],
-        memoryBytes: perTable['MEMORY(bytes)'][0]
-      }
-      return nodePercent;
     }
   },
   // Container: {
