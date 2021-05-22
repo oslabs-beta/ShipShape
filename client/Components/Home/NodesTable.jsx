@@ -1,24 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 
-/*
-* Name
-* Age
-* Metrics (allocatable vs usage): 
-* CPU
-* Memory
-
-
-
-
-Node Specific Graphs
-“Speedomitors:”
-Memory (as % of capacity) (((gauge)))
-CPU (usage) (((a really nice looking number)))
-(?) Disk Space-am “
- */
-
-
 const columns = [
   { field: 'id', headerName: 'ID', width: 70,  headerAlign: 'center', align: 'center'},
   { field: 'Name', headerName: 'Name', width: 300,  headerAlign: 'center', align: 'left' },
@@ -45,7 +27,7 @@ const columns = [
   },
 ];
 
-export default function NodesTable({ data }) {
+export default function NodesTable({ data, changeNode }) {
   
   let getTimeFromStart = (time) => {
     let ms = new Date() - new Date(time)
@@ -59,7 +41,7 @@ export default function NodesTable({ data }) {
     ms = ms % minutesFactor;
     const seconds = Math.floor(ms / secondsFactor);
 
-    return `${days ? (days + 'D') : ''} ${hours}:${minutes}`
+    return `${days ? (days + 'D') : ''} ${hours}:${(minutes > 9) ? minutes : '0' + minutes}`
   }
   
   const rows = [];
@@ -67,6 +49,10 @@ export default function NodesTable({ data }) {
   if(data)for(let i=0; i < data.length; i++){
     
     const { status } = data[i]
+    console.log('inside table');
+    console.log(data[i])
+
+    console.log(status);
     
     const node = { 
       id: i, 
@@ -81,7 +67,7 @@ export default function NodesTable({ data }) {
 
   return (
     <div className='NodesTable' >
-      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10} onRowClick={({ row }) => console.log(row.Name)}/>
+      <DataGrid className='pods' rows={rows} columns={columns} pageSize={10} onRowClick={({ row }) => changeNode(row.Name)}/>
     </div>
   );
 }
