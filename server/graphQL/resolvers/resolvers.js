@@ -16,7 +16,6 @@ const appUrl = 'http://localhost:3000'
 
 //helper function that acts as Object.assign but deeply
 const mergeDeep = (target, source) => {
-  // console.log('merging deeply')
   for (const key in source) {
     if (isObject(source[key])) {
       if (!target[key]) Object.assign(target, { [key]: {} });
@@ -25,7 +24,6 @@ const mergeDeep = (target, source) => {
       Object.assign(target, { [key]: source[key] });
     }
   }
-  // console.log(target);
   return target;
 };
 
