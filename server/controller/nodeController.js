@@ -9,8 +9,9 @@ const nodeController = {};
 //for development purposes, ability to view raw data of all nodes 
 nodeController.getNodesRaw = async function(req, res, next){
   const data = await k8sApi.listNode('default');
-  // console.log(data);
+  // res.locals.nodes = data.response.toJSON();
   res.locals.nodes = data;
+  // console.log(res.locals.nodes);
   return next();
 }
 
