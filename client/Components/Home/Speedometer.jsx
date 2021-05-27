@@ -11,7 +11,8 @@ const Speedometer = ({ selectedNodeData }) => {
     if(selectedNodeData.metadata.name !== chartData.nodeName){
       const allLetters = /[a-z|%]*/gi
       const memory = selectedNodeData.status.usagePercent.memory.replace(allLetters,'');
-      
+      let b
+      if (memory > 0) 
       setChartData({
         labels: ["Memory Used", "Remaining"],
         datasets: [
