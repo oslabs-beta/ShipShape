@@ -640,7 +640,8 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 .podDashboard,
-.nodeDashboard {
+.nodeDashboard,
+.clusterDashboard {
   grid-column: 1 / 15;
   grid-row: 1 / 13;
   background-color: $mainTextColor;
