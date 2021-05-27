@@ -8,7 +8,7 @@ const DoughnutChart = ({ selectedPodData }) => {
   if(selectedPodData.spec){
     if(chartData.labels[0] !== selectedPodData.spec.containers[0].name){
       const { containers } = selectedPodData.spec
-      console.log(containers)
+      // console.log(containers)
 
       const labels = [], memoryUsage = [];
 
@@ -16,7 +16,7 @@ const DoughnutChart = ({ selectedPodData }) => {
         const allLetters = /[a-z]*/gi
         let memory = cont.usage.memory
         if(memory) memory = memory.replace(allLetters,'');
-        console.log(memory);
+        // console.log(memory);
         labels.push(cont.name)
         memoryUsage.push(memory)
       })
@@ -29,6 +29,7 @@ const DoughnutChart = ({ selectedPodData }) => {
             data: memoryUsage,
             backgroundColor: [
               'rgb(160, 192, 206)',
+              'rgb(38, 84, 121)',
               'rgb(147, 176, 189)',
               'rgb(127, 152, 163)',
               'rgb(103, 131, 143)',

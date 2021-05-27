@@ -59,7 +59,7 @@ function PodDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const pods = res.data.getPods;
         const firstPodName = pods[0].metadata.name;
         const podData = filter(pods, { metadata: { name: firstPodName } })[0]
@@ -82,7 +82,8 @@ function PodDashboard() {
     <div className="podDashboard">
       <DoughnutChart selectedPodData={selectedPodData} />
       {/* <LineChart data={data} /> */}
-      <BarChart selectedPodData={selectedPodData} />
+      <BarChart data={data} />
+      {/* <BarChart selectedPodData={selectedPodData} /> */}
       {/* <HeatMap data={data} /> */}
       <PodsTable
         data={data}
