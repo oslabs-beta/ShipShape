@@ -33,17 +33,17 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-// app.get("/dashboard", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/index.html"));
-// });
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+});
 
-// app.get("/getStarted", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/index.html"));
-// });
+app.get("/getStarted", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+});
 
-// app.get("/LogIn", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/index.html"));
-// });
+app.get("/LogIn", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+});
 
 
 

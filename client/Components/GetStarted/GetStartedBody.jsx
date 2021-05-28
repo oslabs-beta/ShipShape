@@ -34,6 +34,11 @@ export default function GetStartedBody() {
         Kubernetes!
         <br />
         <br />
+        If you'd like to boost the performance of this app's monitoring ability,
+        download and configure helm to be able to deploy helm charts to your cluster.
+        The Helm installation docs can be found <a href="https://helm.sh/docs/intro/install/">here!</a>
+        <br />
+        <br />
         Any comments or concerns? The ShipShape dev team would love to hear from
         you! Email getinshipshape@gmail.com to get in touch!
       </div>

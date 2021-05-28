@@ -661,7 +661,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 // }
 
 .barChart {
-  grid-column: 7 / 13;
+  grid-column: 1 / 7;
   grid-row: 1 / 7;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
@@ -670,7 +670,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 .doughnutContainer,
 canvas {
-  grid-column: 1 / 7;
+  grid-column: 7 / 13;
   grid-row: 1 / 7;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
