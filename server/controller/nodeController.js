@@ -41,7 +41,7 @@ nodeController.getNodeMetrics = async function(req, res, next){
 // nodeController.nodeTest = async function(req, res, next){
 //   let result = await k8sApi.listNode();
 //   res.locals.test = result;
-// }
+// }npm
 
 nodeController.getNodePercents = async function(req, res, next){
   res.locals.nodePercents = await Node.getPercentages();
