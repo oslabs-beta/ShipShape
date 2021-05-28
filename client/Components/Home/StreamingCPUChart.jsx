@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import 'chartjs-plugin-streaming';
 
-const StreamingLineChart = () => {
+const StreamingCpuChart = () => {
 
     return (
-        <div className='liveLineChart'>
+        <div className='StreamingCpuChart streams'>
             <Line
                 data={{
                 datasets: [{
@@ -13,16 +13,19 @@ const StreamingLineChart = () => {
                     borderColor: 'rgb(255, 99, 132)',
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     lineTension: 0,
-                    borderDash: [8, 4]
+                    borderDash: [8, 4],
+                    data: [123,23,235,124,12,25,6,547,56,734,53,23,42,34,234,2367,457]
                 }, {
                     label: 'Dataset 2',
                     borderColor: 'rgb(54, 162, 235)',
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    data: [,345,325,236,546,856,532,4,3467,58,6,6352]
                 }]
                 }}
                 options={{
                 scales: {
                     xAxes: [{
+                    type: 'realtime',    
                     realtime: {
                         onRefresh: function(chart) {
                         chart.data.datasets.forEach(function(dataset) {
@@ -32,8 +35,15 @@ const StreamingLineChart = () => {
                             });
                         });
                         },
-                        delay: 2000
+                        delay: 2000,
+                        duration: 20000,
                     }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'value'
+                        }
                     }]
                 }
                 }}
@@ -106,4 +116,4 @@ const StreamingLineChart = () => {
 //   );
 // };
 
-export default StreamingLineChart;
+export default StreamingCpuChart;

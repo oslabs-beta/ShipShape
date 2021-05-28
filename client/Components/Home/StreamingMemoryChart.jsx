@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import 'chartjs-plugin-streaming';
 
-const StreamingCpuChart = () => {
+const StreamingMemoryChart = () => {
 
     return (
-        <div className='liveLineChart'>
+        <div className='StreamingMemoryChart  streams'>
             <Line
                 data={{
                 datasets: [{
@@ -106,4 +106,4 @@ const StreamingCpuChart = () => {
 //   );
 // };
 
-export default StreamingCpuChart;
+export default StreamingMemoryChart;

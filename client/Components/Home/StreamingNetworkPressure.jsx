@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-const LineChart = () => {
+const StreamingNetworkPressure = () => {
   const [chartData, setChartData] = useState({});
 
   function chart() {
@@ -9,7 +9,7 @@ const LineChart = () => {
       labels: ["x", "y", "z", "t", "h"],
       datasets: [
         {
-          label: "Memory Usage by Container",
+          label: "Streaming Network Pressure",
           data: [12, 35, 23, 27, 7, 45],
           backgroundColor: [
             // 'rgb(172, 228, 170)' 
@@ -27,7 +27,7 @@ const LineChart = () => {
   }, []);
 
   return (
-    <div className="lineChart">
+    <div className="StreamingNetworkPressure streams">
       <Line
         data={chartData}
         options={{
@@ -61,4 +61,4 @@ const LineChart = () => {
   );
 };
 
-export default LineChart;
+export default StreamingNetworkPressure;
