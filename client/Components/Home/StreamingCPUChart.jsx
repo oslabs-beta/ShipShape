@@ -15,14 +15,16 @@ const StreamingCpuChart = () => {
                     lineTension: 0,
                     borderDash: [8, 4],
                     data: [123,23,235,124,12,25,6,547,56,734,53,23,42,34,234,2367,457]
-                }, {
-                    label: 'Dataset 2',
-                    borderColor: 'rgb(54, 162, 235)',
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                    data: [,345,325,236,546,856,532,4,3467,58,6,6352]
                 }]
                 }}
                 options={{
+                options: {
+                    plugins: {
+                        streaming: {
+                            duration: 20000
+                        }
+                    }
+                },
                 scales: {
                     xAxes: [{
                     type: 'realtime',    
