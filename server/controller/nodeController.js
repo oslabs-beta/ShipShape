@@ -1,6 +1,6 @@
 const k8sApi = require('./../k8sApi');
 const cmd = require('node-cmd');
-const Node = require('./../constructors/nodeConstructor');
+const Node = require('../datasources/nodeConstructor');
 
 
 
