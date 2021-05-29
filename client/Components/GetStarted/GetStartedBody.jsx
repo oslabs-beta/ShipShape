@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/* 
+This is the body get started page, it is bascially just a page of instruction
+to help users get started using ShipShape.
+*/
+
+
 export default function GetStartedBody() {
   return (
     <div className="GetStartedBody">

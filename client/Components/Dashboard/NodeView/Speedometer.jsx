@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
+/* 
+This is a doughnut Chart JS imported from chart.js and altered to only show half 
+of the circle, giving the appearance of a speedometer. This graph displays the 
+selected node memory usage of each node out of the total avaiable memroy. The 
+selectedNodeData is being passed down from the node dashboard component, so 
+the speedometer graph will update based on which node a user selects from the 
+nodes table. 
+
+If a node's memory usage exceeds the total available memory space, the avaiable 
+memory section on the graph will display in red. 
+*/
+
 const Speedometer = ({ selectedNodeData }) => {
   
   const [chartData, setChartData] = useState({});
@@ -34,8 +46,6 @@ const Speedometer = ({ selectedNodeData }) => {
       });
     } 
   }
-    
-    
     
   function chart() {
       setChartData({

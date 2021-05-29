@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import AnimatedNumber from "animated-number-react";
 
 
-function DiskSpace() {
+/*
+This is a static number that displays the CPU usage of a selected node. 
+
+Currently, it is using dummy data
+*/
+
+
+const CPUusage = () => {
 
   const [state, setState] = useState(0);
 
   useEffect(() => {
-    setState(4000)
+    setState(400)
   })
 
     return (
-      <div className="diskSpaceContainer">
-      <h2>Disk Space</h2>
+      <div className="cpuUSageContainer">
+      <h2>CPU Usage</h2>
         <AnimatedNumber
           value={state}
           formatValue={v => v.toFixed(0)}
@@ -30,4 +37,4 @@ function DiskSpace() {
     );
 }
 
-export default DiskSpace;
+export default CPUusage;

@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPageContainer from "./LandingPage/LandingPageContainer.jsx";
 // import SignIn from './SignIn'
-import Home from "./Home/Home.jsx";
+import Home from "./Dashboard/Home.jsx";
 import GetStartedPage from "./GetStarted/GetStartedPage.jsx";
 import LogInPage from "./LogIn/LogInPage.jsx";
+
+
+/*
+*
+* This is the main app component that renders everythig in ShipShape. 
+* We use react router to serve the different pages of the website.
+*
+*/
 
 function App() {
   return (

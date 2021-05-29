@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 
+/* 
+This is a bar chart imported in from chart.js to display the memory usage
+across all pods in a cluster. It is not dependent on a specific pod the 
+user clicks on, it displays the memory usage info for all the pods at once.
+
+The memory metric uses a letter/string as a unit, so we used regex to get rid 
+of this string unit so we could just get the raw numbers representing memory usage. 
+
+The inital state is set to the default value of Loading while the fetch request 
+for the data is pending. Once the fetch has finished, the state will update 
+with the data and the grpah will reflect this change. 
+*/
+
 const BarChart = ( { data } ) => {
 
   const [chartData, setChartData] = useState({
