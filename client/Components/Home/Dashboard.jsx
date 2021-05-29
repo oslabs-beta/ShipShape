@@ -6,6 +6,7 @@ import PodsTable from "./PodsTable.jsx";
 import DoughnutChart from "./Doughnut.jsx";
 import NodeDashboard from "./NodeDashboard.jsx";
 import PodDashboard from "./PodDashboard.jsx";
+import ClusterDashboard from "./ClusterDashboard.jsx"
 
 function Dashboard({ x }) {
   // const [data, setData] = useState([]);
@@ -55,7 +56,7 @@ function Dashboard({ x }) {
 
   return (
     <div className="mainDashboard">
-      {x === "pod" ? <PodDashboard /> : <NodeDashboard />}
+      {x === "pod" ? <PodDashboard /> : x === 'node' ? <NodeDashboard /> : <ClusterDashboard /> }
     </div>
   );
 }

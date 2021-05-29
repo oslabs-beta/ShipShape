@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PodView from "./PodView.jsx";
 import NodeView from "./NodeView.jsx";
+import ClusterView from "./ClusterView.jsx"
 import Settings from "./Settings.jsx";
 import PodsTable from "./PodsTable.jsx";
 
@@ -8,6 +9,7 @@ function Navbar( {handler} ) {
   const [dashboardLoaded, setdashboardLoaded] = useState("podsView");
   const [podsData, setpodsData] = useState([]);
   const [nodesData, setnodesData] = useState([]);
+  const [clusterData, setclusterData] = useState([]);
 
   // async function fetchData() {
   //   const result = await fetch("/graphql", {
@@ -69,6 +71,7 @@ function Navbar( {handler} ) {
         {dashboardLoaded === "nodeView" && <PodsTable data={nodesData} />} */}
         <PodView handler={handler}/>
         <NodeView handler={handler}/>
+        <ClusterView handler={handler}/>
         <Settings />
       </div>
     </div>
