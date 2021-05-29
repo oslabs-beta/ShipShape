@@ -11,16 +11,14 @@ so the dashboard knows to render the pod view.
 */
 
 const podView = ({ handler }) => {
-
   return (
     <div>
       <button className="btnDashboard ah" onClick={() => handler("pod")}>
-        pod View
+        Pod View
         <FaAngleDown />
       </button>
     </div>
   );
-
 };
 
 export default podView;
