@@ -1,42 +1,41 @@
-    |App
-        |Sign In
-            |Header
+|App
+    | Landing Page
+        | Landing Page Container
+            | Header
                 |Logo
-                |Github links
-            | Oauth section
-                |AWS sign in
-                | Form Box
-                |log in button
-                |sign in button
+                |GitHub Link
+            |Body
+            |Footer   
+    
+    | Get Started 
+        | Header <- component borrowed from landing page 
+        | Get Started Body 
+    
+    | Log In
+        | Log In Page
 
-    |Main Page  / Home
-        | Header
-            |Logo
-            |Import button +
-            |Need help ?
-            |Profile/ maybe our github?
-        | Nav bar
-            |Cluster
-            |Namespace
-            |Nodes
-            |Pods
-        | Dashboard
-            |Graphs
-            |Graphs
-            |Graphs
-            |Table
+    | Dashboard 
+        | Home 
+            | Dashboard Header
+            | Navbar
+                | Pod View
+                | Node View 
+                | Cluster View
+                | Settings 
+            | Dashboard
+                | Pod Dashboard
+                    | Doughnut Chart
+                    | Bar Chart
+                    | Pods Table 
+                | Node Dashboard
+                    | CPU Usage 
+                    | Speedometer 
+                    | Disk Space 
+                    | Node Table
+                | Cluster Dashboard 
+                    | Streaming Memory Chart 
+                    | Streaming CPU Chart 
+                    | Streaming Network Pressure 
 
 
-    |Website landing Page
-        | Header
-            |logo
-            |github (link to github repo)
-        | Body
-                |Home
-                |About
-                |Features
-                |Team
 
-        | Footer
-            |Logo
-            |team githubs

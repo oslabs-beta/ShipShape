@@ -13,6 +13,16 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+/*
+This is the beginnings of our login page. We imported a login tempalte from
+Material UI, though we have plans to impliment Oauth at some point if we 
+even decide to proceed with giving users the option to make and account/
+log in with ShipShape at all, since this feature doesn't actually seem all
+that necessary to use and experience all ShipShpae has to offer. 
+*/
+
+
+
 function Copyright() {
   return (
     <Typography className='loginCont' variant="body2" color="textPrimary" align="center">

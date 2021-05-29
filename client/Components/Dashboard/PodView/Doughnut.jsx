@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Doughnut } from "react-chartjs-2";
 
+
+/* 
+This is a doughnut Chart JS imported from chart.js that displays the selected 
+pods memory usage by container. The selectedPodData is being passed down from
+the pod dashboard component, so the doughnut graph will update based on which
+pod a user selects from the pod table. 
+*/
+
+
 const DoughnutChart = ({ selectedPodData }) => {
   const [chartData, setChartData] = useState({});
 

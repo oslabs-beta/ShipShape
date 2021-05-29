@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
-const StreamingNetworkPressure = () => {
+/* 
+This is a line chart we imported from chart.js to display the Memory usage
+of the whole cluster over time. The data from the cluster query is being 
+passed down from the cluster dashboard component ***or home component if 
+we use context api*** and is used here to populate the data points on the line
+graph. 
+
+We wanted to make this a streaming live data chart initally, but never
+got that fully Implemented. 
+*/
+
+const StreamingMemoryChart = () => {
   const [chartData, setChartData] = useState({});
 
   function chart() {
@@ -9,8 +20,8 @@ const StreamingNetworkPressure = () => {
       labels: ["x", "y", "z", "t", "h"],
       datasets: [
         {
-          label: "Streaming Network Pressure",
-          data: [12, 35, 23, 27, 7, 45],
+          label: "Streaming Memory Pressure",
+          data: [32, 25, 13, 0, 27, 45],
           backgroundColor: [
             // 'rgb(172, 228, 170)' 
             // "rgb(160,192,206)",
@@ -27,7 +38,7 @@ const StreamingNetworkPressure = () => {
   }, []);
 
   return (
-    <div className="StreamingNetworkPressure streams">
+    <div className="StreamingMemoryChart streams">
       <Line
         data={chartData}
         options={{
@@ -61,4 +72,4 @@ const StreamingNetworkPressure = () => {
   );
 };
 
-export default StreamingNetworkPressure;
+export default StreamingMemoryChart;
