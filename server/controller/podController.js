@@ -1,6 +1,6 @@
 const k8sApi = require('./../k8sApi');
 const cmd = require('node-cmd');
-const Pod = require('./../constructors/podConstructor');
+const Pod = require('../datasources/podConstructor');
 
 
 const podController = {};

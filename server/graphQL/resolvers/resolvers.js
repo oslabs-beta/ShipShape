@@ -6,8 +6,8 @@ const { isObject, find } = require('lodash');
 // const nodePercentages = require('../mockData/nodesPercentages.json')
 const k8sApi = require('../../k8sApi.js');
 const fetch = require('node-fetch');
-const podData = require('../../constructors/podConstructor.js')
-const nodeData = require('../../constructors/nodeConstructor.js');
+const podData = require('../../datasources/podConstructor.js')
+const nodeData = require('../../datasources/nodeConstructor.js');
 // const { mockServer } = require('@graphql-tools/mock');
 
 //set to true to use mockData instead of pulling real k8s cluster data 
