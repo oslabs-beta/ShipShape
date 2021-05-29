@@ -640,7 +640,8 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 .podDashboard,
-.nodeDashboard {
+.nodeDashboard,
+.clusterDashboard {
   grid-column: 1 / 15;
   grid-row: 1 / 13;
   background-color: $mainTextColor;
@@ -652,10 +653,39 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   position: relative;
 }
 
-// .lineChart {
-//   grid-column: 1 / 7;
-//   grid-row: 1 / 7;
-//   border: 1px solid rgba(0, 0, 0, 0.3);
+.StreamingNetworkPressure {
+  grid-column: 1 / 13;
+  grid-row: 1/ 5;
+  border: 1px solid rgba(14, 13, 13, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+}
+
+.StreamingMemoryChart {
+  grid-column: 1 / 13;
+  grid-row: 5 / 9;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+}
+
+.StreamingCpuChart {
+  grid-column: 1 / 13;
+  grid-row: 9 / 13;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+}
+
+.streams > canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+// .liveLineChart > canvas {
+//   grid-column: auto;
+//   grid-row: auto;
+//   border: 1px solid rgba(14, 13, 13, 0.3);
 //   border-radius: 5px;
 //   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 // }
@@ -668,8 +698,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 
-.doughnutContainer,
-canvas {
+.doughnutContainer {
   grid-column: 7 / 13;
   grid-row: 1 / 7;
   border: 1px solid rgba(0, 0, 0, 0.3);
