@@ -5,10 +5,10 @@ const { isObject, find } = require('lodash');
 // const mockNodeMetrics = require('../mockData/rawNodeMetricsShort.json') //using short rn b/c I don't have up-to-date full
 // const nodePercentages = require('../mockData/nodesPercentages.json')
 const k8sApi = require('../../k8sApi.js');
-const fetch = require('node-fetch');
 const podData = require('../../datasources/podConstructor.js')
 const nodeData = require('../../datasources/nodeConstructor.js');
 // const { mockServer } = require('@graphql-tools/mock');
+// const prometheusAPI = require('../../datasources/prometheusAPI');
 
 //set to true to use mockData instead of pulling real k8s cluster data 
 const mockMode = false;
@@ -35,24 +35,6 @@ const mergeDeep = (target, source) => {
 module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
-      /** ORIGINAL CODE
-        const pods = (await k8sApi.listNamespacedPod('default')).response.body.items;
-        //this is an ugly hack to pass the name and namespace context down to containers.
-        //a better system would be able to access this grandparent data directly
-        //a seconary strategy will be to add a conditional that only runs this loop when container data will later be queried
-
-
-        
-        pods.forEach(pod => { 
-          if(pod.status.phase !== 'Running') return;
-          pod.spec.containers.forEach(container => {
-            container.podName = pod.metadata.name;
-            container.namespace = pod.metadata.namespace;
-        })
-        })
-          return pods
-      */
-
       /** NEW CODE  */
       const podsApi = (await k8sApi.listNamespacedPod('default')).response.body.items;
       const podsCmd = (await podData.getMetrics()).items
@@ -108,6 +90,9 @@ module.exports = {
         node.status.allocatable.ephemeralStorage = node.status.allocatable["ephemeral-storage"];
       });
       return nodes
+    },
+    cpuUsage: async (parent, args, { dataSources }, info) => {
+      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName('2021-05-28T14:55:06.753Z', '2021-05-28T20:55:05.208Z', '10m')
     }
   },
   // Container: {
