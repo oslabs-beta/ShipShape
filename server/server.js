@@ -7,6 +7,8 @@ const { graphqlHTTP } = require('express-graphql');
 const GQLSchema = require('./graphQL/schema.js');
 
 //routers for various function
+const k8sApiRouter = require('./router/k8sApiRouter');
+const k8sRawRouter = require('./router/k8sRawRouter');
 const metricsServerRouter = require('./router/metricsServerRouter.js');
 const prometheusRouter = require('./router/prometheusRouter.js');
 
@@ -22,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/metrics', metricsServerRouter);
+app.use('/api', k8sApiRouter);
+app.use('/raw', k8sRawRouter);
 app.use('/prometheus', prometheusRouter);
 
 app.use('/graphql', graphqlHTTP({
