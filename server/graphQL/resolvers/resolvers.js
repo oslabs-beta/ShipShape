@@ -93,13 +93,11 @@ module.exports = {
       end = new Date(end).toISOString();
       return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(start, end, step);
     },
-
     freeMemory: async (parent, {start, end, step }, { dataSources }, info) => {
       start = new Date(start).toISOString();
       end = new Date(end).toISOString();
       return dataSources.prometheusAPI.getClusterFreeMemory(start, end, step);
     },
-
     networkTransmitted: async (parent, {start, end, step }, { dataSources }, info) => {
       start = new Date(start).toISOString();
       end = new Date(end).toISOString();
