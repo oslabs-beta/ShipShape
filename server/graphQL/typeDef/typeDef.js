@@ -1,3 +1,5 @@
+const { gql } = require('apollo-server-express')
+
 /** 
 
 There is a weird issue with the first two types listed here. They are nested inside 'Container Statuses'
@@ -8,7 +10,7 @@ to see what fields might be added for pending and failed pods.
 
 */
 
-module.exports = `
+module.exports = gql`
 
 type NodeInfo { 
   machineID: String
@@ -261,22 +263,23 @@ type Pod {
   spec: PodSpec 
 }
 
+# a standard time series object built from a PromQL query
+type TimeSeries {
+  timestamps: [String]!
+  seriesLabels: [String]!
+  seriesValues: [[String]]!
+}
 
 # the schema allows the following query
 type Query {
   # query will return an array of all pods
   getPods: [Pod]
 
-  # query will return an array of all pods not running
-  podsNotRunning: [Pod]
-  
-  # query will return an array of all pods of given status
-  podsByStatus(status: String!): [Pod]
-
-  # query will return an array of all pods of a given namespace
-  podsByNamespace(namespace: String!): [Pod]
-
   # query will return an array of all nodes
   nodes: [Node]
+
+  cpuUsage(start:String!, end:String!, step:String!): TimeSeries
+  freeMemory(start:String!, end:String!, step:String!): TimeSeries
+  networkTransmitted(start:String!, end:String!, step:String!): TimeSeries
 }
 `

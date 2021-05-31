@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { fetchChartData } from '../../../helpers.js'
 
 /* 
 This is a line chart we imported from chart.js to display the CPU usage
@@ -12,8 +13,17 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
+const colors = ["rgb(160, 192, 206)", "rgb(38,84,121)", "rgb(207, 225, 232)"];
+
+
 const StreamingCpuChart = () => {
   const [chartData, setChartData] = useState({});
+
+  async function chart(){
+    const data = await fetchChartData('cpuUsage', 6, '2m')
+    setChartData(data);
+  }
+
   const labels = [
     "TS 1",
     "TS 2",
@@ -81,41 +91,40 @@ const StreamingCpuChart = () => {
     323, 190, 178, 30, 190, 178, 323, 190, 178, 30, 190, 178, 323, 190, 178, 30,
     190, 178, 323, 190, 178, 30, 190, 178,
   ];
-  const colors = ["rgb(38,84,121)", "rgb(160, 192, 206)", "rgb(207, 225, 232)"];
 
-  function chart() {
-    setChartData({
-      labels: labels,
-      datasets: [
-        {
-          label: "Namespace 1",
-          data: dataset1,
-          backgroundColor: colors[0],
-        },
-        {
-          label: "Namespace 2",
-          data: dataset2,
-          backgroundColor: colors[1],
-        },
-        // {
-        //   label: "Dataset 3",
-        //   data: null,
-        //   backgroundColor: colors[2],
-        // },
-        // {
-        //   label: "Streaming CPU Usage",
-        //   data: [1, 15, 23, 37, 7, 14],
-        //   backgroundColor: [
-        //     "rgb(172, 228, 170)",
-        //     "rgb(160,192,206)",
-        //     "rgb(38,84,121)",
-        //   ],
-        //   borderWidth: 5,
-        //   maxBarThickness: 50,
-        // },
-      ],
-    });
-  }
+  // function chart() {
+  //   setChartData({
+  //     labels,
+  //     datasets: [
+  //       {
+  //         label: "Namespace 1",
+  //         data: dataset1,
+  //         backgroundColor: colors[0],
+  //       },
+  //       {
+  //         label: "Namespace 2",
+  //         data: dataset2,
+  //         backgroundColor: colors[1],
+  //       },
+  //       // {
+  //       //   label: "Dataset 3",
+  //       //   data: null,
+  //       //   backgroundColor: colors[2],
+  //       // },
+  //       // {
+  //       //   label: "Streaming CPU Usage",
+  //       //   data: [1, 15, 23, 37, 7, 14],
+  //       //   backgroundColor: [
+  //       //     "rgb(172, 228, 170)",
+  //       //     "rgb(160,192,206)",
+  //       //     "rgb(38,84,121)",
+  //       //   ],
+  //       //   borderWidth: 5,
+  //       //   maxBarThickness: 50,
+  //       // },
+  //     ],
+  //   });
+  // }
 
   useEffect(() => {
     chart();
@@ -129,7 +138,7 @@ const StreamingCpuChart = () => {
           plugins: {
             title: {
               display: true,
-              text: "Stacked Namespace CPU Usage",
+              text: "CPU Usage (by Namespace)",
             },
           },
           responsive: true,

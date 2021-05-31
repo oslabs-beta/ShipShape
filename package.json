@@ -30,6 +30,7 @@
     "Utils": "^1.0.39",
     "animated-number-react": "^0.1.2",
     "apollo-datasource-rest": "^0.14.0",
+    "apollo-server-express": "^2.18.0-rc.1",
     "axios": "^0.21.1",
     "babel-jest": "^27.0.2",
     "body-parser": "^1.19.0",

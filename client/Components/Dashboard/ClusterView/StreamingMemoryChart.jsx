@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import { fetchChartData } from '../../../helpers.js'
 
 /* 
 This is a line chart we imported from chart.js to display the Memory usage
@@ -12,25 +13,14 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
+const colors = ["rgb(160, 192, 206)", "rgb(38,84,121)", "rgb(207, 225, 232)"];
+
 const StreamingMemoryChart = () => {
   const [chartData, setChartData] = useState({});
 
-  function chart() {
-    setChartData({
-      labels: ["x", "y", "z", "t", "h"],
-      datasets: [
-        {
-          label: "Streaming Memory Pressure",
-          data: [32, 25, 13, 0, 27, 45],
-          backgroundColor: [
-            // 'rgb(172, 228, 170)' 
-            // "rgb(160,192,206)",
-            "rgb(38,84,121)",
-          ],
-          borderWidth: 5,
-        },
-      ],
-    });
+  async function chart() {
+    const data = await fetchChartData('freeMemory', 6, '5m')
+    setChartData(data);
   }
 
   useEffect(() => {
