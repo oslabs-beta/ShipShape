@@ -27,7 +27,7 @@ describe('nodeController tests', () => {
     })
     it('res.locals.nodes has the expected data form', async () => {
       await nodeController.getNodesRaw(req, res, next);
-      console.log(res.locals);
+      // console.log(res.locals);
       const responseJSON = res.locals.nodes.response.toJSON()
       expect(responseJSON).toHaveProperty('body');
       expect(responseJSON.body).toHaveProperty('items')
