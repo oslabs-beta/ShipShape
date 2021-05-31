@@ -13,33 +13,68 @@ class PrometheusAPI extends RESTDataSource{
   }
 
   async getCpuUsageSecondsRateByName(startDateTime, endDateTime, step){
-    let query = `query_range?query=sum(rate(container_cpu_usage_seconds_total{container_name!="POD",namespace!=""}[${step}])) by (namespace)`
-    query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`
+    let query = `query_range?query=sum(rate(container_cpu_usage_seconds_total{container_name!="POD",namespace!=""}[2m])) by (namespace)`;
+    query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then( ({ data }) => data.result);
 
-    // console.log(data);
-    //construct the response object for the front-end by flattening the query result
-    const res = {
-      timestamps: [],
-      seriesLabels: [],
-      seriesValues: [],
-    };
-
-    //take the timestamps from the first series to create our x-axis, using regex to grab the time.
-    const timeFilter = /[0-9][0-9]:[0-9][0-9]/
-    res.timestamps = data[0].values.map(vals => new Date(1000 * vals[0]).toISOString().match(timeFilter)[0])
-   
-    //build each dataset
-    data.forEach(dataset => {
-      res.seriesLabels.push(dataset.metric.namespace); // add a new dataseries label to our res
-      res.seriesValues.push(dataset.values.map(vals => vals[1])); // add the dataseries to our res
-    });
-    // console.log(res)
-    return res;
+    return this.formatResponseObject(data);
   }
 
+  async getClusterFreeMemory(startDateTime, endDateTime, step){
+    let query = `query_range?query=sum(rate(node_memory_MemFree_bytes[2m]))`;
+    query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
+    const data = await this.get(query).then(({ data }) => data.result);
+
+    return this.formatResponseObject(data)
+  }
+
+  //http://localhost:9090/api/v1/query_range?query=sum(rate(node_network_transmit_bytes[…]2021-05-26T20:55:06.753Z&end=2021-05-28T20:55:05.208Z&step=1m
+
+  async getNetworkTransmitBytes(startDateTime, endDateTime, step){
+    console.log('here?');
+    let query = `query_range?query=sum(rate(node_network_transmit_bytes[2m]))`;
+    query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
+    const data = await this.get(query).then(({ data }) => data.result).catch(err => console.log(err));
+
+    console.log(data);
+
+    return this.formatResponseObject(data)
+  } 
 
 
+  formatResponseObject(data, label){    
+    try{ 
+      const res = {
+        timestamps: [],
+        seriesLabels: [],
+        seriesValues: [],
+      };
+
+      //helper function to convert the Prometheus MS timestamp to HH:MM
+      const timeFilter = /[0-9][0-9]:[0-9][0-9]/
+      const msToTimestamp = (ms) => new Date(1000 * ms).toISOString().match(timeFilter)[0];
+
+      //pop the last series off the query response to extract timestamp and groupBy label
+      const initialSet = data.pop();
+      const groupByLabel = Object.keys(initialSet.metric)[0];
+
+      // add this last series to the response object arrays
+      res.timestamps = initialSet.values.map(vals => msToTimestamp(vals[0]));
+      res.seriesLabels.push(initialSet.metric[groupByLabel] || 'Cluster')
+      res.seriesValues.push(initialSet.values.map(vals => vals[1]))
+    
+      // for each remaining dataset, push the series label and array of datapoints onto the res object
+      data.forEach(dataset => {
+        res.seriesLabels.push(dataset.metric[groupByLabel]); // add a new dataseries label to our res
+        res.seriesValues.push(dataset.values.map(vals => vals[1])); // add the dataseries to our res
+      });
+      
+      //return the constructed response
+      return res;
+    } catch(err){
+      console.log(err);
+    }
+  }
 }
 
 module.exports = PrometheusAPI;

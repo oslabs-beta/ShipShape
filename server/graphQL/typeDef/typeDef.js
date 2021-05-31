@@ -279,5 +279,7 @@ type Query {
   nodes: [Node]
 
   cpuUsage(start:String!, end:String!, step:String!): TimeSeries
+  freeMemory(start:String!, end:String!, step:String!): TimeSeries
+  networkTransmitted(start:String!, end:String!, step:String!): TimeSeries
 }
 `

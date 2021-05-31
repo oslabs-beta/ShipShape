@@ -89,10 +89,21 @@ module.exports = {
       return nodes
     },
     cpuUsage: async (parent, { start, end, step }, { dataSources }, info) => {
-      start = new Date(start).toISOString()
-      end = new Date(end).toISOString()
-      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(start, end, step)
-      // return dataSources.prometheusAPI.getCpuUsageSecondsRateByName('2021-05-28T14:55:06.753Z', '2021-05-28T20:55:05.208Z', '2m')
+      start = new Date(start).toISOString();
+      end = new Date(end).toISOString();
+      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(start, end, step);
+    },
+
+    freeMemory: async (parent, {start, end, step }, { dataSources }, info) => {
+      start = new Date(start).toISOString();
+      end = new Date(end).toISOString();
+      return dataSources.prometheusAPI.getClusterFreeMemory(start, end, step);
+    },
+
+    networkTransmitted: async (parent, {start, end, step }, { dataSources }, info) => {
+      start = new Date(start).toISOString();
+      end = new Date(end).toISOString();
+      return dataSources.prometheusAPI.getNetworkTransmitBytes(start, end, step);
     }
   },
   // Container: {

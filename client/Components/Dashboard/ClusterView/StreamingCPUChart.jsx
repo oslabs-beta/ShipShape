@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { fetchChartData } from '../../../helpers.js'
 
 /* 
 This is a line chart we imported from chart.js to display the CPU usage
@@ -12,60 +13,15 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
-const colors = ["rgb(38,84,121)", "rgb(160, 192, 206)", "rgb(207, 225, 232)"];
+const colors = ["rgb(160, 192, 206)", "rgb(38,84,121)", "rgb(207, 225, 232)"];
 
 
 const StreamingCpuChart = () => {
   const [chartData, setChartData] = useState({});
 
   async function chart(){
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-
-    const end = new Date();
-    const start = new Date(end - 21600000)
-    const step = "2m"
-
-    const query = `
-    {
-      cpuUsage(start: "${start}", end: "${end}", step: "${step}"){
-        timestamps
-        seriesLabels
-        seriesValues
-      }
-    }
-    `
-    const data = await fetch("/graphql", {
-      signal: signal,
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ 
-        query
-      }),
-    })
-    .then((res) => res.json())
-    .then(({ data: { cpuUsage } }) => {
-      const data = cpuUsage;
-      const labels = data.timestamps
-      const datasets = []
-      data.seriesLabels.slice(0,10).forEach((label, i) => {
-        datasets.push({
-          label: label,
-          data: data.seriesValues[i],
-          backgroundColor: colors[i],
-        });
-      })
-  
-      setChartData({labels, datasets});
-    })
-    .catch((err) => console.log(err));
-
-    return function cleanup() {
-      AbortController.abort();
-    };
-
+    const data = await fetchChartData('cpuUsage', 6, '2m')
+    setChartData(data);
   }
 
   const labels = [
@@ -137,10 +93,6 @@ const StreamingCpuChart = () => {
   ];
 
   // function chart() {
-
-
-
-
   //   setChartData({
   //     labels,
   //     datasets: [
@@ -175,7 +127,6 @@ const StreamingCpuChart = () => {
   // }
 
   useEffect(() => {
-    // fetchData();
     chart();
   }, []);
 
