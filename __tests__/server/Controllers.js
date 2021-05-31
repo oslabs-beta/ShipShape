@@ -18,17 +18,16 @@ describe('nodeController tests', () => {
     res = {locals: {}};
   })
 
-  describe('getRawNodes', () =>{
+  describe('getNodeMetrics', () =>{
 
-    it('should have something on res.locals.nodes', async () =>{
-      await nodeController.getNodesRaw(req, res, next);
-      // console.log(res.locals.nodes);
-      expect(res.locals.nodes).toBeTruthy();
+    it('should have something on res.locals.nodeMetrics', async () =>{
+      await nodeController.getNodeMetrics(req, res, next);
+      expect(res.locals.nodeMetrics).toBeTruthy();
     })
     it('res.locals.nodes has the expected data form', async () => {
-      await nodeController.getNodesRaw(req, res, next);
-      // console.log(res.locals);
-      const responseJSON = res.locals.nodes.response.toJSON()
+      await nodeController.getNodeMetrics(req, res, next);
+      console.log(res.locals.nodeMetrics);
+      const responseJSON = res.locals.nodeMetrics.response.toJSON()
       expect(responseJSON).toHaveProperty('body');
       expect(responseJSON.body).toHaveProperty('items')
       expect(Array.isArray(responseJSON.body.items)).toBeTruthy();
