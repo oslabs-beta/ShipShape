@@ -12,8 +12,62 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
+const colors = ["rgb(38,84,121)", "rgb(160, 192, 206)", "rgb(207, 225, 232)"];
+
+
 const StreamingCpuChart = () => {
   const [chartData, setChartData] = useState({});
+
+  async function chart(){
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    const end = new Date();
+    const start = new Date(end - 21600000)
+    const step = "2m"
+
+    const query = `
+    {
+      cpuUsage(start: "${start}", end: "${end}", step: "${step}"){
+        timestamps
+        seriesLabels
+        seriesValues
+      }
+    }
+    `
+    const data = await fetch("/graphql", {
+      signal: signal,
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        query
+      }),
+    })
+    .then((res) => res.json())
+    .then(({ data: { cpuUsage } }) => {
+      const data = cpuUsage;
+      const labels = data.timestamps
+      const datasets = []
+      data.seriesLabels.slice(0,10).forEach((label, i) => {
+        datasets.push({
+          label: label,
+          data: data.seriesValues[i],
+          backgroundColor: colors[i],
+        });
+      })
+  
+      setChartData({labels, datasets});
+    })
+    .catch((err) => console.log(err));
+
+    return function cleanup() {
+      AbortController.abort();
+    };
+
+  }
+
   const labels = [
     "TS 1",
     "TS 2",
@@ -81,43 +135,47 @@ const StreamingCpuChart = () => {
     323, 190, 178, 30, 190, 178, 323, 190, 178, 30, 190, 178, 323, 190, 178, 30,
     190, 178, 323, 190, 178, 30, 190, 178,
   ];
-  const colors = ["rgb(38,84,121)", "rgb(160, 192, 206)", "rgb(207, 225, 232)"];
 
-  function chart() {
-    setChartData({
-      labels: labels,
-      datasets: [
-        {
-          label: "Namespace 1",
-          data: dataset1,
-          backgroundColor: colors[0],
-        },
-        {
-          label: "Namespace 2",
-          data: dataset2,
-          backgroundColor: colors[1],
-        },
-        // {
-        //   label: "Dataset 3",
-        //   data: null,
-        //   backgroundColor: colors[2],
-        // },
-        // {
-        //   label: "Streaming CPU Usage",
-        //   data: [1, 15, 23, 37, 7, 14],
-        //   backgroundColor: [
-        //     "rgb(172, 228, 170)",
-        //     "rgb(160,192,206)",
-        //     "rgb(38,84,121)",
-        //   ],
-        //   borderWidth: 5,
-        //   maxBarThickness: 50,
-        // },
-      ],
-    });
-  }
+  // function chart() {
+
+
+
+
+  //   setChartData({
+  //     labels,
+  //     datasets: [
+  //       {
+  //         label: "Namespace 1",
+  //         data: dataset1,
+  //         backgroundColor: colors[0],
+  //       },
+  //       {
+  //         label: "Namespace 2",
+  //         data: dataset2,
+  //         backgroundColor: colors[1],
+  //       },
+  //       // {
+  //       //   label: "Dataset 3",
+  //       //   data: null,
+  //       //   backgroundColor: colors[2],
+  //       // },
+  //       // {
+  //       //   label: "Streaming CPU Usage",
+  //       //   data: [1, 15, 23, 37, 7, 14],
+  //       //   backgroundColor: [
+  //       //     "rgb(172, 228, 170)",
+  //       //     "rgb(160,192,206)",
+  //       //     "rgb(38,84,121)",
+  //       //   ],
+  //       //   borderWidth: 5,
+  //       //   maxBarThickness: 50,
+  //       // },
+  //     ],
+  //   });
+  // }
 
   useEffect(() => {
+    // fetchData();
     chart();
   }, []);
 
@@ -129,7 +187,7 @@ const StreamingCpuChart = () => {
           plugins: {
             title: {
               display: true,
-              text: "Stacked Namespace CPU Usage",
+              text: "CPU Usage (by Namespace)",
             },
           },
           responsive: true,

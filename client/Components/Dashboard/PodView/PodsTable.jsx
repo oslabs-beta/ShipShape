@@ -88,7 +88,8 @@ const PodsTable = ({ data, setpodSelected, changePod }) => {
         ms = ms % daysFactor;
         const hours = Math.floor(ms / hoursFactor);
         ms = ms % hoursFactor;
-        const minutes = Math.floor(ms / minutesFactor);
+        let minutes = Math.floor(ms / minutesFactor);
+        minutes = (minutes < 10) ? '0' + minutes : minutes
         ms = ms % minutesFactor;
         const seconds = Math.floor(ms / secondsFactor);
 

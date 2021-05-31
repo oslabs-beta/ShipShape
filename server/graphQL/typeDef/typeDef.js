@@ -263,8 +263,9 @@ type Pod {
   spec: PodSpec 
 }
 
+# a standard time series object built from a PromQL query
 type TimeSeries {
-  timestamps: [Float]!
+  timestamps: [String]!
   seriesLabels: [String]!
   seriesValues: [[String]]!
 }
@@ -277,6 +278,6 @@ type Query {
   # query will return an array of all nodes
   nodes: [Node]
 
-  cpuUsage: TimeSeries
+  cpuUsage(start:String!, end:String!, step:String!): TimeSeries
 }
 `

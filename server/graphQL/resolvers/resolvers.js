@@ -38,7 +38,7 @@ module.exports = {
       /** NEW CODE  */
       const podsApi = (await k8sApi.listNamespacedPod('default')).response.body.items;
       const podsCmd = (await podData.getMetrics()).items
-      // console.log(podsCmd);
+
       //Brute force approach to merging these two datasources by cycling through to match on pod name and  container name
         //should be refactored using only forEach, or better yet a findOne style method would improve performance;
         // I also feel like we should fold container status into this query as well
@@ -70,10 +70,7 @@ module.exports = {
       const nodes = (await k8sApi.listNode('default')).response.body.items
       const allNodePercentages = (await nodeData.getPercentages())
       const allNodeMetrics = (await nodeData.getNodeMetrics()).items;
-      // console.log(nodeMetrics);
-      // console.log(nodeMetrics[0].metadata);
-      // console.log(nodeMetrics[0].usage);
-      // console.log(mockNodes);
+
       nodes.forEach(node => {
         const nodePercent = find(allNodePercentages, { NAME: [node.metadata.name]});
         node.status.usagePercent = {
@@ -91,8 +88,11 @@ module.exports = {
       });
       return nodes
     },
-    cpuUsage: async (parent, args, { dataSources }, info) => {
-      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName('2021-05-28T14:55:06.753Z', '2021-05-28T20:55:05.208Z', '10m')
+    cpuUsage: async (parent, { start, end, step }, { dataSources }, info) => {
+      start = new Date(start).toISOString()
+      end = new Date(end).toISOString()
+      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(start, end, step)
+      // return dataSources.prometheusAPI.getCpuUsageSecondsRateByName('2021-05-28T14:55:06.753Z', '2021-05-28T20:55:05.208Z', '2m')
     }
   },
   // Container: {
