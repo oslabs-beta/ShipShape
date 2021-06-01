@@ -34,7 +34,9 @@ const StreamingMemoryChart = () => {
         options={{
           maintainAspectRatio: false,
           responsive: true,
-          title: { text: "Some Data", display: true },
+          plugins: {
+            title: { text: "Memory Usage", display: true },
+          },          
           scales: {
             yAxes: [
               {
