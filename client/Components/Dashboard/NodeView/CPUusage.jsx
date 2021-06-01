@@ -16,19 +16,25 @@ const CPUusage = ( {selectedNodeData} ) => {
 
   // const allLetters = /[a-z|%]*/gi
   // const cpuUsage = selectedNodeData.status ? selectedNodeData.status.usagePercent.cpu.replace(allLetters,'') : undefined;
-  let cpuUsage;
+  let cpuUsage, cpuPercent;
   if(selectedNodeData.status){
       const allLetters = /[a-z|%]*/gi
-      cpuUsage = selectedNodeData.status.usagePercent.cpu.replace(allLetters,'');
-}
-console.log('coming from selectedNodeData', selectedNodeData)
-useEffect(() => {
-  setState(cpuUsage)
-}, [])
+      cpuUsage = selectedNodeData.status.usagePercent.cpuCores.replace(allLetters,'');
+      
+      // console.log('coming from selectedNodeData', selectedNodeData)
+      // console.log('trying to  get cpu usage', selectedNodeData.status.usage.cpu)
+      // console.log(cpuUsage)
+      
+    }
+
+    useEffect(() => {
+      setState(Number(cpuUsage))
+    });
 
     return (
       <div className="cpuUSageContainer">
-      <h2>CPU Usage</h2>
+        <h2>CPU Usage</h2>
+        <div className='animatedNumber'>
         <AnimatedNumber
           value={state}
           formatValue={v => v.toFixed(0)}
@@ -42,6 +48,8 @@ useEffect(() => {
               }
           }
         />
+        <p>m</p>
+        </div>
       </div>
     );
  }
