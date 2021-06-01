@@ -32,7 +32,9 @@ const StreamingNetworkPressure = () => {
         options={{
           maintainAspectRatio: false,
           responsive: true,
-          title: { text: "Some Data", display: true },
+          plugins: {
+            title: { text: "Network Pressure", display: true },
+          },
           scales: {
             yAxes: [
               {
