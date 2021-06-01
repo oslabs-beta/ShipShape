@@ -24,7 +24,6 @@ function App() {
           <Route exact path="/" render={() => <LandingPageContainer />} />
           <Route path="/getStarted" render={() => <GetStartedPage />} />
           <Route path="/dashboard" render={() => <Home />} />
-          <Route path="/LogIn" render={() => <LogInPage />} />
           <Route component={NotFound} /> 
         </Switch>
       </BrowserRouter>

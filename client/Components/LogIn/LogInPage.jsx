@@ -14,11 +14,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 /*
-This is the beginnings of our login page. We imported a login tempalte from
-Material UI, though we have plans to impliment Oauth at some point if we 
-even decide to proceed with giving users the option to make and account/
+This is the beginnings of our login page. We imported a login template from
+Material UI, though we had plans to impliment Oauth at some point.  In the end we 
+decided not to proceed with giving users the option to make and account/
 log in with ShipShape at all, since this feature doesn't actually seem all
-that necessary to use and experience all ShipShpae has to offer. 
+that necessary to use and experience all ShipShpae has to offer. Instead of 
+saving any information that might make a user want to keep secure and in an
+account, ShipShape will just read and retrun metrics. nothing is saved or 
+stored at any point, so there is not real motivation for making an account. 
 */
 
 
