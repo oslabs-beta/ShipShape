@@ -1,6 +1,5 @@
 const { spawn } = require('child_process')
 const {RESTDataSource} = require('apollo-datasource-rest');
-// docs: https://www.apollographql.com/docs/apollo-server/data/data-sources/
 
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
@@ -40,9 +39,9 @@ class PrometheusAPI extends RESTDataSource{
   //http://localhost:9090/api/v1/query_range?query=sum(rate(node_network_transmit_bytes[…]2021-05-26T20:55:06.753Z&end=2021-05-28T20:55:05.208Z&step=1m
 
   async getNetworkTransmitBytes(startDateTime, endDateTime, step){
-    const checkVar = await this.portPrometheus()
-    console.log('checkVar:',checkVar)
-    if(!checkVar) return console.log('DEAD') 
+    const checkProm = await this.portPrometheus()
+    
+    if(!checkProm) return console.log('Error with Pometheus Configurations'); 
     let query = `query_range?query=sum(rate(node_network_transmit_bytes_total[2m]))`;
     query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then(({ data }) => data.result).catch(err => console.log(err));
@@ -106,7 +105,7 @@ class PrometheusAPI extends RESTDataSource{
       })
 
       process.on('close', (code) => {
-        if(code === 1) resolve(true)
+        if(code === 1) resolve(this.isPrometheusUp.check)
         else {
           console.log(`child process exited with code ${code}`);
           this.isPrometheusUp.check = false;
