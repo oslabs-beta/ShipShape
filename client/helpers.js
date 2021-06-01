@@ -1,6 +1,6 @@
 const colors = ["rgb(160, 192, 206)", "rgb(38,84,121)", "rgb(207, 225, 232)"];
 
-export function fetchChartData(queryType, hours, step){
+export function fetchChartData(queryType, hours = 6, step = '2m'){
     const end = new Date();
     const start = new Date(end - 3600000 * hours)
 
