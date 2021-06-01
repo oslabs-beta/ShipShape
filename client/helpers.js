@@ -26,7 +26,7 @@ export function fetchChartData(queryType, hours, step){
       }),
     })
     .then((res) => res.json())
-    .then(({ data }) => {
+    .then(({ data  }) => {
       data = data[queryType];
       const labels = data.timestamps
       const datasets = []
@@ -37,7 +37,6 @@ export function fetchChartData(queryType, hours, step){
           backgroundColor: colors[i],
         });
       })
-
       return {labels, datasets};
     })
     .catch((err) => console.log(err));
