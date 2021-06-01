@@ -97,7 +97,7 @@ class PrometheusAPI extends RESTDataSource{
 
   async getNetworkTransmitBytes(startDateTime, endDateTime, step){
     // if(!this.prometheusCheck()) return console.log('DEAD')
-    let query = `query_range?query=sum(rate(node_network_transmit_bytes[2m]))`;
+    let query = `query_range?query=sum(rate(node_network_transmit_bytes_total[2m]))`;
     query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then(({ data }) => data.result).catch(err => console.log(err));
 

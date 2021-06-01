@@ -17,7 +17,7 @@ const StreamingNetworkPressure = () => {
   const [chartData, setChartData] = useState({});
 
   async function chart() {
-    const data = await fetchChartData('freeMemory', 6, '5m')
+    const data = await fetchChartData('networkTransmitted', 6, '5m')
     setChartData(data);
   }
 
