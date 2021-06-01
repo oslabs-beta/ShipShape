@@ -277,7 +277,7 @@ type Query {
   # query will return an array of all nodes
   nodes: [Node]
   #subqueries 
-  cpuUsage(start:String!, end:String!, step:String!): TimeSeries @PrometheusUpDirective
+  cpuUsage(start:String!, end:String!, step:String!): TimeSeries
   freeMemory(start:String!, end:String!, step:String!): TimeSeries
   networkTransmitted(start:String!, end:String!, step:String!): TimeSeries
 }

@@ -8,8 +8,8 @@ class PrometheusUpDirective extends SchemaDirectiveVisitor {
   portAttempts = 0;
   
   visitObject(object){
-    console.log("HIIIII");
     object.resolve = () => {
+      console.log("HIIIII");
       if(true) return "Hello"
       else throw new Error('Cannot Port Prometheus. Check Server Logs.');
     }
