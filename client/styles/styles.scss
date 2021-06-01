@@ -7,11 +7,6 @@ $darkBlue: rgb(38, 84, 121);
 $secondTextColor: rgb(38, 84, 121);
 // $cardBackground: black;
 
-
-
-
-
-
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 
@@ -680,7 +675,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   grid-row: 9 / 13;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+  // box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 
 .streams > canvas {
@@ -890,4 +885,16 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
     // box-shadow: inset 0 0 10px 0 #5f5e5e41;
     box-shadow: 0 4px 2px -2px rgba(160, 192, 206, 0.4);
   }
+}
+.animatedNumber {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.animatedNumber > P {
+  font-size: 3em;
+  border-bottom: 1px solid $lightBlue;
+  // box-shadow: inset 0 0 10px 0 #5f5e5e41;
+  box-shadow: 0 4px 2px -2px rgba(160, 192, 206, 0.4);
 }
