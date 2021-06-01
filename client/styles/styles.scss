@@ -351,6 +351,15 @@ h3 {
   line-height: 1.5em;
 }
 
+#here {
+  font-size: 1em;
+  color: $darkBlue;
+}
+
+#here:hover {
+  color: white;
+}
+
 //------------------------------------------------------------------------------------//
 
 // body {
