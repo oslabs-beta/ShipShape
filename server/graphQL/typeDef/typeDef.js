@@ -263,7 +263,7 @@ type Pod {
   spec: PodSpec 
 }
 
-# a standard time series object built from a PromQL query
+# a standard time series object buil t from a PromQL query
 type TimeSeries {
   timestamps: [String]!
   seriesLabels: [String]!
@@ -274,10 +274,9 @@ type TimeSeries {
 type Query {
   # query will return an array of all pods
   getPods: [Pod]
-
   # query will return an array of all nodes
   nodes: [Node]
-
+  #subqueries 
   cpuUsage(start:String!, end:String!, step:String!): TimeSeries
   freeMemory(start:String!, end:String!, step:String!): TimeSeries
   networkTransmitted(start:String!, end:String!, step:String!): TimeSeries

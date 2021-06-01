@@ -5,6 +5,7 @@ import LandingPageContainer from "./LandingPage/LandingPageContainer.jsx";
 import Home from "./Dashboard/Home.jsx";
 import GetStartedPage from "./GetStarted/GetStartedPage.jsx";
 import LogInPage from "./LogIn/LogInPage.jsx";
+import NotFound from "./NotFound.jsx";
 
 
 /*
@@ -24,6 +25,7 @@ function App() {
           <Route path="/getStarted" render={() => <GetStartedPage />} />
           <Route path="/dashboard" render={() => <Home />} />
           <Route path="/LogIn" render={() => <LogInPage />} />
+          <Route component={NotFound} /> 
         </Switch>
       </BrowserRouter>
     </div>

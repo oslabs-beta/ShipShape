@@ -27,6 +27,12 @@ const mergeDeep = (target, source) => {
   return target;
 };
 
+/*
+  * TODO: Implement pagination: https://www.apollographql.com/docs/tutorial/resolvers/#paginate-results
+  * TODO: Abstract mergeDeep function
+  * TODO: Cleamup messy merge below
+ */
+
 /** Useful Docs:
  * On accessing grandparents in resolvers https://github.com/graphql/graphql-js/issues/1098
  * a
@@ -44,7 +50,7 @@ module.exports = {
         // I also feel like we should fold container status into this query as well
         // question though - how closely do we want to match original data source? This could allow us to build a graphQL tool
         // maybe use a lodash function https://lodash.com/docs/4.17.15; this will likely have a similar time complexity,
-        // but it will be more imperative and easy to read.
+        // but it will be more declarative and easier to read.
       const podArray = []
       podsApi.forEach((pod) => {
         const mergedPod = podsCmd.reduce((original, metrics) => {
@@ -104,18 +110,4 @@ module.exports = {
       return dataSources.prometheusAPI.getNetworkTransmitBytes(start, end, step);
     }
   },
-  // Container: {
-  //   usage: async (parent, args, context, info) => {
-  //     // console.log(parent);
-  //     const { name, podName, namespace } = parent;
-  //     if(!podName) return {cpu: null, memory: null};
-  //     const podMetrics = await podData.getMetrics(namespace, podName);
-  //     // const podMetrics = metricsResp.items;
-
-  //     // console.log(podMetrics.container);
-  //     const { usage } = find(podMetrics.containers, { name });
-  //     // console.log(usage);
-  //     return usage;
-  //   },
-  // },
 };
