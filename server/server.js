@@ -1,12 +1,13 @@
 const express = require("express");
-const { ApolloServer, graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-// const { graphqlHTTP } = require('express-graphql'); // may be able to remove
-const gqlSchema = require('./graphQL/schema.js'); //import GraphQL Schema
+const { ApolloServer } = require('apollo-server-express');
+const gqlSchema = require('./graphQL/schema.js'); 
 const path = require("path");
+
+// initialize express server
 const app = express();
 
 
-//routers for various function
+// routers for various function
 const metricsServerRouter = require('./router/metricsServerRouter.js');
 const prometheusRouter = require('./router/prometheusRouter.js');
 
@@ -15,25 +16,24 @@ const PORT = 3000;
 //** Serve all compiled files when running the production build **/
 app.use(express.static(path.resolve(__dirname, "../client")));
 app.use("/build", express.static(path.join(__dirname, "../build")));
-//revisit if this can be refactored to server static files more efficiently
-app.get("/dashboard", (req, res) => res.sendFile(path.join(__dirname, "../client/index.html")));
-app.get("/getStarted", (req, res) => res.sendFile(path.join(__dirname, "../client/index.html")));
-app.get("/LogIn", (req, res) => res.sendFile(path.join(__dirname, "../client/index.html")))
 
-//** Automatically parse urlencoded body content from incoming requests and place it in req.body **//
+//** Automatically parse json & urlencoded body content from incoming requests and place it in req.body **//
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/metrics', metricsServerRouter);
 app.use('/prometheus', prometheusRouter);
 
+//** Wrap the express server in an ApolloServer to access Apollo GraphQL functionality **//
+// https://www.apollographql.com/docs/apollo-server/api/apollo-server/#applymiddleware
 const apollo = new ApolloServer(gqlSchema);
 apollo.applyMiddleware({ app });
 
-//** 404 error **//
-app.use("*", (req, res) => res.status(404).send("Wrong Address"));
+//** Catchall Routes, GET request 404 handled on cleint-side by React Router **//
+app.get('/*', (req, res) => res.sendFile(path.join(__dirname, "../client/index.html")))
+app.use('/*', (req, res) => res.status(404).send('Resource Not Found'))
 
-//** Global Error **//
+//** Global Error Handler **//
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: "Express error handler caught unknown middleware error",
