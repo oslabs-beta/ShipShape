@@ -1,5 +1,5 @@
 const express = require('express');
-const prometheusController = require('./../controller/prometheusController.js');
+const prometheusController = require('../controller/prometheusController.js');
 
 const prometheusRouter = express.Router();
 

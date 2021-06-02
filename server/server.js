@@ -8,8 +8,8 @@ const app = express();
 
 
 // routers for various function
-const metricsServerRouter = require('./router/metricsServerRouter.js');
-const prometheusRouter = require('./router/prometheusRouter.js');
+const metricsServerRouter = require('./restAPI/router/metricsServerRouter.js');
+const prometheusRouter = require('./restAPI/router/prometheusRouter.js');
 
 const PORT = 3000;
 

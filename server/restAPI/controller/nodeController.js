@@ -1,5 +1,5 @@
 const cmd = require('node-cmd');
-const Node = require('../datasources/nodeConstructor');
+const Node = require('../../graphQL/datasources/nodeConstructor');
 
 const nodeController = {};
 

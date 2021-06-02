@@ -1,18 +1,11 @@
 const { isObject, find } = require('lodash');
-// const mockPods = require('../mockData/rawPods.json');
-// const mockPodMetrics = require('../mockData/rawPodMetrics.json')
-// const mockNodes = require('../mockData/rawNodeShort.json')
-// const mockNodeMetrics = require('../mockData/rawNodeMetricsShort.json') //using short rn b/c I don't have up-to-date full
-// const nodePercentages = require('../mockData/nodesPercentages.json')
 const k8sApi = require('../../k8sApi.js');
-const podData = require('../../datasources/podConstructor.js')
-const nodeData = require('../../datasources/nodeConstructor.js');
-// const { mockServer } = require('@graphql-tools/mock');
-// const prometheusAPI = require('../../datasources/prometheusAPI');
+const podData = require('../datasources/podConstructor.js')
+const nodeData = require('../datasources/nodeConstructor.js');
+const demoData = require('../demoData/demoData.js');
 
 //set to true to use mockData instead of pulling real k8s cluster data 
-const mockMode = false;
-const appUrl = 'http://localhost:3000'
+const demoMode = process.env.DEMO_MODE;
 
 //helper function that acts as Object.assign but deeply
 const mergeDeep = (target, source) => {
@@ -42,6 +35,8 @@ module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
       /** NEW CODE  */
+      if(demoMode) return demoData.pods;
+
       const podsApi = (await k8sApi.listPodForAllNamespaces()).response.body.items;
       const podsCmd = (await podData.getMetrics()).items
 
@@ -74,6 +69,8 @@ module.exports = {
 
     },
     nodes: async (parent, args, context, info) => {
+      if(demoMode) return demoData.nodes;
+
       const nodes = (await k8sApi.listNode('default')).response.body.items
       const allNodePercentages = (await nodeData.getPercentages())
       const allNodeMetrics = (await nodeData.getNodeMetrics()).items;
@@ -96,16 +93,19 @@ module.exports = {
       return nodes
     },
     cpuUsage: async (parent, { start, end, step }, { dataSources }, info) => {
+      if(demoMode) return demoData.cpuUsage;
       start = new Date(start).toISOString();
       end = new Date(end).toISOString();
       return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(start, end, step);
     },
     freeMemory: async (parent, {start, end, step }, { dataSources }, info) => {
+      if(demoMode) return demoData.freeMemory;
       start = new Date(start).toISOString();
       end = new Date(end).toISOString();
       return dataSources.prometheusAPI.getClusterFreeMemory(start, end, step);
     },
     networkTransmitted: async (parent, {start, end, step }, { dataSources }, info) => {
+      if(demoMode) return demoData.networkTransmitted;
       start = new Date(start).toISOString();
       end = new Date(end).toISOString();
       return dataSources.prometheusAPI.getNetworkTransmitBytes(start, end, step);
