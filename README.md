@@ -114,7 +114,7 @@ Rebecca Schell - [GitHub](https://github.com/rschelly/) - [LinkedIn](https://www
 
 Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.linkedin.com/in/whit-rooke)
 
-## Looking Ahead
+## Looking Ahead 
 
 -More testing
 -More graphs for more metric monitoring 
