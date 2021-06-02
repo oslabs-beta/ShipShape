@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable max-len */
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -41,16 +44,16 @@ export default function GetStartedBody() {
         <br />
         <br />
         In order get the basic metrics out of this application, make sure that you have deployed a metrics
-        server as well as prometheus.  To deploy a metrics server, open up a command line with 
+        server as well as prometheus.  To deploy a metrics server, open up a command line with
         access to the cluster and run this command,
         <br />
         <br /> "kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml"
         <br />
         <br />
-        For even further monitoring capabilities, 
+        For even further monitoring capabilities,
         download and configure helm to be able to deploy helm charts to your
         cluster. The Helm installation docs can be found{" "}
-        <a id='here' href="https://helm.sh/docs/intro/install/">here!</a>
+        <a id="helm-install-here" href="https://helm.sh/docs/intro/install/">here!</a>
         <br />
         <br />
         Once installed, download/upgrade the Prometheus helm chart with this command.
@@ -60,7 +63,7 @@ export default function GetStartedBody() {
         <br />
         Next, you'll want to create a namespace prometheus, to deploy prometheus inside.
         <br />
-        And finally, deploy Prometheus to your cluster with 
+        And finally, deploy Prometheus to your cluster with
         <br />
         <br />"helm upgrade -i prometheus prometheus-community/prometheus --namespace prometheus ""
         <br />

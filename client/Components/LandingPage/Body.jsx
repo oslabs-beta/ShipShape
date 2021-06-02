@@ -1,6 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import ScrollAnimation from "react-animate-on-scroll";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Body() {
   return (
@@ -31,7 +30,7 @@ export default function Body() {
             <h4>Real Time Monitoring</h4>
             <p>
               Real Time monitoring the metrics that matter the most in your
-              Kubernetes Cluster{" "}
+              Kubernetes Cluster{' '}
             </p>
           </div>
           <div className="aboutUsCards">
@@ -71,7 +70,8 @@ export default function Body() {
           visualize the most important metrics of your Cluster at various levels
           of granularity. ShipSahpe can also track long-term performance, help
           debug errors, and offere potential configuration optimization
-          suggestions. <br />
+          suggestions.
+          <br />
           ShipShape will connect to and monitor the real time metrics of a
           Kubernetes Cluster using a variety of graphs and the clusters
           components to assess over all and pod-specific health. We do this by
@@ -116,56 +116,56 @@ export default function Body() {
             </div>
           </div>
         </div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
+        <div className="bubble" />
       </div>
     </div>
   );

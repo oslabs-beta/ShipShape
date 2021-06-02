@@ -2,13 +2,8 @@
 const colors = ['rgb(160, 192, 206)', 'rgb(38,84,121)', 'rgb(207, 225, 232)'];
 
 export function fetchChartData(queryType, hours = 6, step = '2m') {
-  console.log(hours);
   const end = new Date();
   const start = new Date(end - 3600000 * hours);
-
-  console.log('start:',start,'end:',end);
-
-  console.log(`fetching data for ${queryType} between ${start.toISOString()} to ${end.toISOString()} stepped by ${step}`);
 
   const query = `
     {
@@ -20,7 +15,6 @@ export function fetchChartData(queryType, hours = 6, step = '2m') {
     }
     `;
 
-  // console.log(query);
   return fetch('/graphql', {
     method: 'post',
     headers: {
@@ -32,14 +26,14 @@ export function fetchChartData(queryType, hours = 6, step = '2m') {
   })
     .then((res) => res.json())
     .then(({ data }) => {
-      data = data[queryType];
-      const labels = data.timestamps;
+      const result = data[queryType];
+      const labels = result.timestamps;
       const datasets = [];
-      data.seriesLabels.slice(0, 10).forEach((label, i) => {
+      result.seriesLabels.slice(0, 10).forEach((label, i) => {
         datasets.push({
           label,
-          data: data.seriesValues[i],
-          backgroundColor: colors[i],
+          data: result.seriesValues[i],
+          backgroundColor: colors[i % colors.length],
         });
       });
       return { labels, datasets };
