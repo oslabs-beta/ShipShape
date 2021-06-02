@@ -1,5 +1,15 @@
 /* eslint-disable import/prefer-default-export */
-const colors = ['rgb(160, 192, 206)', 'rgb(38,84,121)', 'rgb(207, 225, 232)'];
+const colors = ['rgb(38,84,121)', 
+                'rgb(160, 192, 206)', 
+                'rgb(207, 225, 232)', 
+                'rgb(160, 192, 206)', 
+                'rgb(38, 84, 121)',
+                'rgb(147, 176, 189)', 
+                'rgb(127, 152, 163)',
+                'rgb(103, 131, 143)',
+                'rgb(78, 113, 128)',
+                'rgb(47, 91, 110)',
+              ];
 
 export function fetchChartData(queryType, hours = 6, step = '2m') {
   const end = new Date();
