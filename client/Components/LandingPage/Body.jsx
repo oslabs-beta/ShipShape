@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 export default function Body() {
   return (
@@ -18,7 +19,7 @@ export default function Body() {
         <div className="imageContainer">
           <img
             id="dashImage"
-            src="../../assets/dashboards.png"
+            src="../../assets/ShipShapeDashboard.png"
             alt="Kubernetes Dashboard"
           />
         </div>
@@ -54,10 +55,10 @@ export default function Body() {
           Track What Matters Most
         </div>
         <div className="featurePicture">
-          <img src="../../assets/barss.png" />
+          <img src="../../assets/TrackWhatMatters.png" />
         </div>
         <div className="featurePicture">
-          <img src="../../assets/spdss.png" />
+          <img src="../../assets/StopProblemsBefore.png" />
         </div>
         <div className="featureText" id="bottomText">
           To Catch Problems Before They Happen

@@ -1,9 +1,8 @@
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/oslabs-beta/ShipShape">
-    <img src="./client/assets/ShipShapeBlackLogo.png" alt="Logo" length="350px" width="350px">
+    <img src="./client/assets/ShipShapeLogo.png" alt="Logo" length="350px" width="350px">
   </a>
 
   <h3 align="center">ShipShape</h3>
@@ -17,8 +16,6 @@
    
   </p>
 </p>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -45,69 +42,76 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 ShipShape is an open-source Web App for Kubernetes monitoring. ShipShape allows Users to track numerous Kubernetes Cluster metrics with easy to interpret graphs at varying levels of granularity.
 
 Key features include:
+
 <!-- * User authentication and authorization -->
-* A facilitated access of internal Kubernetes environment without having to expose it to outside traffic
-<!-- * Auto-deployment of Prometheus for time-series metrics -->
-* GraphQL service to abstract PromQL queries for frontend developers
-* Diffenent dashboard views of Kubernetes clusters 
-* Graphs that display important metrics
-* Dynamic date selection for metric data
+
+- A facilitated access of internal Kubernetes environment without having to expose it to outside traffic
+- Instructions for auto-deployment of Prometheus for time-series metrics
+- GraphQL service to abstract PromQL queries for frontend developers
+- Threre diffenent dashboard views of Kubernetes clusters (cluster, node, and pod view)
+- Graphs that display important metrics
+- Dynamic time-range and filtering selection for cluster metric data
 
 ### Built With
 
-* [Kubernetes](https://kubernetes.io/)
-* [Prometheus](https://prometheus.io/)
-* [React](https://reactjs.org/)
-* [Chart JS](https://www.chartjs.org/)
-* [GraphQL](https://graphql.org)
-* [Webpack](https://webpack.js.org/)
-* [Node JS/Express](https://nodejs.dev)
-* [Jest](https://jestjs.io/)
+- [Kubernetes](https://kubernetes.io/)
+- [Prometheus](https://prometheus.io/)
+- [React](https://reactjs.org/)
+- [Chart JS](https://www.chartjs.org/)
+- [GraphQL](https://graphql.org)
+- [Webpack](https://webpack.js.org/)
+- [Node JS/Express](https://nodejs.dev)
+- [Jest](https://jestjs.io/)
 
 ## Demo
 
-### Track and Monitor Cluster Metrics 
+### Track and Monitor Cluster Metrics
 
 ![]('gifofthingum')
 
-Description of what is happening up in the gif above 
+Description of what is happening up in the gif above
 
-
-### Maybe a vid of another view 
+### Maybe a vid of another view
 
 ![]('gitofotherwhatsit)
 
-Description of the thing happening above 
+Description of the thing happening above
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
-To get a local copy up and running, follow these steps.
+To get a local copy up and running, follow these steps:
+
+1. Fork and/or clone this repo to get started
+2. Npm install in the ShipShape root directory
+3. Npm run dev or run build then npm start
+4. Navigate to local host 8080 (or 3000, depending on startup method, respectively)
+5. You will be taken to the ShipShape landing page. Click the 'Getting Started' button to view more specific instructions for how to hook up your Kubernetes cluster to ShipShape for metric monitoring. 
+6. Once these 'Getting Started' instructions have been followed, navigate to your dashboard to see how easy ShipShape makes cluster monitoring! 
 
 ### Prerequisites
-<!-- 1.  Crate a [Google OAth](https://developers.google.com/identity/protocols/oauth2) account. -->
-<!-- 2.  Expose metrics using Prometheus from a Kubernetes cluster.  You can either expose a live cluster or use [MiniKube](https://minikube.sigs.k8s.io/docs/start/).  -->
-1. figure it out 
+1.  Installed on your local machine, Kubectl and Helm command line tools.
+2.  A metrics server installed inside the cluster, if it is not standard with your cluster service. For metrics server deployment, see the 'Getting Started' page for exact details.
+3.  Expose metrics using Prometheus from a Kubernetes cluster.  You can either expose a live cluster or use [MiniKube](https://minikube.sigs.k8s.io/docs/start/). 
 
 ### Setup
+See the Getting Started page on <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a>!
 
+### Demo Mode 
+To see a working demo of ShipShape:
 
-### Installing this repo
-1. Fork this repo.
-2. npm install
-3. npm run build
-
-
+Navigate to the <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a> dashbaord! 
 
 <!-- CONTRIBUTORS -->
+
 ## Contributors
 
 Brian Barr - [GitHub](https://github.com/BarrBrian/) - [LinkedIn](https://www.linkedin.com/in/barrbrian/)
@@ -118,6 +122,7 @@ Rebecca Schell - [GitHub](https://github.com/rschelly/) - [LinkedIn](https://www
 
 Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.linkedin.com/in/whit-rooke)
 
-## Looking Ahead 
+## Looking Ahead
 
 More tests pls
+
