@@ -560,6 +560,18 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   font-weight: 900;
 }
 
+@media (max-width: 1360px){
+  .shipshape{
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 1111px){
+  .shipshape{
+    display:none;
+  }
+}
+
 .subjectContainer {
   display: flex;
   flex-direction: column;

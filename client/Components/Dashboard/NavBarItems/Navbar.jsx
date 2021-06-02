@@ -25,7 +25,7 @@ const Navbar = ({ handler }) => {
           height="60px"
           width="60px"
         />
-        <p className="shipShape">ShipShape</p>
+        <p id="nav-bar-wordmark" className="shipShape">ShipShape</p>
       </div>
       <div className="subjectContainer">
         <PodView handler={handler} />
