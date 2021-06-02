@@ -10,7 +10,7 @@
   <p align="center">
     Kubernetes Cluster Monitoring Made Easy
     <br /><br />
-    <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a>
+    <a href="https://www.getinshipshape.io/"><strong>getinshipshape.com</strong></a>
     <br />
     <br />
    
@@ -94,13 +94,13 @@ To get a local copy up and running, follow these steps:
 
 ### Setup
 
-See the Getting Started page on <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a>!
+See the Getting Started page on <a href="https://www.getinshipshape.io/"><strong>getinshipshape.com</strong></a>!
 
 ### Demo Mode
 
 To see a working demo of ShipShape:
 
-Navigate to the <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a> dashbaord!
+Navigate to the <a href="https://www.getinshipshape.io/"><strong>getinshipshape.com</strong></a> dashbaord!
 
 <!-- CONTRIBUTORS -->
 
