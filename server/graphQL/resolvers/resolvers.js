@@ -4,7 +4,7 @@ const podData = require('../datasources/podConstructor')
 const nodeData = require('../datasources/nodeConstructor');
 const demoData = require('../demoData/demoData');
 
-// set to true to use mockData instead of pulling real k8s cluster data 
+// set to true to use mockData instead of pulling real k8s cluster data
 const demoMode = process.env.DEMO_MODE;
 
 // helper function that acts as Object.assign but deeply
