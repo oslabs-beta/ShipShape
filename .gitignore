@@ -4,4 +4,4 @@ package-lock.json
 build
 sample-service.yaml
 .vscode
-reference-docs
+workspace.code-workspace
