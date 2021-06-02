@@ -15,7 +15,7 @@ export default function ClusterFilteringOptions({ chartDurationHours, setChartDu
     const { value } = event.target;
 
     const num = parseInt(value, 10);
-    const isValidInput = (num > 0 && num <= 36) && (num === parseFloat(value));
+    const isValidInput = (num > 0 && num <= 36) && (num === Number(value));
 
     if (isValidInput && errorMessage) setErroMessage('');
     if (!isValidInput && !errorMessage) setErroMessage('Hours must be an positive integer between 0 and 36');

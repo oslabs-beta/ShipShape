@@ -95,10 +95,7 @@ const PodDashboard = () => {
   return (
     <div className="podDashboard">
       <DoughnutChart selectedPodData={selectedPodData} />
-      {/* <LineChart data={data} /> */}
-      <BarChart  data={data}/>
-      {/* <BarChart selectedPodData={selectedPodData} /> */}
-      {/* <HeatMap data={data} /> */}
+      <BarChart data={data} />
       <PodsTable
         data={data}
         changePod={changePod}
