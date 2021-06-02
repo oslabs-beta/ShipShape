@@ -10,15 +10,10 @@ This is a static number that displays the CPU usage of a selected node.
 const CPUusage = ({ selectedNodeData }) => {
   const [state, setState] = useState(0);
 
-  // const allLetters = /[a-z|%]*/gi
   let cpuUsage;
   if (selectedNodeData.status) {
     const allLetters = /[a-z|%]*/gi;
     cpuUsage = selectedNodeData.status.usagePercent.cpuCores.replace(allLetters, '');
-
-    // console.log('coming from selectedNodeData', selectedNodeData)
-    // console.log('trying to  get cpu usage', selectedNodeData.status.usage.cpu)
-    // console.log(cpuUsage)
   }
 
   useEffect(() => {

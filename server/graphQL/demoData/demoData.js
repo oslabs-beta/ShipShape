@@ -11,7 +11,6 @@ const timeSeriesDemo = {
 };
 
 const demoTimeSeries = (start, end, type) => {
-  console.log('grabbing demo timeSeries for', type);
   const hours = new Date(end).getHours() - new Date(start).getHours();
   const numOfResults = hours * 30;
   const data = timeSeriesDemo[type];
