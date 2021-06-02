@@ -1,30 +1,22 @@
 const fetch = require('node-fetch');
-const { spawn } = require('child_process')
+const { spawn } = require('child_process');
 
-const prometheusURL = 'http://127.0.0.1:9090/api/v1/'
+const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
 const prometheusController = {};
 
 /**
- * Install Helm Chart
- * Run Helm Chart to Create Prometheus Deployment inside the K8S Cluster
- * Wait??
- * Check if all the Prometheus Pods are Running?
+ * Stretch Feature: install prometheus programmatically for users
+ * TODO: Add instructions for installing helm to the readme
+ * TODO: Automatically download helm chart for prometheus
+ * TODO: Run Helm Chart to Create Prometheus Deployment inside the K8S Cluster
+ * TODO: Check if all the Prometheus Pods are Running?
  */
-
-prometheusController.downloadHelmChart = (req, res, next) => {
-
-};
-
-prometheusController.runHelmChart = (req, res, next) => {
-
-};
-
 prometheusController.isUp = async (req, res, next) => {
   const queryStr = `${prometheusURL}query?query=up`;
 
   try {
-    const response = await fetch(queryStr)
+    const response = await fetch(queryStr);
     res.locals.query = await response.json();
     return next();
   } catch (err) {

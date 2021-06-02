@@ -1,57 +1,51 @@
-import React, { useEffect, useState } from "react";
-import AnimatedNumber from "animated-number-react";
-import { StaticRouter } from "react-router";
-
+import React, { useEffect, useState } from 'react';
+import AnimatedNumber from 'animated-number-react';
+import { StaticRouter } from 'react-router';
 
 /*
-This is a static number that displays the CPU usage of a selected node. 
-
+This is a static number that displays the CPU usage of a selected node.
 
 */
 
-
-const CPUusage = ( {selectedNodeData} ) => {
-
+const CPUusage = ({ selectedNodeData }) => {
   const [state, setState] = useState(0);
 
   // const allLetters = /[a-z|%]*/gi
-  // const cpuUsage = selectedNodeData.status ? selectedNodeData.status.usagePercent.cpu.replace(allLetters,'') : undefined;
-  let cpuUsage, cpuPercent;
-  if(selectedNodeData.status){
-      const allLetters = /[a-z|%]*/gi
-      cpuUsage = selectedNodeData.status.usagePercent.cpuCores.replace(allLetters,'');
-      
-      // console.log('coming from selectedNodeData', selectedNodeData)
-      // console.log('trying to  get cpu usage', selectedNodeData.status.usage.cpu)
-      // console.log(cpuUsage)
-      
-    }
+  let cpuUsage;
+  if (selectedNodeData.status) {
+    const allLetters = /[a-z|%]*/gi;
+    cpuUsage = selectedNodeData.status.usagePercent.cpuCores.replace(allLetters, '');
 
-    useEffect(() => {
-      setState(Number(cpuUsage))
-    });
+    // console.log('coming from selectedNodeData', selectedNodeData)
+    // console.log('trying to  get cpu usage', selectedNodeData.status.usage.cpu)
+    // console.log(cpuUsage)
+  }
 
-    return (
-      <div className="cpuUSageContainer">
-        <h2>CPU Usage</h2>
-        <div className='animatedNumber'>
+  useEffect(() => {
+    setState(Number(cpuUsage));
+  });
+
+  return (
+    <div className="cpuUSageContainer">
+      <h2>CPU Usage</h2>
+      <div className="animatedNumber">
         <AnimatedNumber
           value={state}
           formatValue={v => v.toFixed(0)}
           duration={1000}
           frameStyle={perc => (
-            { opacity: perc / 100}
+            { opacity: perc / 100 }
           )}
           style={
             {
-              fontSize: 200
-              }
+              fontSize: 200,
+            }
           }
         />
         <p>m</p>
-        </div>
       </div>
-    );
- }
+    </div>
+  );
+};
 
 export default CPUusage;

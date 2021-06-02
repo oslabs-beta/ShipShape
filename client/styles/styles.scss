@@ -3,9 +3,7 @@ $darkGray: rgb(185, 194, 193);
 $lightBlue: rgb(160, 192, 206);
 $next: rgb(0, 0, 0);
 $darkBlue: rgb(38, 84, 121);
-// $secondTextColor: rgb(34, 196, 69);
 $secondTextColor: rgb(38, 84, 121);
-// $cardBackground: black;
 
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
@@ -21,27 +19,6 @@ $secondTextColor: rgb(38, 84, 121);
 }
 
 body {
-  // background: rgb(0, 131, 250);
-  // background: linear-gradient(
-  //   0deg,
-  //   rgba(0, 131, 250, 1) 19%,
-  //   rgba(110, 183, 255, 1) 50%,
-  //   rgba(216, 236, 255, 1) 100%
-  // );
-  // background: rgb(0, 0, 0);
-  // background: linear-gradient(
-  //   32deg,
-  //   rgba(0, 0, 0, 1) 0%,
-  //   rgba(32, 0, 65, 1) 14%,
-  //   rgba(48, 0, 110, 1) 25%,
-  //   rgba(69, 0, 168, 1) 34%,
-  //   rgba(26, 150, 146, 1) 49%,
-  //   rgba(2, 227, 107, 1) 54%,
-  //   rgba(0, 194, 55, 1) 58%,
-  //   rgba(0, 92, 26, 1) 72%,
-  //   rgba(0, 52, 15, 1) 81%,
-  //   rgba(0, 0, 0, 1) 91%
-  // );
   background-color: rgb(160, 192, 206);
   color: $mainTextColor;
 }
@@ -57,16 +34,11 @@ body {
 }
 
 .headerDiv {
-  // border: 1px solid rgb(255, 255, 255);
   height: 70px;
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
 }
-// .bodyDiv {
-//   // border: 2px solid pink;
-//   // height: 3000px;
-// }
 
 .gitHubHeader,
 .logo {
@@ -81,15 +53,9 @@ body {
 .footerDiv {
   height: 5rem;
   width: 100%;
-  // position: fixed;
-  // position: absolute;
-  // bottom: 0;
-  // margin-bottom: 0;
-  // left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  // box-shadow: 1px 1px 1px black;
   background: inherit;
 }
 
@@ -103,7 +69,6 @@ body {
   margin: 10px;
   margin-bottom: 30px;
   background: rgba(38, 84, 121, 0.3);
-  // text-decoration: underline;
   padding-bottom: 15px;
   padding-top: 5px;
   border-bottom-width: 15px;
@@ -114,7 +79,6 @@ body {
   color: $lightBlue;
   cursor: pointer;
   background-color: rgba(38, 84, 121, 0.6);
-  // color: $mainTextColor;
   border: 1px solid rgba(0, 0, 0, 0.322);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.308);
 }
@@ -159,7 +123,6 @@ button {
 
 #aboutUs {
   margin-top: 5rem;
-  //   margin-bottom: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,7 +149,6 @@ button {
   width: 30%;
   color: $mainTextColor;
   background-color: rgba(125, 162, 179, 0.137);
-  // border: 1px solid rgb(197, 197, 197);
   border: 1px solid $darkBlue;
   border-radius: 10px;
   padding: 1rem;
@@ -321,7 +283,6 @@ a {
 }
 .teamCards > a {
   color: $secondTextColor;
-  // text-decoration: underline;
 }
 a:hover {
   color: $mainTextColor;
@@ -361,21 +322,6 @@ h3 {
 }
 
 //------------------------------------------------------------------------------------//
-
-// body {
-//   // background: #6d7783;
-//   // background: rgb(0, 131, 250);
-//   // background: linear-gradient(
-//   //   0deg,
-//   //   rgba(0, 131, 250, 1) 19%,
-//   //   rgba(110, 183, 255, 1) 50%,
-//   //   rgba(216, 236, 255, 1) 100%
-//   // );
-//   background: rgb(0,0,0);
-// background: linear-gradient(32deg, rgba(0,0,0,1) 0%, rgba(32,0,65,1) 14%, rgba(48,0,110,1) 25%, rgba(69,0,168,1) 34%, rgba(26,150,146,1) 49%, rgba(2,227,107,1) 54%, rgba(0,194,55,1) 58%, rgba(0,92,26,1) 72%, rgba(0,52,15,1) 81%, rgba(0,0,0,1) 91%);
-
-//   //   margin: 0;
-// }
 
 $bubble-count: 50;
 $sway-type: "sway-left-to-right", "sway-right-to-left";
@@ -420,8 +366,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
     left: 0;
     width: 100%;
     height: 100%;
-    // background: hsla(183, 89%, 81%, 0.3);
-    // background: rgba(219, 240, 248, 0.3);
     background: rgb(238, 243, 255);
     background: radial-gradient(
       circle,
@@ -505,7 +449,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
   .featurePicture {
     width: 90%;
-    // height: 50%;
   }
 
   .featurePicture > img {
@@ -535,11 +478,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-// @media only screen and (min-width: 1200px) {
-
-// }
-
 .homeContainer {
   background-color: rgb(255, 255, 255);
   width: 100vw;
@@ -552,7 +490,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .dashboardHeader {
   grid-column: 3 / 15;
   grid-row: 1 / 2;
-  // background-color: #5b4880;
   background-color: $lightBlue;
   display: flex;
   justify-content: flex-end;
@@ -568,8 +505,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .dashboardHeader > #help {
   text-decoration: none;
   color: inherit;
-  // background-color: white;
-  // color: #635380;
   color: $darkBlue;
   padding: 0.6rem 1.5rem;
   margin-right: 7px;
@@ -579,9 +514,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 #import {
-  // color: #635380;
   color: $darkBlue;
-  // background-color: $mainTextColor;
   padding: 0.3rem;
   border-radius: 5px;
 }
@@ -590,8 +523,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 #help:hover {
   cursor: pointer;
   color: $mainTextColor;
-  // background: #7d6b9e;
-  // box-shadow: 2px 2px 2px black;
 }
 
 // sidebar starts ------------------//
@@ -600,12 +531,9 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   grid-column: 1/3;
   grid-row: 1/13;
   background-color: $lightBlue;
-  // background-color: #5b4880;
-  // border-top-right-radius: 3rem;
   display: flex;
   flex-direction: column;
   border-right: 1px solid $darkBlue;
-  // box-shadow: 2px 2px 2px black;
 }
 
 #dashboardLogo {
@@ -623,6 +551,18 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .shipshape {
   font-size: 1.5em;
   font-weight: 900;
+}
+
+@media (max-width: 1360px){
+  .shipshape{
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 1111px){
+  .shipshape{
+    display:none;
+  }
 }
 
 .subjectContainer {
@@ -644,7 +584,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  padding: 1rem;
+  padding: 0.5rem;
   gap: 1rem;
   position: relative;
 }
@@ -653,19 +593,33 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .nodeDashboard,
 .clusterDashboard {
   grid-column: 1 / 15;
-  grid-row: 1 / 13;
+  grid-row: 1 / 15;
   background-color: $mainTextColor;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  padding: 1rem;
+  padding: 0.5rem;
   gap: 1rem;
   position: relative;
 }
 
+.duration-select {
+  grid-column: 1 / 13;
+  grid-row: 1/ 2;
+  border: 1px solid rgba(14, 13, 13, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  vertical-align: baseline;
+  height: 5em;
+}
+
 .StreamingNetworkPressure {
   grid-column: 1 / 13;
-  grid-row: 1/ 5;
+  grid-row: 2/ 6;
   border: 1px solid rgba(14, 13, 13, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
@@ -673,7 +627,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 .StreamingMemoryChart {
   grid-column: 1 / 13;
-  grid-row: 5 / 9;
+  grid-row: 6 / 10;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
@@ -681,24 +635,15 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 .StreamingCpuChart {
   grid-column: 1 / 13;
-  grid-row: 9 / 13;
+  grid-row: 10 / 15;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  // box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 
 .streams > canvas {
   max-width: 100% !important;
   max-height: 100% !important;
 }
-
-// .liveLineChart > canvas {
-//   grid-column: auto;
-//   grid-row: auto;
-//   border: 1px solid rgba(14, 13, 13, 0.3);
-//   border-radius: 5px;
-//   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
-// }
 
 .barChart {
   grid-column: 1 / 7;
@@ -716,14 +661,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 
-// .heatMap {
-//   grid-column: 1 / 13;
-//   grid-row: 5 / 8;
-//   border: 1px solid rgba(0, 0, 0, 0.3);
-//   border-radius: 5px;
-//   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
-// }
-
 .podsTable,
 .nodesTable {
   grid-column: 1 / 13;
@@ -734,10 +671,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   color: rgb(0, 0, 0) !important;
   font-weight: bold !important;
   overflow: scroll;
-
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
 }
 
 .podsTable::-webkit-scrollbar {
@@ -779,14 +712,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 #LogInContainer {
-  // background-color: rgba(255, 255, 255, 0.418);
-  // background-color: $lightBlue;
-  // border: 1px solid rgb(38, 0, 80);
-  // border-radius: 10px;
-  // margin-left: 20%;
-  // margin-right: 20%;
-  // margin-top: 5%;
-  // color: $mainTextColor;
   background-color: $lightBlue;
   width: 100vw;
   height: 100vh;
@@ -891,10 +816,12 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   span {
     font-size: 3em;
     border-bottom: 1px solid $lightBlue;
-    // box-shadow: inset 0 0 10px 0 #5f5e5e41;
     box-shadow: 0 4px 2px -2px rgba(160, 192, 206, 0.4);
   }
 }
+
+/* Number animations for CPU/Disk Space in Nodeview components starts here */
+
 .animatedNumber {
   display: flex;
   text-align: center;
@@ -907,3 +834,5 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   // box-shadow: inset 0 0 10px 0 #5f5e5e41;
   box-shadow: 0 4px 2px -2px rgba(160, 192, 206, 0.4);
 }
+
+/* Ends here */
