@@ -30,6 +30,8 @@ const NetworkTransmitted = ({ chartDurationHours }) => {
       <Line
         data={chartData}
         options={{
+          pointRadius: 0,
+          borderColor: 'rgb(38,84,121)',
           maintainAspectRatio: false,
           responsive: true,
           plugins: {
