@@ -1,14 +1,4 @@
-const { gql } = require('apollo-server-express')
-
-/** 
-
-There is a weird issue with the first two types listed here. They are nested inside 'Container Statuses'
-but I suspect that the object label "running" is dynamic.
-
-Also this schema was only built to handle successful pods; will need more sample JSON from @Whit
-to see what fields might be added for pending and failed pods.
-
-*/
+const { gql } = require('apollo-server-express');
 
 module.exports = gql`
 
@@ -281,4 +271,4 @@ type Query {
   freeMemory(start:String!, end:String!, step:String!): TimeSeries
   networkTransmitted(start:String!, end:String!, step:String!): TimeSeries
 }
-`
+`;

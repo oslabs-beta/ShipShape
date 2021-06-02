@@ -1,13 +1,13 @@
 const { isObject, find } = require('lodash');
-const k8sApi = require('../../k8sApi.js');
-const podData = require('../datasources/podConstructor.js')
-const nodeData = require('../datasources/nodeConstructor.js');
-const demoData = require('../demoData/demoData.js');
+const k8sApi = require('../../k8sApi');
+const podData = require('../datasources/podConstructor')
+const nodeData = require('../datasources/nodeConstructor');
+const demoData = require('../demoData/demoData');
 
-//set to true to use mockData instead of pulling real k8s cluster data 
+// set to true to use mockData instead of pulling real k8s cluster data 
 const demoMode = process.env.DEMO_MODE;
 
-//helper function that acts as Object.assign but deeply
+// helper function that acts as Object.assign but deeply
 const mergeDeep = (target, source) => {
   for (const key in source) {
     if (isObject(source[key])) {
@@ -40,8 +40,8 @@ module.exports = {
       const podsApi = (await k8sApi.listPodForAllNamespaces()).response.body.items;
       const podsCmd = (await podData.getMetrics()).items
 
-      //Brute force approach to merging these two datasources by cycling through to match on pod name and  container name
-        //should be refactored using only forEach, or better yet a findOne style method would improve performance;
+      // Brute force approach to merging these two datasources by cycling through to match on pod name and  container name
+        // should be refactored using only forEach, or better yet a findOne style method would improve performance;
         // I also feel like we should fold container status into this query as well
         // question though - how closely do we want to match original data source? This could allow us to build a graphQL tool
         // maybe use a lodash function https://lodash.com/docs/4.17.15; this will likely have a similar time complexity,
@@ -53,30 +53,26 @@ module.exports = {
           if (original.metadata.name == metrics.metadata.name) {
             original.spec.containers.forEach(container => {
               metrics.containers.reduce((origCont, metricCont) => {
-                if(origCont.name == metricCont.name){
-                  return mergeDeep(origCont, metricCont);
-                } else {
-                  return origCont;
-                }
-              },container)
-            })
+                if (origCont.name === metricCont.name) return mergeDeep(origCont, metricCont);
+                return origCont;
+              }, container);
+            });
           }
           return original;
-        },pod);
+        }, pod);
         podArray.push(mergedPod);
-      })
+      });
       return podArray;
-
     },
     nodes: async (parent, args, context, info) => {
-      if(demoMode) return demoData.nodes;
+      if (demoMode) return demoData.nodes;
 
-      const nodes = (await k8sApi.listNode('default')).response.body.items
-      const allNodePercentages = (await nodeData.getPercentages())
+      const nodes = (await k8sApi.listNode('default')).response.body.items;
+      const allNodePercentages = (await nodeData.getPercentages());
       const allNodeMetrics = (await nodeData.getNodeMetrics()).items;
 
       nodes.forEach(node => {
-        const nodePercent = find(allNodePercentages, { NAME: [node.metadata.name]});
+        const nodePercent = find(allNodePercentages, { NAME: [node.metadata.name] });
         node.status.usagePercent = {
           cpu: nodePercent['CPU%'][0],
           memory: nodePercent['MEMORY%'][0],
@@ -84,31 +80,30 @@ module.exports = {
           memoryBytes: nodePercent['MEMORY(bytes)'][0]
         }
 
-        const nodeMetrics = find(allNodeMetrics, { metadata: { name: node.metadata.name} })
+        const nodeMetrics = find(allNodeMetrics, { metadata: { name: node.metadata.name } });
         node.status.usage = nodeMetrics.usage;
-        
 
-        node.status.allocatable.ephemeralStorage = node.status.allocatable["ephemeral-storage"];
+        node.status.allocatable.ephemeralStorage = node.status.allocatable['ephemeral-storage'];
       });
       return nodes
     },
     cpuUsage: async (parent, { start, end, step }, { dataSources }, info) => {
-      if(demoMode) return demoData.cpuUsage;
-      start = new Date(start).toISOString();
-      end = new Date(end).toISOString();
-      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(start, end, step);
+      if (demoMode) return demoData.cpuUsage;
+      const startTime = new Date(start).toISOString();
+      const endTime = new Date(end).toISOString();
+      return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(startTime, endTime, step);
     },
-    freeMemory: async (parent, {start, end, step }, { dataSources }, info) => {
-      if(demoMode) return demoData.freeMemory;
-      start = new Date(start).toISOString();
-      end = new Date(end).toISOString();
-      return dataSources.prometheusAPI.getClusterFreeMemory(start, end, step);
+    freeMemory: async (parent, { start, end, step }, { dataSources }, info) => {
+      if (demoMode) return demoData.freeMemory;
+      const startTime = new Date(start).toISOString();
+      const endTime = new Date(end).toISOString();
+      return dataSources.prometheusAPI.getClusterFreeMemory(startTime, endTime, step);
     },
-    networkTransmitted: async (parent, {start, end, step }, { dataSources }, info) => {
-      if(demoMode) return demoData.networkTransmitted;
-      start = new Date(start).toISOString();
-      end = new Date(end).toISOString();
-      return dataSources.prometheusAPI.getNetworkTransmitBytes(start, end, step);
-    }
+    networkTransmitted: async (parent, { start, end, step }, { dataSources }, info) => {
+      if (demoMode) return demoData.networkTransmitted;
+      const startTime = new Date(start).toISOString();
+      const endTime = new Date(end).toISOString();
+      return dataSources.prometheusAPI.getNetworkTransmitBytes(startTime, endTime, step);
+    },
   },
 };

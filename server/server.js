@@ -46,6 +46,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
+  if(process.env.DEMO_MODE) console.log('~~~ D E M O   M O D E   A C T I V A T E D ~~~');
   console.log(`Chillin' on port ${PORT} 😎`);
 });
 
