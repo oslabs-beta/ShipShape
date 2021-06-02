@@ -16,7 +16,7 @@ about how long a pod has been running, giving us the age of our pod.
 NOTE: add more columns and data 
 */
 
-const PodsTable = ({ data, setpodSelected, changePod }) => {
+const PodsTable = ({ data, changePod }) => {
   const columns = [
     {
       field: "id",

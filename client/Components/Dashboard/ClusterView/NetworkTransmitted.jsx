@@ -13,11 +13,11 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
-const StreamingNetworkPressure = () => {
+const NetworkTransmitted = () => {
   const [chartData, setChartData] = useState({});
 
   async function chart() {
-    const data = await fetchChartData('freeMemory', 6, '5m')
+    const data = await fetchChartData('networkTransmitted', 6, '5m')
     setChartData(data);
   }
 
@@ -32,7 +32,9 @@ const StreamingNetworkPressure = () => {
         options={{
           maintainAspectRatio: false,
           responsive: true,
-          title: { text: "Some Data", display: true },
+          plugins: {
+            title: { text: "Network Pressure", display: true },
+          },
           scales: {
             yAxes: [
               {
@@ -60,4 +62,4 @@ const StreamingNetworkPressure = () => {
   );
 };
 
-export default StreamingNetworkPressure;
+export default NetworkTransmitted;

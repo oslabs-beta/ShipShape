@@ -24,11 +24,9 @@ NOTE: we may move the query to the home component if we impliment context api
 
 const PodDashboard = () => {
   const [data, setData] = useState([]);
-  const [podSelected, setpodSelected] = useState();
   const [selectedPodData, setSelectedPodData] = useState({});
 
   function changePod(podName) {
-    setpodSelected(podName);
     const selectPod = filter(data, { metadata: { name: podName } })[0];
     setSelectedPodData(selectPod);
   }
@@ -98,13 +96,12 @@ const PodDashboard = () => {
     <div className="podDashboard">
       <DoughnutChart selectedPodData={selectedPodData} />
       {/* <LineChart data={data} /> */}
-      <BarChart data={data} />
+      <BarChart  data={data}/>
       {/* <BarChart selectedPodData={selectedPodData} /> */}
       {/* <HeatMap data={data} /> */}
       <PodsTable
         data={data}
         changePod={changePod}
-        setpodSelected={setpodSelected}
       />
     </div>
   );
