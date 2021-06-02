@@ -1,19 +1,15 @@
 const cmd = require('node-cmd');
 const express = require('express');
-const nodeController = require('./../controller/nodeController.js');
-const podController = require('./../controller/podController.js');
+const nodeController = require('../controller/nodeController');
+const podController = require('../controller/podController');
 
-const metricsServerRouter = express.Router();
+const metricsServerRouter = express.Router();)  
 
-// metricsServerRouter.get('/nodes', nodeController.getNodeMetrics, (req, res) => {
-//   res.status(200).json(res.locals.nodeMetrics);
-// })  
-
-metricsServerRouter.get('/pods', podController.getPodMetrics, (req, res) =>{
+metricsServerRouter.get('/pods', podController.getPodMetrics, (req, res) => {
   res.status(200).json(res.locals.podMetrics);
-})
+});
 
-metricsServerRouter.get('/nodesPercent', nodeController.getNodePercents, (req, res) =>{
+metricsServerRouter.get('/nodesPercent', nodeController.getNodePercents, (req, res) => {
   res.status(200).send(res.locals.nodePercents);
 })
 

@@ -1,7 +1,3 @@
-const PrometheusUpDirective = require("./prometheusDirective.js")
+// schema directives can be placed here
 
-module.exports = () => {
-  return {
-    PrometheusUpDirective: PrometheusUpDirective,
-  }
-}
+module.exports = () => {};

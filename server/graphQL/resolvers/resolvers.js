@@ -35,10 +35,10 @@ module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
       /** NEW CODE  */
-      if(demoMode) return demoData.pods;
+      if (demoMode) return demoData.pods;
 
       const podsApi = (await k8sApi.listPodForAllNamespaces()).response.body.items;
-      const podsCmd = (await podData.getMetrics()).items
+      const podsCmd = (await podData.getMetrics()).items;
 
       // Brute force approach to merging these two datasources by cycling through to match on pod name and  container name
         // should be refactored using only forEach, or better yet a findOne style method would improve performance;
@@ -77,8 +77,8 @@ module.exports = {
           cpu: nodePercent['CPU%'][0],
           memory: nodePercent['MEMORY%'][0],
           cpuCores: nodePercent['CPU(cores)'][0],
-          memoryBytes: nodePercent['MEMORY(bytes)'][0]
-        }
+          memoryBytes: nodePercent['MEMORY(bytes)'][0],
+        };
 
         const nodeMetrics = find(allNodeMetrics, { metadata: { name: node.metadata.name } });
         node.status.usage = nodeMetrics.usage;
