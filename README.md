@@ -121,3 +121,6 @@ Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.lin
 -Prometheus Auto-Deployment
 -Potentially adding state management tools (Redux/Context API) for faster queries
 -UI Optimization 
+-More filtering options for “Cluster View” metrics (Adjust smoothing and step parameters, Look at past dates, Filter queries by namespace, service, or application)
+-Organizations and user permissions
+
