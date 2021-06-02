@@ -71,7 +71,7 @@ Key features include:
 - [Jest](https://jestjs.io/)
 
 
-##Demo
+## Demo
 
 
 ![](./client/assets/ShipShapeReadmeDemo.gif)
