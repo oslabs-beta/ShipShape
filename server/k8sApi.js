@@ -7,6 +7,5 @@ kubeConfig.loadFromDefault();
 // initialization of the K8s api object
 const k8sApi = kubeConfig.makeApiClient(k8s.CoreV1Api);
 
-k8sApi.listP
 
 module.exports = k8sApi;
