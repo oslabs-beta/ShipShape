@@ -42,7 +42,7 @@ module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
       /** NEW CODE  */
-      const podsApi = (await k8sApi.listNamespacedPod('default')).response.body.items;
+      const podsApi = (await k8sApi.listPodForAllNamespaces()).response.body.items;
       const podsCmd = (await podData.getMetrics()).items
 
       //Brute force approach to merging these two datasources by cycling through to match on pod name and  container name
@@ -51,6 +51,7 @@ module.exports = {
         // question though - how closely do we want to match original data source? This could allow us to build a graphQL tool
         // maybe use a lodash function https://lodash.com/docs/4.17.15; this will likely have a similar time complexity,
         // but it will be more declarative and easier to read.
+
       const podArray = []
       podsApi.forEach((pod) => {
         const mergedPod = podsCmd.reduce((original, metrics) => {

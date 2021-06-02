@@ -7,7 +7,7 @@ const podController = {};
 
 podController.getPodsRaw = async function(req, res, next){
   console.log('in the podController');
-  const data = (await k8sApi.listNamespacedPod('default')).response.body.items;
+  const data = (await k8sApi.listPodForAllNamespaces()).response.body.items;
   console.log(data);
   res.locals.pods = data;
   return next();
