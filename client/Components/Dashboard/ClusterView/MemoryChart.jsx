@@ -15,7 +15,7 @@ got that fully Implemented.
 
 const colors = ["rgb(160, 192, 206)", "rgb(38,84,121)", "rgb(207, 225, 232)"];
 
-const StreamingMemoryChart = () => {
+const MemoryChart = () => {
   const [chartData, setChartData] = useState({});
 
   async function chart() {
@@ -34,7 +34,9 @@ const StreamingMemoryChart = () => {
         options={{
           maintainAspectRatio: false,
           responsive: true,
-          title: { text: "Some Data", display: true },
+          plugins: {
+            title: { text: "Memory Usage", display: true },
+          },          
           scales: {
             yAxes: [
               {
@@ -62,4 +64,4 @@ const StreamingMemoryChart = () => {
   );
 };
 
-export default StreamingMemoryChart;
+export default MemoryChart;

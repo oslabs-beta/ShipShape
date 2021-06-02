@@ -7,16 +7,23 @@ This is a static number that displays the disk space of a selected node.
 Currently, it is using dummy data
 */
 
-const DiskSpace = () => {
+const DiskSpace = ( {selectedNodeData }) => {
   const [state, setState] = useState(0);
 
-  useEffect(() => {
-    setState(4000);
-  });
+  let ephemeralStorage;
+  if(selectedNodeData.status){
+      const allLetters = /[a-z|%]*/gi
+      ephemeralStorage = selectedNodeData.status.allocatable.ephemeralStorage.replace(allLetters,'');
+    }
+
+    useEffect(() => {
+      setState(Number(ephemeralStorage)/1000000)
+    });
 
   return (
     <div className="diskSpaceContainer">
       <h2>Disk Space</h2>
+      <div className='animatedNumber'>
       <AnimatedNumber
         value={state}
         formatValue={(v) => v.toFixed(0)}
@@ -26,6 +33,8 @@ const DiskSpace = () => {
           fontSize: 200,
         }}
       />
+      <p>mB</p>
+      </div>
     </div>
   );
 };

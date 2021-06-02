@@ -8,7 +8,8 @@
     "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack serve\" \"cross-env NODE_ENV=development nodemon server/server.js\"",
-    "mock": "concurrently \"cross-env NODE_ENV=development MOCK_MODE=true webpack serve\" \"cross-env NODE_ENV=development MOCK_MODE=true nodemon server/server.js\""
+    "demo": "concurrently \"cross-env NODE_ENV=development DEMO_MODE=true webpack serve\" \"cross-env NODE_ENV=development DEMO_MODE=true nodemon server/server.js\"",
+    "lint": "./node_modules/.bin/eslint ."
   },
   "keywords": [
     "Kubernetes",
@@ -77,6 +78,11 @@
     "css-loader": "^5.2.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
     "file-loader": "^6.2.0",
     "jest-dom": "^4.0.0",
     "nodemon": "^2.0.7",
