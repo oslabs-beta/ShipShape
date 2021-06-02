@@ -69,7 +69,7 @@ export default function GetStartedBody() {
         <br />
         <br />
         Any comments or concerns? The ShipShape dev team would love to hear from
-        you! Email getinshipshape@gmail.com to get in touch!
+        you! Email ShipShapeK8S@gmail.com to get in touch!
       </div>
       <div>
         <Link to="/dashboard">

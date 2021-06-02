@@ -53,11 +53,11 @@ Key features include:
 <!-- * User authentication and authorization -->
 
 - A facilitated access of internal Kubernetes environment without having to expose it to outside traffic
-<!-- * Auto-deployment of Prometheus for time-series metrics -->
+- Instructions for auto-deployment of Prometheus for time-series metrics
 - GraphQL service to abstract PromQL queries for frontend developers
-- Diffenent dashboard views of Kubernetes clusters
+- Threre diffenent dashboard views of Kubernetes clusters (cluster, node, and pod view)
 - Graphs that display important metrics
-- Dynamic date selection for metric data
+- Dynamic time-range and filtering selection for cluster metric data
 
 ### Built With
 
@@ -88,22 +88,27 @@ Description of the thing happening above
 
 ## Getting Started
 
-To get a local copy up and running, follow these steps.
+To get a local copy up and running, follow these steps:
+
+1. Fork and/or clone this repo to get started
+2. Npm install in the ShipShape root directory
+3. Npm run dev or run build then npm start
+4. Navigate to local host 8080 (or 3000, depending on startup method, respectively)
+5. You will be taken to the ShipShape landing page. Click the 'Getting Started' button to view more specific instructions for how to hook up your Kubernetes cluster to ShipShape for metric monitoring. 
+6. Once these 'Getting Started' instructions have been followed, navigate to your dashboard to see how easy ShipShape makes cluster monitoring! 
 
 ### Prerequisites
-
-<!-- 1.  Crate a [Google OAth](https://developers.google.com/identity/protocols/oauth2) account. -->
-<!-- 2.  Expose metrics using Prometheus from a Kubernetes cluster.  You can either expose a live cluster or use [MiniKube](https://minikube.sigs.k8s.io/docs/start/).  -->
-
-1. figure it out
+1.  Installed on your local machine, Kubectl and Helm command line tools.
+2.  A metrics server installed inside the cluster, if it is not standard with your cluster service. For metrics server deployment, see the 'Getting Started' page for exact details.
+3.  Expose metrics using Prometheus from a Kubernetes cluster.  You can either expose a live cluster or use [MiniKube](https://minikube.sigs.k8s.io/docs/start/). 
 
 ### Setup
+See the Getting Started page on <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a>!
 
-### Installing this repo
+### Demo Mode 
+To see a working demo of ShipShape:
 
-1. Fork this repo.
-2. npm install
-3. npm run build
+Navigate to the <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a> dashbaord! 
 
 <!-- CONTRIBUTORS -->
 
@@ -120,3 +125,4 @@ Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.lin
 ## Looking Ahead
 
 More tests pls
+
