@@ -14,7 +14,6 @@ nodeController.getNodeMetrics = async function(req, res, next) {
 
 nodeController.getNodePercents = async function(req, res, next) {
   res.locals.nodePercents = await Node.getPercentages();
-  console.log(res.locals.nodePercents);
   return next();
 };
 

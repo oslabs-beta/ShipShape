@@ -20,7 +20,6 @@
     "plugins": [
         "react"
     ],
-    "ignorePatterns": ["node_modules/*"],
     "rules": {
       "arrow-parens": "off",
       "consistent-return": "off",

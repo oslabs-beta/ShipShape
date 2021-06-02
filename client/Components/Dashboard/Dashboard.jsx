@@ -11,15 +11,22 @@ and determins which dashboard view will be rendered.
 */
 
 const Dashboard = ({ view }) => {
+  const renderSwitch = () => {
+    switch (view) {
+      case 'pod':
+        return <PodDashboard />;
+      case 'node':
+        return <NodeDashboard />;
+      case 'cluser':
+        return <ClusterDashboard />;
+      default:
+        return <ClusterDashboard />;
+    }
+  };
+
   return (
     <div className="mainDashboard">
-      {view === 'pod' ? (
-        <PodDashboard />
-      ) : view === 'node' ? (
-        <NodeDashboard />
-      ) : (
-        <ClusterDashboard />
-      )}
+      {renderSwitch()}
     </div>
   );
 };

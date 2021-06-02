@@ -14,10 +14,8 @@ class PrometheusAPI extends RESTDataSource{
   }
 
   async getCpuUsageSecondsRateByName(startDateTime, endDateTime, step){
-    const checkVar = await this.portPrometheus()
-    console.log('checkVar:',checkVar)
-    if(!checkVar) return console.log('DEAD') 
-    console.log('when does this run?')
+    const checkProm = await this.portPrometheus()
+    if(!checkProm) return console.log('Error with Pometheus Configuration');
     let query = `query_range?query=sum(rate(container_cpu_usage_seconds_total{container_name!="POD",namespace!=""}[2m])) by (namespace)`;
     query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then( ({ data }) => data.result);
@@ -26,9 +24,8 @@ class PrometheusAPI extends RESTDataSource{
   }
 
   async getClusterFreeMemory(startDateTime, endDateTime, step){
-    const checkVar = await this.portPrometheus()
-    console.log('checkVar:',checkVar)
-    if(!checkVar) return console.log('DEAD') 
+    const checkProm = await this.portPrometheus()
+    if(!checkProm) return console.log('Error with Pometheus Configuration'); 
     let query = `query_range?query=sum(rate(node_memory_MemFree_bytes[2m]))`;
     query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then(({ data }) => data.result);
@@ -41,18 +38,16 @@ class PrometheusAPI extends RESTDataSource{
   async getNetworkTransmitBytes(startDateTime, endDateTime, step){
     const checkProm = await this.portPrometheus()
     
-    if(!checkProm) return console.log('Error with Pometheus Configurations'); 
+    if(!checkProm) return console.log('Error with Pometheus Configuration'); 
     let query = `query_range?query=sum(rate(node_network_transmit_bytes_total[2m]))`;
     query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then(({ data }) => data.result).catch(err => console.log(err));
-
-    console.log(data);
 
     return this.formatResponseObject(data)
   } 
 
 
-  formatResponseObject(data, label){    
+  formatResponseObject(data){    
     try{ 
       const res = {
         timestamps: [],

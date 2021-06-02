@@ -8,7 +8,8 @@
     "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack serve\" \"cross-env NODE_ENV=development nodemon server/server.js\"",
-    "demo": "concurrently \"cross-env NODE_ENV=development DEMO_MODE=true webpack serve\" \"cross-env NODE_ENV=development DEMO_MODE=true nodemon server/server.js\"",
+    "demo-start": "cross-env NODE_ENV=production DEMO_MODE=true node server/server.js",
+    "demo-dev": "concurrently \"cross-env NODE_ENV=development DEMO_MODE=true webpack serve\" \"cross-env NODE_ENV=development DEMO_MODE=true nodemon server/server.js\"",
     "lint": "./node_modules/.bin/eslint ."
   },
   "keywords": [
