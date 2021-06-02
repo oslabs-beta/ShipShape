@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        {/* essentially a switch statement that chooses the component to render based on the path */}
+        {/* switch statement that chooses the component to render based on the path */}
         <Switch>
           <Route exact path="/" render={() => <LandingPageContainer />} />
           <Route path="/getStarted" render={() => <GetStartedPage />} />
