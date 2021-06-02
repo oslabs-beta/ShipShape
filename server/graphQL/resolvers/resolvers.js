@@ -47,7 +47,7 @@ module.exports = {
         // maybe use a lodash function https://lodash.com/docs/4.17.15; this will likely have a similar time complexity,
         // but it will be more declarative and easier to read.
 
-      const podArray = []
+      const podArray = [];
       podsApi.forEach((pod) => {
         const mergedPod = podsCmd.reduce((original, metrics) => {
           if (original.metadata.name == metrics.metadata.name) {
@@ -85,7 +85,7 @@ module.exports = {
 
         node.status.allocatable.ephemeralStorage = node.status.allocatable['ephemeral-storage'];
       });
-      return nodes
+      return nodes;
     },
     cpuUsage: async (parent, { start, end, step }, { dataSources }, info) => {
       if (demoMode) return demoData.cpuUsage;

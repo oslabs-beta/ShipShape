@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LandingPageContainer from "./LandingPage/LandingPageContainer.jsx";
-import Home from "./Dashboard/Home.jsx";
-import GetStartedPage from "./GetStarted/GetStartedPage.jsx";
-import NotFound from "./NotFound.jsx";
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LandingPageContainer from './LandingPage/LandingPageContainer.jsx';
+import Home from './Dashboard/Home.jsx';
+import GetStartedPage from './GetStarted/GetStartedPage.jsx';
+import NotFound from './NotFound.jsx';
 
 /*
  *
@@ -13,7 +13,7 @@ import NotFound from "./NotFound.jsx";
  */
 
 function App() {
-  console.log("nothing to see here, get out of our console");
+  console.log('nothing to see here, get out of our console');
   console.log(`
   ____ _  _ _ ___  ____ _  _ ____ ___  ____ 
   [__  |__| | |__] [__  |__| |__| |__] |___ 

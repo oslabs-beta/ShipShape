@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { spawn } = require('child_process')
+const { spawn } = require('child_process');
 
 const prometheusURL = 'http://127.0.0.1:9090/api/v1/';
 
@@ -16,7 +16,7 @@ prometheusController.isUp = async (req, res, next) => {
   const queryStr = `${prometheusURL}query?query=up`;
 
   try {
-    const response = await fetch(queryStr)
+    const response = await fetch(queryStr);
     res.locals.query = await response.json();
     return next();
   } catch (err) {

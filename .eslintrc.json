@@ -20,6 +20,7 @@
     "plugins": [
         "react"
     ],
+    "ignorePatterns": ["node_modules/*"],
     "rules": {
       "arrow-parens": "off",
       "consistent-return": "off",
@@ -33,6 +34,7 @@
       "prefer-object-spread": "off",
       "linebreak-style": "off",
       "arrow-body-style": "off",
-      "import/extensions": "off"
+      "import/extensions": "off",
+      "no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }]
     }
 }

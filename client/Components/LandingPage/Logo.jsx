@@ -7,6 +7,7 @@ export default function Logo() {
         src="./../assets/ShipShapeWhiteLogo.png"
         height="130px"
         width="135px"
+        alt="ShipShape Logo"
       />
     </div>
   );
