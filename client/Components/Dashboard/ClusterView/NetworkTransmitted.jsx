@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
-import { fetchChartData } from '../../../helpers.js'
+import React, { useEffect, useState } from 'react';
+import { Line } from 'react-chartjs-2';
+import { fetchChartData } from '../../../helpers.js';
 
-/* 
-This is a line chart we imported from chart.js to display the Network Pressure 
-of the whole cluster over time. The data from the cluster query is being 
-passed down from the cluster dashboard component ***or home component if 
+/*
+This is a line chart we imported from chart.js to display the Network Pressure
+of the whole cluster over time. The data from the cluster query is being
+passed down from the cluster dashboard component ***or home component if
 we use context api*** and is used here to populate the data points on the line
-graph. 
+graph.
 
 We wanted to make this a streaming live data chart initally, but never
-got that fully Implemented. 
+got that fully Implemented.
 */
 
 const NetworkTransmitted = ({ chartDurationHours }) => {
@@ -33,7 +33,7 @@ const NetworkTransmitted = ({ chartDurationHours }) => {
           maintainAspectRatio: false,
           responsive: true,
           plugins: {
-            title: { text: "Network Pressure", display: true },
+            title: { text: 'Network Transmitted (bytes)', display: true },
           },
           scales: {
             yAxes: [

@@ -2,7 +2,7 @@ const { isObject, find } = require('lodash');
 const k8sApi = require('../../k8sApi');
 const podData = require('../datasources/podConstructor')
 const nodeData = require('../datasources/nodeConstructor');
-const demoData = require('../demoData/demoData');
+const demo = require('../demoData/demoData');
 
 // set to true to use mockData instead of pulling real k8s cluster data
 const demoMode = process.env.DEMO_MODE;
@@ -35,7 +35,7 @@ module.exports = {
   Query: {
     getPods: async (parent, args, context, info) => {
       /** NEW CODE  */
-      if (demoMode) return demoData.pods;
+      if (demoMode) return demo.pods;
 
       const podsApi = (await k8sApi.listPodForAllNamespaces()).response.body.items;
       const podsCmd = (await podData.getMetrics()).items;
@@ -65,7 +65,7 @@ module.exports = {
       return podArray;
     },
     nodes: async (parent, args, context, info) => {
-      if (demoMode) return demoData.nodes;
+      if (demoMode) return demo.nodes;
 
       const nodes = (await k8sApi.listNode('default')).response.body.items;
       const allNodePercentages = (await nodeData.getPercentages());
@@ -88,19 +88,19 @@ module.exports = {
       return nodes;
     },
     cpuUsage: async (parent, { start, end, step }, { dataSources }, info) => {
-      if (demoMode) return demoData.cpuUsage;
+      if (demoMode) return demo.cpuUsage(start, end);
       const startTime = new Date(start).toISOString();
       const endTime = new Date(end).toISOString();
       return dataSources.prometheusAPI.getCpuUsageSecondsRateByName(startTime, endTime, step);
     },
     freeMemory: async (parent, { start, end, step }, { dataSources }, info) => {
-      if (demoMode) return demoData.freeMemory;
+      if (demoMode) return demo.freeMemory(start, end);
       const startTime = new Date(start).toISOString();
       const endTime = new Date(end).toISOString();
       return dataSources.prometheusAPI.getClusterFreeMemory(startTime, endTime, step);
     },
-    networkTransmitted: async (parent, { start, end, step }, { dataSources }, info) => {
-      if (demoMode) return demoData.networkTransmitted;
+    networkTransmitted: async (parent, { start, end, step }, { dataSources }, info) => {      
+      if (demoMode) return demo.networkTransmitted(start, end);
       const startTime = new Date(start).toISOString();
       const endTime = new Date(end).toISOString();
       return dataSources.prometheusAPI.getNetworkTransmitBytes(startTime, endTime, step);
