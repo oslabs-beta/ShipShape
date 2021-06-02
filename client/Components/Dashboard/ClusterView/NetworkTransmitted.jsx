@@ -13,17 +13,17 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
-const NetworkTransmitted = () => {
+const NetworkTransmitted = ({ chartDurationHours }) => {
   const [chartData, setChartData] = useState({});
 
   async function chart() {
-    const data = await fetchChartData('networkTransmitted', 6, '5m')
+    const data = await fetchChartData('networkTransmitted', chartDurationHours, '5m');
     setChartData(data);
   }
 
   useEffect(() => {
     chart();
-  }, []);
+  }, [chartDurationHours]);
 
   return (
     <div className="StreamingNetworkPressure streams">
