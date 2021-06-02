@@ -13,7 +13,6 @@ on a pod in the table, the graphs change to reflect the data from the selected p
 The GetTimeFromStart functions calculates the lifespan of a pod, giving us infromation 
 about how long a pod has been running, giving us the age of our pod.
 
-NOTE: add more columns and data 
 */
 
 const PodsTable = ({ data, changePod }) => {

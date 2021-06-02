@@ -13,7 +13,6 @@ on a node in the table, the graphs change to reflect the data from the selected 
 The GetTimeFromStart functions calculates the lifespan of a node, giving us infromation 
 about how long a node has been running, giving us the age of our node.
 
-NOTE: add more columns and data 
 */
 
 
