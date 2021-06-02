@@ -30,6 +30,9 @@
       "react/destructuring-assignment": "warn",
       "react/prop-types": "off",
       "no-param-reassign": ["warn", { "props": false }],
-      "prefer-object-spread": "off"
+      "prefer-object-spread": "off",
+      "linebreak-style": "off",
+      "arrow-body-style": "off",
+      "import/extensions": "off"
     }
 }

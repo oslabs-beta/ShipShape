@@ -15,17 +15,17 @@ got that fully Implemented.
 
 const colors = ["rgb(160, 192, 206)", "rgb(38,84,121)", "rgb(207, 225, 232)"];
 
-const MemoryChart = () => {
+const MemoryChart = ({ chartDurationHours }) => {
   const [chartData, setChartData] = useState({});
 
   async function chart() {
-    const data = await fetchChartData('freeMemory', 6, '5m')
+    const data = await fetchChartData('freeMemory', chartDurationHours, '5m')
     setChartData(data);
   }
 
   useEffect(() => {
     chart();
-  }, []);
+  }, [chartDurationHours]);
 
   return (
     <div className="StreamingMemoryChart streams">
