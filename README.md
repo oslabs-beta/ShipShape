@@ -70,22 +70,11 @@ Key features include:
 - [Node JS/Express](https://nodejs.dev)
 - [Jest](https://jestjs.io/)
 
-## Demo
 
-### Track and Monitor Cluster Metrics
+##Demo
 
-![]('gifofthingum')
 
-Description of what is happening up in the gif above
-
-### Maybe a vid of another view
-
-![]('gitofotherwhatsit)
-
-Description of the thing happening above
-
-<!-- GETTING STARTED -->
-
+![](./client/assets/ShipShapeReadmeDemo.gif)
 ## Getting Started
 
 To get a local copy up and running, follow these steps:
@@ -94,21 +83,24 @@ To get a local copy up and running, follow these steps:
 2. Npm install in the ShipShape root directory
 3. Npm run dev or run build then npm start
 4. Navigate to local host 8080 (or 3000, depending on startup method, respectively)
-5. You will be taken to the ShipShape landing page. Click the 'Getting Started' button to view more specific instructions for how to hook up your Kubernetes cluster to ShipShape for metric monitoring. 
-6. Once these 'Getting Started' instructions have been followed, navigate to your dashboard to see how easy ShipShape makes cluster monitoring! 
+5. You will be taken to the ShipShape landing page. Click the 'Getting Started' button to view more specific instructions for how to hook up your Kubernetes cluster to ShipShape for metric monitoring.
+6. Once these 'Getting Started' instructions have been followed, navigate to your dashboard to see how easy ShipShape makes cluster monitoring!
 
 ### Prerequisites
+
 1.  Installed on your local machine, Kubectl and Helm command line tools.
 2.  A metrics server installed inside the cluster, if it is not standard with your cluster service. For metrics server deployment, see the 'Getting Started' page for exact details.
-3.  Expose metrics using Prometheus from a Kubernetes cluster.  You can either expose a live cluster or use [MiniKube](https://minikube.sigs.k8s.io/docs/start/). 
+3.  Expose metrics using Prometheus from a Kubernetes cluster. You can either expose a live cluster or use [MiniKube](https://minikube.sigs.k8s.io/docs/start/).
 
 ### Setup
+
 See the Getting Started page on <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a>!
 
-### Demo Mode 
+### Demo Mode
+
 To see a working demo of ShipShape:
 
-Navigate to the <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a> dashbaord! 
+Navigate to the <a href="https://www.getinshipshape.com/"><strong>getinshipshape.com</strong></a> dashbaord!
 
 <!-- CONTRIBUTORS -->
 
@@ -124,5 +116,8 @@ Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.lin
 
 ## Looking Ahead
 
-More tests pls
-
+-More testing
+-More graphs for more metric monitoring 
+-Prometheus Auto-Deployment
+-Potentially adding state management tools (Redux/Context API) for faster queries
+-UI Optimization 
