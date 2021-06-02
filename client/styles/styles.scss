@@ -644,7 +644,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  padding: 1rem;
+  padding: 0.5rem;
   gap: 1rem;
   position: relative;
 }
@@ -653,19 +653,33 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .nodeDashboard,
 .clusterDashboard {
   grid-column: 1 / 15;
-  grid-row: 1 / 13;
+  grid-row: 1 / 15;
   background-color: $mainTextColor;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
-  padding: 1rem;
+  padding: 0.5rem;
   gap: 1rem;
   position: relative;
 }
 
+.duration-select {
+  grid-column: 1 / 13;
+  grid-row: 1/ 2;
+  border: 1px solid rgba(14, 13, 13, 0.3);
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 2rem;
+  vertical-align: baseline;
+  height: 5em;
+}
+
 .StreamingNetworkPressure {
   grid-column: 1 / 13;
-  grid-row: 1/ 5;
+  grid-row: 2/ 6;
   border: 1px solid rgba(14, 13, 13, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
@@ -673,7 +687,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 .StreamingMemoryChart {
   grid-column: 1 / 13;
-  grid-row: 5 / 9;
+  grid-row: 6 / 10;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
@@ -681,7 +695,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 .StreamingCpuChart {
   grid-column: 1 / 13;
-  grid-row: 9 / 13;
+  grid-row: 10 / 15;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   // box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;

@@ -40,10 +40,32 @@ export default function GetStartedBody() {
         Kubernetes!
         <br />
         <br />
-        If you'd like to boost the performance of this app's monitoring ability,
+        In order get the basic metrics out of this application, make sure that you have deployed a metrics
+        server as well as prometheus.  To deploy a metrics server, open up a command line with 
+        access to the cluster and run this command,
+        <br />
+        <br /> "kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml"
+        <br />
+        <br />
+        For even further monitoring capabilities, 
         download and configure helm to be able to deploy helm charts to your
         cluster. The Helm installation docs can be found{" "}
         <a id='here' href="https://helm.sh/docs/intro/install/">here!</a>
+        <br />
+        <br />
+        Once installed, download/upgrade the Prometheus helm chart with this command.
+        <br />
+        <br />"helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
+        <br />
+        <br />
+        Next, you'll want to create a namespace prometheus, to deploy prometheus inside.
+        <br />
+        And finally, deploy Prometheus to your cluster with 
+        <br />
+        <br />"helm upgrade -i prometheus prometheus-community/prometheus --namespace prometheus ""
+        <br />
+        <br />
+        This will deploy Prometheus to your cluster under the namespace, Prometheus.
         <br />
         <br />
         Any comments or concerns? The ShipShape dev team would love to hear from
