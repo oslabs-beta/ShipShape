@@ -1,21 +1,20 @@
-const express = require("express");
+const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const gqlSchema = require('./graphQL/schema.js'); 
-const path = require("path");
+const path = require('path');
+const gqlSchema = require('./graphQL/schema');
 
 // initialize express server
 const app = express();
 
-
 // routers for various function
-const metricsServerRouter = require('./router/metricsServerRouter.js');
-const prometheusRouter = require('./router/prometheusRouter.js');
+const metricsServerRouter = require('./restAPI/router/metricsServerRouter');
+const prometheusRouter = require('./restAPI/router/prometheusRouter');
 
 const PORT = 3000;
 
 //** Serve all compiled files when running the production build **/
-app.use(express.static(path.resolve(__dirname, "../client")));
-app.use("/build", express.static(path.join(__dirname, "../build")));
+app.use(express.static(path.resolve(__dirname, '../client')));
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
 //** Automatically parse json & urlencoded body content from incoming requests and place it in req.body **//
 app.use(express.json());
@@ -30,15 +29,15 @@ const apollo = new ApolloServer(gqlSchema);
 apollo.applyMiddleware({ app });
 
 //** Catchall Routes, GET request 404 handled on cleint-side by React Router **//
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname, "../client/index.html")))
-app.use('/*', (req, res) => res.status(404).send('Resource Not Found'))
+app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../client/index.html')));
+app.use('/*', (req, res) => res.status(404).send('Resource Not Found'));
 
 //** Global Error Handler **//
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: "Express error handler caught unknown middleware error",
+    log: 'Express error handler caught unknown middleware error',
     status: 500,
-    message: { err: "An error occurred" },
+    message: { err: 'An error occurred' },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
@@ -46,6 +45,7 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
+  if(process.env.DEMO_MODE) console.log('~~~ D E M O   M O D E   A C T I V A T E D ~~~');
   console.log(`Chillin' on port ${PORT} 😎`);
 });
 
