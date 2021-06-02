@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { filter, find } from "lodash";
-import LineChart from "./StreamingNetworkPressure.jsx";
-import StreamingCpuChart from "./StreamingCpuChart.jsx";
-import StreamingMemoryChart from "./StreamingMemoryChart.jsx";
-import StreamingNetworkPressure from "./StreamingNetworkPressure.jsx";
+import LineChart from "./NetworkTransmitted.jsx";
+import CpuChart from "./CpuChart.jsx";
+import MemoryChart from "./MemoryChart.jsx";
+import NetworkTransmitted from "./NetworkTransmitted.jsx";
 
 /*
 This is the view displayed when cluster view is clicked on the nav bar. 
@@ -20,9 +20,9 @@ NOTE: we may move the query to the home component if we impliment context api
 const ClusterDashboard = () => {
   return (
     <div className="ClusterDashboard">
-      <StreamingMemoryChart />
-      <StreamingCpuChart />
-      <StreamingNetworkPressure />
+      <MemoryChart />
+      <CpuChart />
+      <NetworkTransmitted />
     </div>
   );
 };

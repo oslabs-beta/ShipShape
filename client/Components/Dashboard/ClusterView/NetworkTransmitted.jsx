@@ -13,7 +13,7 @@ We wanted to make this a streaming live data chart initally, but never
 got that fully Implemented. 
 */
 
-const StreamingNetworkPressure = () => {
+const NetworkTransmitted = () => {
   const [chartData, setChartData] = useState({});
 
   async function chart() {
@@ -62,4 +62,4 @@ const StreamingNetworkPressure = () => {
   );
 };
 
-export default StreamingNetworkPressure;
+export default NetworkTransmitted;
