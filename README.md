@@ -178,4 +178,4 @@ ShipShape is currently in Alpha. Here's some features we hope to have implemente
 
 ### Have an idea to make ShipShape even better?
 
-If you'd like to contributee to ShipShape, please open a PR from your personal fork and our maintainers will work with you to get the feature implemented.
+If you'd like to contributee to ShipShape, please open a PR from your personal fork, or shoot us an email at ShipShapeK8S@gmail.com and our team will work with you to get the feature implemented.
