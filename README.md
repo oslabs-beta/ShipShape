@@ -73,7 +73,7 @@ Key features include:
 
 ## Demo
 
-![demo gif](https://s6.gifyu.com/images/ShipShapeReadmeDemo.gif)
+![Demo Gif](https://s6.gifyu.com/images/DemoGif.gif)
 
 ## Getting Started
 
