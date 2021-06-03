@@ -11,7 +11,9 @@ const timeSeriesDemo = {
 };
 
 const demoTimeSeries = (start, end, type) => {
-  const hours = new Date(end).getHours() - new Date(start).getHours();
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const hours = (endDate - startDate) / 3600000;
   const numOfResults = hours * 30;
   const data = timeSeriesDemo[type];
   const timestamps = data.timestamps.slice(0, numOfResults);

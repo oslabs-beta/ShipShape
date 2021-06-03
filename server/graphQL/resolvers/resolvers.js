@@ -99,7 +99,7 @@ module.exports = {
       const endTime = new Date(end).toISOString();
       return dataSources.prometheusAPI.getClusterFreeMemory(startTime, endTime, step);
     },
-    networkTransmitted: async (parent, { start, end, step }, { dataSources }, info) => {      
+    networkTransmitted: async (parent, { start, end, step }, { dataSources }, info) => {
       if (demoMode) return demo.networkTransmitted(start, end);
       const startTime = new Date(start).toISOString();
       const endTime = new Date(end).toISOString();

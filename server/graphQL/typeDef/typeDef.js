@@ -26,7 +26,7 @@ type Addresses {
   address: String 
 }
 
-
+# the resources a given node has to allocate to pods and containers running on it
 type Allocatable { 
   attachablevolumesgcepd: String
   cpu: String
@@ -45,6 +45,7 @@ type Capacity {
   pods: String 
 }
 
+# the status of a specific node
 type NodeStatus { 
   images: [Image]
   nodeName: String
@@ -63,6 +64,7 @@ type NodeUsage {
   memory: String
 }
 
+# node metrics and their usage as a percent of availability
 type NodeUsagePercent {
   cpu: String
   cpuCores: String
@@ -84,6 +86,7 @@ type Annotations {
   volumeskubernetesiocontrollermanagedattachdetach: String 
 }
 
+# metadata of a specific node
 type NodeMetadata {
   name: String
   selfLink: String
@@ -147,6 +150,7 @@ type Conditions {
   message: String
 }
 
+# the status of a specific pod
 type PodStatus { 
   phase: String
   conditions: [Conditions] 
@@ -171,6 +175,7 @@ type VolumeMounts {
   mountPath: String 
 }
 
+# individual container metadata and metrics
 type Container { 
   name: String
   podName: String
@@ -255,8 +260,11 @@ type Pod {
 
 # a standard time series object buil t from a PromQL query
 type TimeSeries {
+  # the timestamps for the datapoints stored in seriesValues
   timestamps: [String]!
+  # the names used to subdivide the metrics being queried
   seriesLabels: [String]!
+  # an array of arrays containg the actual values of each series. These correspond to the label in parallel order
   seriesValues: [[String]]!
 }
 
@@ -266,9 +274,11 @@ type Query {
   getPods: [Pod]
   # query will return an array of all nodes
   nodes: [Node]
-  #subqueries 
+  # Cluster's cpu usages (cores) over time
   cpuUsage(start:String!, end:String!, step:String!): TimeSeries
+  # Cluster's available memrory (bytes) over time
   freeMemory(start:String!, end:String!, step:String!): TimeSeries
+  # Cluster's network transmitted (bytes) over time 
   networkTransmitted(start:String!, end:String!, step:String!): TimeSeries
 }
 `;
