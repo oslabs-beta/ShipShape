@@ -12,10 +12,8 @@ $secondTextColor: rgb(38, 84, 121);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // font-family: "Comfortaa", cursive;
   font-family: Montserrat;
   font-weight: 800;
-  // color: $mainTextColor;
 }
 
 body {
@@ -23,13 +21,16 @@ body {
   color: $mainTextColor;
 }
 
+/*****************************************************************
+
+Landing Page 
+
+*****************************************************************/
+
 .LandingPageContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.LandingPageContainer {
   position: relative;
 }
 
@@ -50,13 +51,32 @@ body {
   margin-left: 43%;
 }
 
-.footerDiv {
-  height: 5rem;
-  width: 100%;
+.bodyDiv {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background: inherit;
+}
+
+#intro {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  padding-top: 10vh;
+}
+#intro > h1 {
+  font-size: 5rem;
+}
+
+#intro > h2 {
+  font-size: 3rem;
+}
+
+#intro > h2,
+h1,
+button {
+  margin-bottom: 1rem;
 }
 
 .getStartedButton {
@@ -83,23 +103,6 @@ body {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.308);
 }
 
-#intro {
-  padding-top: 10vh;
-}
-#intro > h1 {
-  font-size: 5rem;
-}
-
-#intro > h2 {
-  font-size: 3rem;
-}
-
-#intro > h2,
-h1,
-button {
-  margin-bottom: 1rem;
-}
-
 .imageContainer {
   border: 2px solid rgba(0, 0, 0, 0.466);
   max-width: 65%;
@@ -113,12 +116,6 @@ button {
   background-repeat: no-repeat;
   width: 100%;
   border-radius: 10px;
-}
-
-.bodyDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 #aboutUs {
@@ -172,11 +169,6 @@ button {
   text-align: center;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-}
-
 .features {
   width: 80%;
   display: flex;
@@ -209,6 +201,29 @@ footer {
 
 #bottomText {
   animation: 3s slidein-right;
+}
+
+.moreInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+.moreInfo > p,
+h3 {
+  padding: 15px;
+}
+
+.moreInfo > h3 {
+  font-size: 2.75rem;
+}
+
+.moreInfo > p {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.5em;
 }
 
 @keyframes slidein-left {
@@ -288,39 +303,22 @@ a:hover {
   color: $mainTextColor;
 }
 
-.moreInfo {
+.footerDiv {
+  height: 5rem;
   width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2rem;
+  background: inherit;
 }
 
-.moreInfo > p,
-h3 {
-  padding: 15px;
+footer {
+  position: absolute;
+  bottom: 0;
 }
 
-.moreInfo > h3 {
-  font-size: 2.75rem;
-}
-
-.moreInfo > p {
-  font-size: 2rem;
-  text-align: center;
-  line-height: 1.5em;
-}
-
-#here {
-  font-size: 1em;
-  color: $darkBlue;
-}
-
-#here:hover {
-  color: white;
-}
-
+//------------------------------------------------------------------------------------//
+//fancy bubbles
 //------------------------------------------------------------------------------------//
 
 $bubble-count: 50;
@@ -366,8 +364,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
     left: 0;
     width: 100%;
     height: 100%;
-    // background: hsla(183, 89%, 81%, 0.3);
-    // background: rgba(219, 240, 248, 0.3);
     background: rgb(238, 243, 255);
     background: radial-gradient(
       circle,
@@ -419,66 +415,72 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   }
 }
 
-#intro {
-  color: white;
+/*****************************************************************
+
+Get Started Page 
+
+*****************************************************************/
+
+
+.getStartedBody {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: transparent;
-}
 
-@media only screen and (max-width: 600px) {
-  .aboutUs {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  h1 {
+    font-size: 2em;
+    padding-top: 10px;
   }
 
-  .cardContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  #infoBox {
+    height: 65vh;
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.103);
+    border: 1px solid rgb(38, 0, 80);
+    border-radius: 10px;
+    font-size: 1.5em;
+    line-height: 2rem;
+    text-align: center;
+    padding: 5px;
+    overflow-y: scroll;
+    box-shadow: 2px 2px 2px black;
+    margin-top: 70px;
+  }
+  #infobox::-webkit-scrollbar {
+    display: none;
+  }
+  #helm-install-here {
+    font-size: 1em;
+    color: $darkBlue;
   }
 
-  .aboutUsCards {
-    width: 100%;
-    margin-bottom: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .featurePicture {
-    width: 90%;
-  }
-
-  .featurePicture > img {
-    width: 100%;
-    height: 50%;
+  #helm-install-here:hover {
+    color: white;
   }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 1120px) {
-  .aboutUs {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+/*****************************************************************
 
-  .cardContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+Log In Page (not in use)
 
-  .aboutUsCards {
-    width: 60%;
-    margin-bottom: 1rem;
-  }
+*****************************************************************/
+
+
+#LogInContainer {
+  background-color: $lightBlue;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
 }
+
+
+
+/*****************************************************************
+
+Dashboard
+
+*****************************************************************/
 
 .homeContainer {
   background-color: rgb(255, 255, 255);
@@ -525,22 +527,17 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 #help:hover {
   cursor: pointer;
   color: $mainTextColor;
-  // background: #7d6b9e;
-  // box-shadow: 2px 2px 2px black;
 }
 
-// sidebar starts ------------------//
+// navbar starts ------------------//
 
 .navbarContainer {
   grid-column: 1/3;
   grid-row: 1/13;
   background-color: $lightBlue;
-  // background-color: #5b4880;
-  // border-top-right-radius: 3rem;
   display: flex;
   flex-direction: column;
   border-right: 1px solid $darkBlue;
-  // box-shadow: 2px 2px 2px black;
 }
 
 #dashboardLogo {
@@ -558,18 +555,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 .shipshape {
   font-size: 1.5em;
   font-weight: 900;
-}
-
-@media (max-width: 1360px){
-  .shipshape{
-    font-size: 1.1em;
-  }
-}
-
-@media (max-width: 1111px){
-  .shipshape{
-    display:none;
-  }
 }
 
 .subjectContainer {
@@ -645,7 +630,6 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   grid-row: 10 / 15;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  // box-shadow: rgba(149, 157, 165, 0.411) 0px 8px 24px;
 }
 
 .streams > canvas {
@@ -690,42 +674,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
   font-weight: bold !important;
 }
 
-.getStartedBody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  h1 {
-    font-size: 2em;
-    padding-top: 10px;
-  }
-
-  #infoBox {
-    height: 65vh;
-    width: 80%;
-    background-color: rgba(0, 0, 0, 0.103);
-    border: 1px solid rgb(38, 0, 80);
-    border-radius: 10px;
-    font-size: 1.5em;
-    line-height: 2rem;
-    text-align: center;
-    padding: 5px;
-    overflow-y: scroll;
-    box-shadow: 2px 2px 2px black;
-    margin-top: 70px;
-  }
-  #infobox::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-#LogInContainer {
-  background-color: $lightBlue;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  place-content: center;
-}
 
 .btnDashboard {
   display: flex;
@@ -844,3 +793,74 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 }
 
 /* Ends here */
+
+/*****************************************************************
+
+Media Querys
+
+*****************************************************************/
+
+@media only screen and (max-width: 600px) {
+  .aboutUs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutUsCards {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featurePicture {
+    width: 90%;
+  }
+
+  .featurePicture > img {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 1120px) {
+  .aboutUs {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutUsCards {
+    width: 60%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 1360px) {
+  .shipshape {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 1111px) {
+  .shipshape {
+    display: none;
+  }
+}
