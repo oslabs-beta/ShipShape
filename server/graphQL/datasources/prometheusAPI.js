@@ -91,7 +91,7 @@ class PrometheusAPI extends RESTDataSource{
       this.portAttempts += 1
 
       process.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
+        // console.log(`stdout: ${data}`);
         this.isPrometheusUp.check = true;
         resolve(true)
       })
