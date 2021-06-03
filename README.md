@@ -73,7 +73,9 @@ Key features include:
 
 ## Demo
 
+
 ![Demo Gif](https://s6.gifyu.com/images/DemoGif-3.gif)
+
 
 ## Getting Started
 

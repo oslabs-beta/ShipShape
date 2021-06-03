@@ -60,13 +60,13 @@ export default function Body() {
       <div className="features">
         <div className="featureText" id="topText">
           <Fade left>
-            <p>Track What Matters Most</p>
+            <p id='pTag'>Track What Matters Most</p>
           </Fade>
         </div>
         <div className="featurePicture">
           <img src="../../assets/TrackWhatMatters.png" alt="trackwhatmatters" />
         </div>
-        <div className="featurePicture">
+        <div className="featurePicture last">
           <img src="../../assets/StopProblemsBefore.png" alt="tostopproblemsbefore" />
         </div>
         <div className="featureText" id="bottomText">
@@ -100,7 +100,7 @@ export default function Body() {
       <div className="bubbles">
         <div className="teamContainer">
           <Pulse>
-            <div className="teamContainerHeader">Meet The ShipShape Team</div>
+            <div className="teamContainerHeader head">Meet The ShipShape Team</div>
           </Pulse>
           <div className="profileContainer">
             <div className="teamCards">

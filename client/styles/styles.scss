@@ -901,3 +901,190 @@ Media Querys
     display: none;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .LandingPageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .headerDiv {
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .logo > img {
+    width: 70px;
+    height: 60px;
+  }
+
+  #githubImage {
+  }
+
+  .bodyDiv {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #intro {
+    padding-top: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1em;
+    }
+  }
+
+  #buttonContainer {
+    display: flex;
+
+    button {
+      width: 40vw;
+      font-size: 0.5em;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .getStartedButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imageContainer {
+    width: 350px;
+  }
+
+  #dashImage {
+    width: 100%;
+  }
+
+  #aboutUs {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h3 {
+      padding: 2px 2px;
+      font-size: 2em;
+    }
+
+    h4 {
+      font-size: 1em;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+  }
+
+  .aboutUsCards {
+    width: 90%;
+  }
+
+  .cardContainer {
+    margin-top: 5px;
+  }
+
+  .features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  #topText,
+  #bottomText {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  #bottomText {
+    margin-top: -15px;
+  }
+
+  .featurePicture {
+    width: 90%;
+    img {
+      width: 95%;
+      height: 150px;
+      margin: auto 0;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  }
+
+  .last {
+    width: 90%;
+    img {
+      width: 95%;
+      height: 150px;
+      margin: auto 0;
+      margin-top: 10px;
+    }
+  }
+
+  .moreInfo {
+    margin-top: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    h3 {
+      font-size: 2em;
+    }
+
+    p {
+      font-size: 1em;
+    }
+  }
+
+  .bubbles,
+  .teamContainer {
+    font-size: 0.75em;
+    height: 70%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .teamPicture {
+    width: 60px;
+    height: 50px;
+  }
+
+  .head {
+    font-size: 1.5rem;
+  }
+
+  .teamContainerHeader {
+    margin-bottom: 10px;
+  }
+
+  .profileContainer {
+  }
+
+  .teamCards > p {
+    font-size: 1em;
+  }
+}
