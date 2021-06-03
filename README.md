@@ -10,7 +10,7 @@
   <p align="center">
     Kubernetes Cluster Monitoring Made Easy
     <br /><br />
-    <a href="https://www.getinshipshape.io/"><strong>getinshipshape.com</strong></a>
+    <a href="https://www.getinshipshape.io/"><strong>getinshipshape.io</strong></a>
     <br />
     <br />
    
