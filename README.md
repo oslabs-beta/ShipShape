@@ -70,11 +70,10 @@ Key features include:
 - [Node JS/Express](https://nodejs.dev)
 - [Jest](https://jestjs.io/)
 
-
 ## Demo
 
+![](https://s6.gifyu.com/images/ShipShapeReadmeDemo.gif)
 
-![](./client/assets/ShipShapeReadmeDemo.gif)
 ## Getting Started
 
 To get a local copy up and running, follow these steps:
@@ -114,13 +113,12 @@ Rebecca Schell - [GitHub](https://github.com/rschelly/) - [LinkedIn](https://www
 
 Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.linkedin.com/in/whit-rooke)
 
-## Looking Ahead 
+## Looking Ahead
 
 -More testing
--More graphs for more metric monitoring 
+-More graphs for more metric monitoring
 -Prometheus Auto-Deployment
 -Potentially adding state management tools (Redux/Context API) for faster queries
--UI Optimization 
+-UI Optimization
 -More filtering options for “Cluster View” metrics (Adjust smoothing and step parameters, Look at past dates, Filter queries by namespace, service, or application)
 -Organizations and user permissions
-

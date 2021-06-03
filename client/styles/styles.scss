@@ -39,6 +39,7 @@ Landing Page
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
+  position: relative;
 }
 
 .gitHubHeader,
@@ -48,7 +49,19 @@ Landing Page
 }
 
 .logo {
-  margin-left: 43%;
+  margin-left: 45%;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.gitHubHeader {
+  position: absolute;
+  right: 5;
+  top: 10;
 }
 
 .bodyDiv {
@@ -62,15 +75,18 @@ Landing Page
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: transparent;
   padding-top: 10vh;
 }
 #intro > h1 {
-  font-size: 5rem;
+  font-size: 5em;
+  text-align: center;
 }
 
 #intro > h2 {
-  font-size: 3rem;
+  font-size: 3em;
+  text-align: center;
 }
 
 #intro > h2,
@@ -81,7 +97,7 @@ button {
 
 .getStartedButton {
   height: 40px;
-  width: 170px;
+  width: 200px;
   font-size: 0.75em;
   border-radius: 5px;
   box-shadow: 1px 1px 1px black;
@@ -226,23 +242,23 @@ h3 {
   line-height: 1.5em;
 }
 
-@keyframes slidein-left {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+// @keyframes slidein-left {
+//   0% {
+//     transform: translateX(-100%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }
 
-@keyframes slidein-right {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
+// @keyframes slidein-right {
+//   0% {
+//     transform: translateX(100%);
+//   }
+//   100% {
+//     transform: translateX(0);
+//   }
+// }
 
 .teamContainer {
   display: flex;
@@ -421,7 +437,6 @@ Get Started Page
 
 *****************************************************************/
 
-
 .getStartedBody {
   display: flex;
   flex-direction: column;
@@ -465,7 +480,6 @@ Log In Page (not in use)
 
 *****************************************************************/
 
-
 #LogInContainer {
   background-color: $lightBlue;
   width: 100vw;
@@ -473,8 +487,6 @@ Log In Page (not in use)
   display: grid;
   place-content: center;
 }
-
-
 
 /*****************************************************************
 
@@ -674,8 +686,6 @@ Dashboard
   font-weight: bold !important;
 }
 
-
-
 .btnDashboard {
   display: flex;
   justify-content: space-between;
@@ -800,7 +810,7 @@ Media Querys
 
 *****************************************************************/
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .aboutUs {
     width: 100%;
     display: flex;
@@ -822,13 +832,40 @@ Media Querys
     align-items: center;
   }
 
+  .features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .featureText,
+  #topText,
+  #bottomText {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    p {
+      // width: 1500px !important;
+      // font-size: 2em !important;
+      // color: pink !important;
+      font-size: 0.85em;
+    }
+  }
+
+  // #topText {
+  //   width: 1000px !important;
+  // }
+
   .featurePicture {
     width: 90%;
   }
 
   .featurePicture > img {
     width: 100%;
-    height: 50%;
+    // height: 50%;
   }
 }
 
