@@ -73,8 +73,8 @@ Key features include:
 
 ## Demo
 
+![](https://s6.gifyu.com/images/ShipShapeReadmeDemo.gif)
 
-![](./client/assets/ShipShapeReadmeDemo.gif)
 ## Getting Started
 
 To get a local copy up and running, follow these steps:
@@ -85,18 +85,23 @@ To get a local copy up and running, follow these steps:
 2.  Have a hosted Kubernetes Cluster on a service like [EKS](https://aws.amazon.com/eks/), [GKE](https://cloud.google.com/kubernetes-engine), or [MiniKube](https://minikube.sigs.k8s.io/docs/start).
 3.  A metrics server installed inside the cluster, if it is not standard with your cluster service. For metrics server deployment, see our [Getting Started](https://www.getinshipshape.io/getStarted) for instructions on setting this up.
 4.  Ensure that your local kubeconfig is setup to access the cluster you wish to monitor. You can check that by running the following command and checking the cluster info displayed in your shell.
+
 ```
 kubectl config view
 ```
-5.  Expose metrics using Prometheus from a Kubernetes cluster. This can be done easily via Helm once the above steps are complete. 
+
+5.  Expose metrics using Prometheus from a Kubernetes cluster. This can be done easily via Helm once the above steps are complete.
+
 ```
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 ```
+
 ```
 helm upgrade -i prometheus prometheus-community/prometheus --namespace prometheus
 ```
 
 ShipShape requires that you have a running Kubernetes cluster and your local kubeconfig file setup to access it. You can check your configuration by running
+
 ```
 kubectl config view
 ```
@@ -106,18 +111,25 @@ kubectl config view
 Before running ShipShape the first time, you'll need to pull the codebase down to your local machine and compile the bundle.js for optimal performance.
 
 1. Fork and/or clone this repo to get started
+
 ```
 git clone https://github.com/oslabs-beta/ShipShape.git
 ```
+
 2. Cd into the cloned Directory
+
 ```
 cd ShipShape
 ```
+
 3. Npm install in the ShipShape root directory
+
 ```
 npm install
 ```
-4. Npm run build 
+
+4. Npm run build
+
 ```
 npm run build
 ```
@@ -126,12 +138,14 @@ npm run build
 
 After installation is complete, you can start here to boot up ShipShape in the future.
 
-1. Start the server 
+1. Start the server
+
 ```
 npm start
 ```
+
 2. Navigate to http://localhost:3000
-3. Click "Dashboard" to view your metrics! 
+3. Click "Dashboard" to view your metrics!
 
 ### Demo Mode
 
@@ -151,8 +165,7 @@ Rebecca Schell - [GitHub](https://github.com/rschelly/) - [LinkedIn](https://www
 
 Whit Rooke - [GitHub](https://github.com/Whitrooke) - [LinkedIn](https://www.linkedin.com/in/whit-rooke)
 
-
-## Looking Ahead 
+## Looking Ahead
 
 ShipShape is currently in Alpha. Here's some features we hope to have implemented in future versions:
 
@@ -160,7 +173,7 @@ ShipShape is currently in Alpha. Here's some features we hope to have implemente
 - More filtering options for “Cluster View” metrics with dynamic PromQL queries
 - Impment a state management framework (Redux/Context API)
 - UI Optimization for faster rendering
-- Prometheus Auto-Deployment to streamline setup 
+- Prometheus Auto-Deployment to streamline setup
 - Organization and user permissions to share access to your metrics with employees without sharing your provider access keys
 
 ### Have an idea to make ShipShape even better?

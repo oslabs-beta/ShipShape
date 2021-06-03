@@ -1,18 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+import Pulse from 'react-reveal/Pulse';
+import Jump from 'react-reveal/Jump';
 
 export default function Body() {
   return (
     <div className="bodyDiv">
       <div id="intro" background="transparent">
-        <h1>Welcome to ShipShape!</h1>
-        <h2>A better way to monitor your Kubernetes Cluster</h2>
+        <Pulse>
+          <h1>Welcome to ShipShape!</h1>
+          <h2>A better way to monitor your Kubernetes Cluster</h2>
+        </Pulse>
         <div id="buttonContainer">
           <Link to="/getStarted">
             <button className="getStartedButton">Get Started</button>
           </Link>
           <Link to="/dashboard">
-            <button className="getStartedButton">My Dashboard</button>
+            <button className="getStartedButton">Dashboard Demo</button>
           </Link>
         </div>
         <div className="imageContainer">
@@ -24,13 +29,16 @@ export default function Body() {
         </div>
       </div>
       <div id="aboutUs">
-        <h3>About Us</h3>
+        <Jump>
+          <h3>About Us</h3>
+        </Jump>
         <div className="cardContainer">
           <div className="aboutUsCards">
             <h4>Real Time Monitoring</h4>
             <p>
               Real Time monitoring the metrics that matter the most in your
-              Kubernetes Cluster{' '}
+              Kubernetes Cluster
+              {' '}
             </p>
           </div>
           <div className="aboutUsCards">
@@ -51,20 +59,26 @@ export default function Body() {
       </div>
       <div className="features">
         <div className="featureText" id="topText">
-          Track What Matters Most
+          <Fade left>
+            <p>Track What Matters Most</p>
+          </Fade>
         </div>
         <div className="featurePicture">
-          <img src="../../assets/TrackWhatMatters.png" />
+          <img src="../../assets/TrackWhatMatters.png" alt="trackwhatmatters" />
         </div>
         <div className="featurePicture">
-          <img src="../../assets/StopProblemsBefore.png" />
+          <img src="../../assets/StopProblemsBefore.png" alt="tostopproblemsbefore" />
         </div>
         <div className="featureText" id="bottomText">
-          To Catch Problems Before They Happen
+          <Fade right>
+            <p>To Catch Problems Before They Happen</p>
+          </Fade>
         </div>
       </div>
       <div className="moreInfo">
-        <h3>More Information</h3>
+        <Pulse>
+          <h3>More Information</h3>
+        </Pulse>
         <p>
           ShipShape is a Kubernetes monitoring tool designed to help you
           visualize the most important metrics of your Cluster at various levels
@@ -85,16 +99,18 @@ export default function Body() {
       </div>
       <div className="bubbles">
         <div className="teamContainer">
-          <div className="teamContainerHeader">Meet The ShipShape Team</div>
+          <Pulse>
+            <div className="teamContainerHeader">Meet The ShipShape Team</div>
+          </Pulse>
           <div className="profileContainer">
             <div className="teamCards">
-              <img className="teamPicture" src="../../assets/brian.jpg" />
+              <img className="teamPicture" src="../../assets/brian.jpg" alt="brianbarr" />
               <p>Brian Barr</p>
               <a href="https://github.com/brianbarr">Github</a>
               <a href="https://www.linkedin.com/in/barrbrian">LinkedIn</a>
             </div>
             <div className="teamCards">
-              <img className="teamPicture" src="../../assets/ozi.jpeg" />
+              <img className="teamPicture" src="../../assets/ozi.jpeg" alt="ozioztourk" />
               <p>Ozi Oztourk</p>
               <a href="https://github.com/ozi-oztrk">Github</a>
               <a href="https://www.linkedin.com/in/ozi-oztourk/">LinkedIn</a>
@@ -103,13 +119,14 @@ export default function Body() {
               <img
                 className="teamPicture"
                 src="../../assets/rebeccaschell.jpg"
+                alt="rebeccaschell"
               />
               <p>Rebecca Schell</p>
               <a href="https://github.com/rschelly">Github</a>
               <a href="https://www.linkedin.com/in/rschelly/">LinkedIn</a>
             </div>
             <div className="teamCards">
-              <img className="teamPicture" src="../../assets/whit.png" />
+              <img className="teamPicture" src="../../assets/whit.png" alt="brianbarr" />
               <p>Whit Rooke</p>
               <a href="https://github.com/whitrooke">Github</a>
               <a href="www.linkedin.com/in/whit-rooke">LinkedIn</a>
