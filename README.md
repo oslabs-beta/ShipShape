@@ -73,7 +73,7 @@ Key features include:
 
 ## Demo
 
-![Demo Gif](https://s6.gifyu.com/images/DemoGif-1.gif)
+![Demo Gif](https://s6.gifyu.com/images/ezgif.com-resize.gif)
 
 ## Getting Started
 
