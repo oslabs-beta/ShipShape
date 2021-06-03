@@ -94,13 +94,13 @@ To get a local copy up and running, follow these steps:
 
 ### Setup
 
-See the Getting Started page on <a href="https://www.getinshipshape.io/"><strong>getinshipshape.com</strong></a>!
+See the Getting Started page on the <a href="https://www.getinshipshape.io/"><strong>ShipShape</strong></a> website!
 
 ### Demo Mode
 
 To see a working demo of ShipShape:
 
-Navigate to the <a href="https://www.getinshipshape.io/"><strong>getinshipshape.com</strong></a> dashbaord!
+Navigate to the <a href="https://www.getinshipshape.io/"><strong>ShipShape</strong></a> dashbaord!
 
 <!-- CONTRIBUTORS -->
 
