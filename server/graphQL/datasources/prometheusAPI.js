@@ -16,6 +16,7 @@ class PrometheusAPI extends RESTDataSource{
   async getCpuUsageSecondsRateByName(startDateTime, endDateTime, step){
     const checkProm = await this.portPrometheus()
     if(!checkProm) return console.log('Error with Pometheus Configuration');
+
     let query = `query_range?query=sum(rate(container_cpu_usage_seconds_total{container_name!="POD",namespace!=""}[2m])) by (namespace)`;
     query += `&start=${startDateTime}&end=${endDateTime}&step=${step}`;
     const data = await this.get(query).then( ({ data }) => data.result);
@@ -90,7 +91,7 @@ class PrometheusAPI extends RESTDataSource{
       this.portAttempts += 1
 
       process.stdout.on('data', (data) => {
-        console.log(`stdout: ${data}`);
+        // console.log(`stdout: ${data}`);
         this.isPrometheusUp.check = true;
         resolve(true)
       })
