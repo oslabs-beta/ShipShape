@@ -56,7 +56,7 @@ Key features include:
 - A facilitated access of internal Kubernetes environment without having to expose it to outside traffic
 - Instructions for auto-deployment of Prometheus for time-series metrics
 - GraphQL service to abstract PromQL queries for frontend developers
-- Threre diffenent dashboard views of Kubernetes clusters (cluster, node, and pod view)
+- There are diffenent dashboard views of Kubernetes clusters (cluster, node, and pod view)
 - Graphs that display important metrics
 - Dynamic time-range and filtering selection for cluster metric data
 
