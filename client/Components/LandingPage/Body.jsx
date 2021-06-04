@@ -82,13 +82,13 @@ export default function Body() {
         <p>
           ShipShape is a Kubernetes monitoring tool designed to help you
           visualize the most important metrics of your Cluster at various levels
-          of granularity. ShipSahpe can also track long-term performance, help
-          debug errors, and offere potential configuration optimization
+          of granularity. ShipShape can also track long-term performance, help
+          debug errors, and offer potential configuration optimization
           suggestions.
           <br />
           ShipShape will connect to and monitor the real time metrics of a
           Kubernetes Cluster using a variety of graphs and the clusters
-          components to assess over all and pod-specific health. We do this by
+          components to assess overall and pod-specific health. We do this by
           connecting to the Metrics Server of a Kubernetes cluster and
           continuously send and store the data related to CPU, Disk, and Memory
           usage to get a look at the metrics over time. We then present these
