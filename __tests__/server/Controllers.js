@@ -1,5 +1,5 @@
-import nodeController from '../../server/controller/nodeController.js';
-import podController from '../../server/controller/podController.js';
+import nodeController from '../../server/restAPI/controller/nodeController.js';
+import podController from '../../server/restAPI/controller/podController.js';
 // skip the namespace controller as it is currently not in use
 
 describe('nodeController tests', () => {
