@@ -73,7 +73,9 @@ Key features include:
 
 ## Demo
 
-![Demo Gif](https://s6.gifyu.com/images/ezgif.com-resize.gif)
+
+![Demo Gif](https://s6.gifyu.com/images/DemoGif-3.gif)
+
 
 ## Getting Started
 
@@ -178,4 +180,4 @@ ShipShape is currently in Alpha. Here's some features we hope to have implemente
 
 ### Have an idea to make ShipShape even better?
 
-If you'd like to contributee to ShipShape, please open a PR from your personal fork and our maintainers will work with you to get the feature implemented.
+If you'd like to contributee to ShipShape, please open a PR from your personal fork, or shoot us an email at ShipShapeK8S@gmail.com and our team will work with you to get the feature implemented.
