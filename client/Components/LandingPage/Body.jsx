@@ -129,7 +129,7 @@ export default function Body() {
               <img className="teamPicture" src="../../assets/whit.png" alt="brianbarr" />
               <p>Whit Rooke</p>
               <a href="https://github.com/whitrooke">Github</a>
-              <a href="www.linkedin.com/in/whit-rooke">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/whit-rooke">LinkedIn</a>
             </div>
           </div>
         </div>
