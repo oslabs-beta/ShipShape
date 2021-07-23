@@ -88,7 +88,7 @@ export default function Body() {
           <br />
           ShipShape will connect to and monitor the real time metrics of a
           Kubernetes Cluster using a variety of graphs and the clusters
-          components to assess overall and pod-specific health. We do this by
+          components to assess overall and pod/node-specific health. We do this by
           connecting to the Metrics Server of a Kubernetes cluster and
           continuously send and store the data related to CPU, Disk, and Memory
           usage to get a look at the metrics over time. We then present these
